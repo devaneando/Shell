@@ -44,3 +44,8 @@ __pycache__
 #######
 .netrwhist
 .vim
+
+# Specific files #
+##################
+Apps/Vim/bundle/
+Apps/Vim/session/

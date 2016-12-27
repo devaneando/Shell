@@ -1,0 +1,12 @@
+[submodule "Apps/Geany/geany-themes"]
+	path = Apps/Geany/geany-themes
+	url = https://github.com/codebrainz/geany-themes.git
+	branch = master
+[submodule "Apps/Vim/bundle/vim-colors-solarized"]
+	path = Apps/Vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+	branch = master
+[submodule "Apps/Vim/bundle/Vundle.vim"]
+	path = Apps/Vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
+	branch = master
