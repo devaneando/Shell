@@ -4,7 +4,7 @@
 if [ -L "${HOME}/.bashrc" ]; then
 	export BASE=`env readlink --canonicalize-missing ${HOME}/.bashrc | /bin/grep --color=never -P "^.*(?=\/Apps)" -o`
     export BASE_BASH="${BASE}/Apps/Bash"
-fi
+fiexit
 
 if [ -d "${BASE_BASH}/IncManually" ]; then
     eval `dircolors ${BASE_BASH}/IncManually/dirColors.bash`
