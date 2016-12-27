@@ -1,0 +1,61 @@
+Host *
+	ConnectTimeout			40
+	LogLevel				VERBOSE
+	IdentitiesOnly			yes
+
+# ●▬▬▬▬▬๑۩ Github ۩๑▬▬▬▬▬●
+
+Host git_psicofrenia
+	HostName				github.com
+	User					git
+	IdentityFile			~/.ssh/Keys/development.rsa
+    ServerAliveInterval     30
+
+Host git_joe_cloudwalker
+	HostName				github.com
+	User					git
+	IdentityFile			~/.ssh/Keys/joe.cloudwalker.rsa
+
+# ●▬▬▬▬▬๑۩ Gitlab ۩๑▬▬▬▬▬●
+
+Host gitlab.com
+	HostName				gitlab.com
+	User					git
+	IdentityFile			~/.ssh/Keys/development.rsa
+    ServerAliveInterval     30
+
+Host cleverti
+	HostName				git.cleverti
+	User					git
+	IdentityFile			~/.ssh/Keys/development.rsa
+	
+Host git.cleverti.com
+	HostName				git.cleverti
+	User					git
+	IdentityFile			~/.ssh/Keys/development.rsa	
+
+# ●▬▬▬▬▬๑۩ Virtual machines ۩๑▬▬▬▬▬●
+
+Host ez-001
+	HostName				192.168.2.71
+	User					devaneando
+	IdentityFile			~/.ssh/Keys/vagrant.rsa
+	
+Host ez-002
+	HostName				192.168.2.72
+	User					devaneando
+	IdentityFile			~/.ssh/Keys/vagrant.rsa	
+
+# ●▬▬▬▬▬๑۩ Other machines ۩๑▬▬▬▬▬●
+
+Host devaneando-hp
+	HostName				devaneando-hp.duckdns.org
+	User					devaneando
+	IdentityFile			~/.ssh/Keys/edu.fernandes.rsa
+
+Host devaneando.com
+	HostName				188.166.149.237
+	User					devaneando
+	IdentityFile			~/.ssh/Keys/edu.fernandes.rsa
+
+

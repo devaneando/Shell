@@ -49,3 +49,8 @@ __pycache__
 ##################
 Apps/Vim/bundle/
 Apps/Vim/session/
+Apps/SSH/known_hosts
+Apps/SSH/authorized_keys
+Apps/SSH/Keys
+Apps/SSH/*.rsa
+Apps/SSH/*.rsa.pub
