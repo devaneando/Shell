@@ -18,12 +18,32 @@ printInfo("Install required packages...")
 sudo apt-get install --assume-yes vim cmake php-pear php7-cli python-dev build-essential
 
 # ●▬▬▬▬▬๑۩  Bash ۩๑▬▬▬▬▬●
+
+rm --force ${HOME}/.bash_profile
+rm --force ${HOME}/.bashPrivate
 rm --force ${HOME}/.bashrc
 rm --force ${HOME}/.profile
+cp ${BASE}/Apps/Bash/bashPrivate.bash ${HOME}/.bashPrivate
+ln --force --symbolic ${BASE}/Apps/Bash/bashrc.bash ${HOME}/.bash_profile
 ln --force --symbolic ${BASE}/Apps/Bash/bashrc.bash ${HOME}/.bashrc
 ln --force --symbolic ${BASE}/Apps/Bash/bashrc.bash ${HOME}/.profile
 
+# ●▬▬▬▬▬๑۩  Other ۩๑▬▬▬▬▬●
+
+rm --force --recursive ${HOME}/.fonts
+rm --force ${HOME}/.wgetrc
+ln --force --symbolic ${BASE}/Apps/Wget/wgetrc.ini ${HOME}/.wgetrc
+ln --force --symbolic ${BASE}/Resources/Fonts/ ${HOME}/.fonts
+
+# ●▬▬▬▬▬๑۩  Git ۩๑▬▬▬▬▬●
+
+rm --force ${HOME}/.gitconfig
+rm --force ${HOME}/.gitignore
+ln --force --symbolic ${BASE}/Apps/Git/gitconfig.ini ${HOME}/.gitconfig
+ln --force --symbolic ${BASE}/Apps/Git/gitignore.conf ${HOME}/.gitignore
+
 # ●▬▬▬▬▬๑۩  Vim ۩๑▬▬▬▬▬●
+
 rm --force ${HOME}/.vimrc
 rm --force ${HOME}/.vim
 ln --force --symbolic ${BASE}/Apps/Vim/ ${HOME}/.vim

@@ -1,30 +1,6 @@
 # !/usr/bin/env bash
 # vi:syntax=bash
 
-# ●▬▬▬▬▬๑۩  Aliases ۩๑▬▬▬▬▬●
-
-alias service="sudo env service"
-
-##### Apache
-alias apacheStart="__services apache start"
-alias apacheStop="__services apache stop"
-
-##### FPM
-alias fpmStart="__services $(__serviceFpm) start"
-alias fpmStop="__services $(__serviceFpm) stop"
-
-##### MySQL
-alias mySqlStart="__services mysql start"
-alias mySqlStop="__services mysql stop"
-
-##### Nginx
-alias nginxStart="__services nginx start"
-alias nginxStop="__services nginx stop"
-
-##### Varnish
-alias varnishStart="__services varnish start"
-alias varnishStop="__services varnish stop"
-
 # ●▬▬▬▬▬๑۩  Functions ۩๑▬▬▬▬▬●
 
 ##### Pass actions to the services
@@ -52,6 +28,32 @@ function __serviceFpm()
 {
 	echo '$(env ps | env grep -m 1 -o "php.*fpm.*")'
 }
+
+# ●▬▬▬▬▬๑۩  Aliases ۩๑▬▬▬▬▬●
+
+alias service="sudo env service"
+
+##### Apache
+alias apacheStart="__services apache start"
+alias apacheStop="__services apache stop"
+
+##### FPM
+alias fpmStart="__services $(__serviceFpm) start"
+alias fpmStop="__services $(__serviceFpm) stop"
+
+##### MySQL
+alias mySqlStart="__services mysql start"
+alias mySqlStop="__services mysql stop"
+
+##### Nginx
+alias nginxStart="__services nginx start"
+alias nginxStop="__services nginx stop"
+
+##### Varnish
+alias varnishStart="__services varnish start"
+alias varnishStop="__services varnish stop"
+
+
 
 
 

@@ -2,8 +2,8 @@
 # vi:syntax=bash
 
 if [ -L "${HOME}/.bashrc" ]; then
-	export BASE=`env readlink --canonicalize-missing ${HOME}/.bashrc | /bin/grep --color=never -P "^.*(?=\/Home)" -o`
-    export BASE_BASH="${BASE}/App/Bash"
+	export BASE=`env readlink --canonicalize-missing ${HOME}/.bashrc | /bin/grep --color=never -P "^.*(?=\/Apps)" -o`
+    export BASE_BASH="${BASE}/Apps/Bash"
 fi
 
 if [ -d "${BASE_BASH}/IncManually" ]; then
