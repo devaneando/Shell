@@ -1,5 +1,4 @@
 # !/usr/bin/env bash
-# vi:syntax=bash
 
 export BASE=`env readlink --canonicalize-missing $0 | env grep --color=never -P "^.*(?=\/install)" -o`
 
@@ -75,6 +74,21 @@ sudo mv php-cs-fixer /usr/local/bin/php-cs-fixer
 sudo php-cs-fixer self-update
 
 # ●▬▬▬▬▬๑۩  Geany ۩๑▬▬▬▬▬●
+
+cd /usr/share/gtksourceview-2.0
+sudo tar -czf /usr/share/gtksourceview-2.0.tgz styles language-specs
+sudo /bin/rm --verbose --recursive --force /usr/share/gtksourceview-2.0/styles
+sudo /bin/rm --verbose --recursive --force /usr/share/gtksourceview-2.0/language-specs
+sudo /bin/ln --verbose --symbolic --force --target-directory=/usr/share/gtksourceview-2.0 ${BASE}/Resources/GtkSourceView/2.0/styles
+sudo /bin/ln --verbose --symbolic --force --target-directory=/usr/share/gtksourceview-2.0 ${BASE}/Resources/GtkSourceView/2.0/language-specs
+
+cd /usr/share/gtksourceview-3.0
+sudo tar -czf /usr/share/gtksourceview-3.0.tgz styles language-specs
+sudo /bin/rm --verbose --recursive --force /usr/share/gtksourceview-3.0/styles
+sudo /bin/rm --verbose --recursive --force /usr/share/gtksourceview-3.0/language-specs
+sudo /bin/ln --verbose --symbolic --force --target-directory=/usr/share/gtksourceview-3.0 ${BASE}/Resources/GtkSourceView/3.0/styles
+sudo /bin/ln --verbose --symbolic --force --target-directory=/usr/share/gtksourceview-3.0 ${BASE}/Resources/GtkSourceView/3.0/language-specs
+sudo /bin/ln --verbose --symbolic --force --target-directory=/usr/share/gtksourceview-3.0 ${BASE}/Resources/GtkSourceView/3.0/language-specs
 
 printInfo("Linking Geany addons...")
 ${BASE}/Apps/Geany/geany-themes/install.sh
