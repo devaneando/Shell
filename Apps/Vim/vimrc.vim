@@ -1,5 +1,6 @@
 source ${HOME}/.vim/inc/vundle.vim
 source ${HOME}/.vim/inc/startify.vim
+source ${HOME}/.vim/inc/colors.vim
 source ${HOME}/.vim/inc/settings.vim
 
 " === NERDTree

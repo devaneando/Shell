@@ -44,10 +44,12 @@ ln --force --symbolic ${BASE}/Apps/Git/gitignore.conf ${HOME}/.gitignore
 
 # ●▬▬▬▬▬๑۩  Vim ۩๑▬▬▬▬▬●
 
+rm --force ${HOME}/.gvimrc
 rm --force ${HOME}/.vimrc
 rm --force ${HOME}/.vim
 ln --force --symbolic ${BASE}/Apps/Vim/ ${HOME}/.vim
 ln --force --symbolic ${BASE}/Apps/Vim/vimrc.vim ${HOME}/.vimrc
+ln --force --symbolic ${BASE}/Apps/Vim/gvimrc.vim ${HOME}/.gvimrc
 vim +PluginInstall +qall
 sudo chown -R `whoami`:`whoami` ${BASE}/Apps/Vim/bundle/
 # Compile Vimproc
