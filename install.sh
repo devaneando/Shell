@@ -15,7 +15,7 @@ function printError(){
 # ●▬▬▬▬▬๑۩  Required packages ۩๑▬▬▬▬▬●
 
 printInfo("Install required packages...")
-sudo apt-get install --assume-yes vim cmake php-pear php7-cli python-dev build-essential
+sudo apt-get install --assume-yes vim cmake php-pear php7-cli python-dev build-essential php-codesniffer
 
 # ●▬▬▬▬▬๑۩  Bash ۩๑▬▬▬▬▬●
 
