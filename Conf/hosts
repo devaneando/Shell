@@ -1,0 +1,30 @@
+# ●▬▬▬▬▬๑۩ Localhost ۩๑▬▬▬▬▬●
+
+127.0.0.1		localhost
+
+# ●▬▬▬▬▬๑۩ Hostnames ۩๑▬▬▬▬▬●
+
+127.0.1.1		devaneando-hp
+127.0.1.1		devaneando-work
+127.0.1.1		qa-001
+127.0.1.1		qa-002
+
+# ●▬▬▬▬▬๑۩ Pesudo hostnames ۩๑▬▬▬▬▬●
+
+192.168.2.7		devaneando-hp.local
+192.168.2.70	devaneando-work.local
+192.168.2.71	qa-001.local
+192.168.2.72	qa-002.local
+
+# ●▬▬▬▬▬๑۩ Overriden Hostnames ۩๑▬▬▬▬▬●
+
+127.0.0.1		sublimetext.com
+127.0.0.1		www.sublimetext.com
+
+# ●▬▬▬▬▬๑۩ Cleverti ۩๑▬▬▬▬▬●
+
+192.168.2.202	cleverti
+192.168.2.202	git.cleverti
+192.168.2.202	intra.cleverti
+192.168.2.140	CTI-SRV7-ACS-VM
+
