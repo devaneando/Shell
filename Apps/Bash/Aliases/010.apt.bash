@@ -4,6 +4,7 @@
 # ●▬▬▬▬▬๑۩  Aliases ۩๑▬▬▬▬▬●
 
 ##### Change commands
+alias apt='sudo env apt'
 alias add-apt-repository='sudo env add-apt-repository'
 alias apt-get='sudo env apt-get'
 alias apt-key='sudo env apt-key'

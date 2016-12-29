@@ -28,3 +28,6 @@
 192.168.2.202	intra.cleverti
 192.168.2.140	CTI-SRV7-ACS-VM
 
+# ●▬▬▬▬▬๑۩ Overriden Hostnames ۩๑▬▬▬▬▬●
+
+192.168.2.85    17x.qa-001.local

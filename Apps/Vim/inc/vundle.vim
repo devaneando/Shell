@@ -10,7 +10,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle/')
 
 " vim usability plugins
-Plugin 'zhaocai/GoldenView.Vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'taiansu/nerdtree-ag'
 Plugin 'Lokaltog/vim-easymotion'
@@ -40,8 +39,12 @@ Plugin 'groenewege/vim-less'
 Plugin 'evidens/vim-twig'
 Plugin 'stephpy/vim-yaml'
 
+" Latex plugins
+Plugin 'xuhdev/vim-latex-live-preview'
+Plugin 'bjoernd/vim-ycm-tex'
+
 call vundle#end()
-filetype plugin indent on 
+filetype plugin indent on
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
