@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Author: Andreas Gaeb <a.gaeb@web.de>
+ Copyright (C) 2014 Andreas Gaeb <a.gaeb@web.de>
+
+ This library is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, see <http://www.gnu.org/licenses/>.
+-->
+<language id="kivy" _name="Kivy" version="2.0" _section="Markup">
+  <metadata>
+    <property name="globs">*.kv</property>
+    <property name="line-comment-start">#</property>
+  </metadata>
+
+  <styles>
+    <style id="comment" _name="Comment" map-to="yaml:comment"/>
+    <style id="class-rule" _name="Class rule" map-to="def:builtin"/>
+    <style id="template-base" _name="template-base" map-to="def:type"/>
+    <style id="keyword" _name="Keyword" map-to="def:keyword"/>
+    <style id="operator" _name="operator" map-to="def:keyword"/>
+    <style id="directives" _name="directives" map-to="def:shebang"/>
+    <style id="special-variables" _name="Special variables" map-to="python:builtin-constant"/>
+  </styles>
+
+  <definitions>
+    <context id="directives" style-ref="directives">
+      <start>^#:\s*(import|set|kivy)</start>
+      <end>$</end>
+    </context>
+
+    <context id="special-variables" style-ref="special-variables">
+      <keyword>self</keyword>
+      <keyword>root</keyword>
+      <keyword>app</keyword>
+      <keyword>args</keyword>
+      <keyword>id</keyword>
+    </context>
+
+    <context id="class-rule" style-ref="class-rule">
+      <match>^&lt;\w+((@)\w+(?:(\+)\w+)*)?|(?:(,)\w+)*&gt;:$</match>
+      <include>
+        <context id="class-rule-at" style-ref="operator" sub-pattern="2"/>
+        <context id="class-rule-plus" style-ref="operator" sub-pattern="3"/>
+        <context id="class-rule-comma" style-ref="operator" sub-pattern="4"/>
+        <context id="dynamic-class-base" style-ref="template-base" sub-pattern="1"/>
+      </include>
+    </context>
+
+    <context id="template" style-ref="class-rule">
+      <match>^\[\w+((@)\w+(?:(,)\w+)*)?\]:?</match>
+      <include>
+        <context id="template-at" style-ref="operator" sub-pattern="2"/>
+        <context id="template-comma" style-ref="operator" sub-pattern="3"/>
+        <context id="template-base" style-ref="template-base" sub-pattern="1"/>
+      </include>
+    </context>
+
+    <context id="key" style-ref="keyword">
+      <match>\s?[\w_]+:</match>
+    </context>
+
+    <context id="kivy">
+      <include>
+        <context ref="special-variables"/>
+        <context ref="directives"/>
+        <context ref="class-rule"/>
+        <context ref="template"/>
+        <context ref="key"/>
+
+        <context ref="def:string"/>
+        <context ref="def:single-quoted-string"/>
+        <context ref="def:shell-like-comment"/>
+
+        <context ref="python:python"/>
+      </include>
+    </context>
+
+  </definitions>
+</language>

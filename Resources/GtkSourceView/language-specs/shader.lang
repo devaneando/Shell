@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Markus Hermann  <others@mhermann.net>
+ Copyright (C) 2012 Markus Hermann; <others@mhermann.net>
+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the
+ Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ Boston, MA 02111-1307, USA.
+
+-->
+
+<language id="shader" _name="Shader" version="2.0" _section="Others">
+  <metadata>
+    <property name="mimetypes">text/plaintext</property>
+    <property name="globs">*.shader</property>
+    <property name="line-comment-start">//</property>
+  </metadata>
+
+  <styles>
+    <style id="comment"		_name="comment"		map-to="def:comment"/>
+    <style id="purple"		_name="purple"		map-to="def:preprocessor"/>
+    <style id="green"		_name="green"		map-to="def:type"/>
+    <style id="teal"		_name="teal"		map-to="def:function"/>
+    <style id="brown"		_name="brown"		map-to="def:keyword"/>
+    <style id="pink"		_name="pink"		map-to="def:string"/>
+  </styles>
+
+  <default-regex-options case-sensitive="false"/>
+
+  <definitions>
+    <context id="shader" class="no-spell-check">
+      <include>
+
+        <context id="comment" style-ref="comment" end-at-line-end="true" class="comment" class-disabled="no-spell-check">
+		<start>//</start>
+			<include>
+				<context ref="def:in-line-comment"/>
+			</include>
+        </context>
+
+	<context id="purple" style-ref="purple">
+		<keyword>cull</keyword>
+		<keyword>deformVertexes</keyword>
+		<keyword>fogparms</keyword>
+		<keyword>nomipmaps</keyword>
+		<keyword>nopicmip</keyword>
+		<keyword>polygonOffset</keyword>
+		<keyword>portal</keyword>
+		<keyword>q3map_alphaGen</keyword>
+		<keyword>q3map_alphaMod</keyword>
+		<keyword>q3map_backshader</keyword>
+		<keyword>q3map_backsplash</keyword>
+		<keyword>q3map_baseShader</keyword>
+		<keyword>q3map_bounceScale</keyword>
+		<keyword>q3map_clipModel</keyword>
+		<keyword>q3map_colorGen</keyword>
+		<keyword>q3map_colorMod</keyword>
+		<keyword>q3map_fancywater</keyword>
+		<keyword>q3map_fogDir</keyword>
+		<keyword>q3map_forcemeta</keyword>
+		<keyword>q3map_forceSunlight</keyword>
+		<keyword>q3map_fur</keyword>
+		<keyword>q3map_globaltexture</keyword>
+		<keyword>q3map_indexed</keyword>
+		<keyword>q3map_invert</keyword>
+		<keyword>q3map_lightmapAxis</keyword>
+		<keyword>q3map_lightmapBrightness</keyword>
+		<keyword>q3map_lightmapFilterRadius</keyword>
+		<keyword>q3map_lightmapGamma</keyword>
+		<keyword>q3map_lightmapMergable</keyword>
+		<keyword>q3map_lightmapSampleOffset</keyword>
+		<keyword>q3map_lightmapSampleSize</keyword>
+		<keyword>q3map_lightmapSize</keyword>
+		<keyword>q3map_lightRGB</keyword>
+		<keyword>q3map_lightStyle</keyword>
+		<keyword>q3map_lightsubdivide</keyword>
+		<keyword>q3map_noClip</keyword>
+		<keyword>q3map_noFast</keyword>
+		<keyword>q3map_noFog</keyword>
+		<keyword>q3map_nolightmap</keyword>
+		<keyword>q3map_nonplanar</keyword>
+		<keyword>q3map_normalImage</keyword>
+		<keyword>q3map_noTJunc</keyword>
+		<keyword>q3map_noVertexLight</keyword>
+		<keyword>q3map_noVertexShadows</keyword>
+		<keyword>q3map_offsetN.N</keyword>
+		<keyword>q3map_patchShadows</keyword>
+		<keyword>q3map_remapShader</keyword>
+		<keyword>q3map_rgbGen</keyword>
+		<keyword>q3map_rgbMod</keyword>
+		<keyword>q3map_shadeangle</keyword>
+		<keyword>q3map_skyLight</keyword>
+		<keyword>q3map_splotchFix</keyword>
+		<keyword>q3map_styleMarker</keyword>
+		<keyword>q3map_styleMarker2</keyword>
+		<keyword>q3map_sun</keyword>
+		<keyword>q3map_sunExt</keyword>
+		<keyword>q3map_surfaceLight</keyword>
+		<keyword>q3map_surfaceModel</keyword>
+		<keyword>q3map_tcGen</keyword>
+		<keyword>q3map_tcMod</keyword>
+		<keyword>q3map_terrain</keyword>
+		<keyword>q3map_tessSize</keyword>
+		<keyword>q3map_textureSize</keyword>
+		<keyword>q3map_traceLight</keyword>
+		<keyword>q3map_vertexScale</keyword>
+		<keyword>q3map_vertexShadows</keyword>
+		<keyword>q3map_vlight</keyword>
+		<keyword>qer_alphaFunc</keyword>
+		<keyword>qer_nocarve</keyword>
+		<keyword>qer_trans</keyword>
+		<keyword>sort</keyword>
+		<keyword>surfaceparm</keyword>
+        </context>
+
+	<context id="green" style-ref="green">
+		<keyword>add</keyword>
+		<keyword>additive</keyword>
+		<keyword>alphashadow</keyword>
+		<keyword>antiportal</keyword>
+		<keyword>areaportal</keyword>
+		<keyword>autosprite</keyword>
+		<keyword>autosprite2</keyword>
+		<keyword>back</keyword>
+		<keyword>banner</keyword>
+		<keyword>base</keyword>
+		<keyword>blend</keyword>
+		<keyword>botclip</keyword>
+		<keyword>bulge</keyword>
+		<keyword>clusterportal</keyword>
+		<keyword>const</keyword>
+		<keyword>detail</keyword>
+		<keyword>disable</keyword>
+		<keyword>donotenter</keyword>
+		<keyword>dust</keyword>
+		<keyword>entity</keyword>
+		<keyword>environment</keyword>
+		<keyword>equal</keyword>
+		<keyword>filter</keyword>
+		<keyword>flesh</keyword>
+		<keyword>fog</keyword>
+		<keyword>fromVertex</keyword>
+		<keyword>front</keyword>
+		<keyword>GE128</keyword>
+		<keyword>GL_DST_COLOR</keyword>
+		<keyword>GL_ONE</keyword>
+		<keyword>GL_ONE_MINUS_DST_COLOR</keyword>
+		<keyword>GL_ONE_MINUS_SRC_ALPHA</keyword>
+		<keyword>GL_ONE_MINUS_SRC_COLOR</keyword>
+		<keyword>GL_SRC_ALPHA</keyword>
+		<keyword>GL_SRC_COLOR</keyword>
+		<keyword>GL_ZERO</keyword>
+		<keyword>GT0</keyword>
+		<keyword>hint</keyword>
+		<keyword>identity</keyword>
+		<keyword>identityLighting</keyword>
+		<keyword>Inversesawtooth</keyword>
+		<keyword>ivector</keyword>
+		<keyword>ladder</keyword>
+		<keyword>lava</keyword>
+		<keyword>lequal</keyword>
+		<keyword>lightfilter</keyword>
+		<keyword>lightgrid</keyword>
+		<keyword>lightingDiffuse</keyword>
+		<keyword>lightingSpecular</keyword>
+		<keyword>lightmap</keyword>
+		<keyword>LT128</keyword>
+		<keyword>metalsteps</keyword>
+		<keyword>monsterclip</keyword>
+		<keyword>move</keyword>
+		<keyword>nearest</keyword>
+		<keyword>nodamage</keyword>
+		<keyword>nodlight</keyword>
+		<keyword>nodraw</keyword>
+		<keyword>nodrop</keyword>
+		<keyword>noimpact</keyword>
+		<keyword>noise</keyword>
+		<keyword>nolightmap</keyword>
+		<keyword>nomarks</keyword>
+		<keyword>none</keyword>
+		<keyword>nonsolid</keyword>
+		<keyword>normal</keyword>
+		<keyword>nosteps</keyword>
+		<keyword>oneMinusEntity</keyword>
+		<keyword>opaque</keyword>
+		<keyword>origin</keyword>
+		<keyword>playerclip</keyword>
+		<keyword>pointlight</keyword>
+		<keyword>rotate</keyword>
+		<keyword>Sawtooth</keyword>
+		<keyword>scale</keyword>
+		<keyword>scroll</keyword>
+		<keyword>set</keyword>
+		<keyword>shift</keyword>
+		<keyword>Sin</keyword>
+		<keyword>skip</keyword>
+		<keyword>sky</keyword>
+		<keyword>slick</keyword>
+		<keyword>slime</keyword>
+		<keyword>Square</keyword>
+		<keyword>stretch</keyword>
+		<keyword>structural</keyword>
+		<keyword>tessSize</keyword>
+		<keyword>trans</keyword>
+		<keyword>transform</keyword>
+		<keyword>translate</keyword>
+		<keyword>Triangle</keyword>
+		<keyword>turb</keyword>
+		<keyword>underwater</keyword>
+		<keyword>vector</keyword>
+		<keyword>Vertex</keyword>
+		<keyword>volume</keyword>
+		<keyword>water</keyword>
+		<keyword>wave</keyword>
+	</context>
+
+	<context id="teal" style-ref="teal">
+		<keyword>alphaFunc</keyword>
+		<keyword>AlphaGen</keyword>
+		<keyword>blendfunc</keyword>
+		<keyword>depthFunc</keyword>
+		<keyword>depthWrite</keyword>
+		<keyword>dotproduct</keyword>
+		<keyword>dotproduct2</keyword>
+		<keyword>rgbGen</keyword>
+		<keyword>tcGen</keyword>
+		<keyword>tcMod</keyword>
+	</context>
+
+	<context id="editorimage" style-ref="purple">
+		<match extended="true">
+			(^qer_editorimage)\s+(textures|models|env|levelshots|maps)(.*)(\.tga|\.jpg)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="pink"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+			<context id="foo3" sub-pattern="4" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="editorimage2" style-ref="purple">
+		<match extended="true">
+			(\sqer_editorimage)\s+(textures|models|env|levelshots|maps)(.*)(\.tga|\.jpg)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="pink"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+			<context id="foo3" sub-pattern="4" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="lightimage" style-ref="purple">
+		<match extended="true">
+			(^q3map_lightimage)\s+(textures|models|env|levelshots|maps)(.*)(\.tga|\.jpg)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="pink"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+			<context id="foo3" sub-pattern="4" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="lightimage2" style-ref="purple">
+		<match extended="true">
+			(\sq3map_lightimage)\s+(textures|models|env|levelshots|maps)(.*)(\.tga|\.jpg)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="pink"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+			<context id="foo3" sub-pattern="4" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="map" style-ref="teal">
+		<match extended="true">
+			(\smap)\s+(textures|models|env|levelshots|maps)(.*)(\.tga|\.jpg)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="pink"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+			<context id="foo2" sub-pattern="4" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="map2" style-ref="teal">
+		<match extended="true">
+			(^map)\s+(textures|models|env|levelshots|maps)(.*)(\.tga|\.jpg)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="pink"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+			<context id="foo2" sub-pattern="4" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="clampmap" style-ref="teal">
+		<match extended="true">
+			(^clampmap)\s+(textures|models|env|levelshots|maps)(.*)(\.tga|\.jpg)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="pink"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+			<context id="foo3" sub-pattern="4" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="clampmap2" style-ref="teal">
+		<match extended="true">
+			(\sclampmap)\s+(textures|models|env|levelshots|maps)(.*)(\.tga|\.jpg)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="pink"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+			<context id="foo3" sub-pattern="4" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="lightmap" style-ref="teal">
+		<match extended="true">
+			(^map)\s+(.*)(\$lightmap)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="green"/>
+			<context id="foo2" sub-pattern="3" style-ref="green"/>
+		</include>
+	</context>
+
+	<context id="lightmap2" style-ref="teal">
+		<match extended="true">
+			(\smap)\s+(.*)(\$lightmap)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="green"/>
+			<context id="foo2" sub-pattern="3" style-ref="green"/>
+		</include>
+	</context>
+
+	<context id="whiteimage" style-ref="teal">
+		<match extended="true">
+			(^map)\s+(.*)(\$whiteimage)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="green"/>
+			<context id="foo2" sub-pattern="3" style-ref="green"/>
+		</include>
+	</context>
+
+	<context id="whiteimage2" style-ref="teal">
+		<match extended="true">
+			(\smap)\s+(.*)(\$whiteimage)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="green"/>
+			<context id="foo2" sub-pattern="3" style-ref="green"/>
+		</include>
+	</context>
+
+	<context id="animmap">
+		<match extended="true">
+			(^animmap)\s+([0-9|\.]{1,})((\s+(textures|env|models)[^\s]{1,}(\.tga|\.jpg)){1,8})(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="1" style-ref="teal"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="animmap2">
+		<match extended="true">
+			(\sanimmap)\s+([0-9|\.]{1,})((\s+(textures|env|models)[^\s]{1,}(\.tga|\.jpg)){1,8})(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="1" style-ref="teal"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="videoMap" style-ref="teal">
+		<match extended="true">
+			(^videoMap)\s+(.*)(\.roq)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="pink"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="videoMap2" style-ref="teal">
+		<match extended="true">
+			(\sideoMap)\s+(.*)(\.roq)(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="2" style-ref="pink"/>
+			<context id="foo2" sub-pattern="3" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="skyparms">
+		<match extended="true">
+			(^skyparms)\s+(textures|env|-)(.*)\s+[-|0-9|\.]{1,}\s+[-|0-9|\.]{1,}(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="1" style-ref="purple"/>
+			<context id="foo2" sub-pattern="2" style-ref="pink"/>
+			<context id="foo3" sub-pattern="3" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="skyparms2">
+		<match extended="true">
+			(\sskyparms)\s+(textures|env|-)(.*)\s+[-|0-9|\.]{1,}\s+[-|0-9|\.]{1,}(\s|$)
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="1" style-ref="purple"/>
+			<context id="foo2" sub-pattern="2" style-ref="pink"/>
+			<context id="foo3" sub-pattern="3" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="cloneshader" style-ref="purple">
+		<match extended="true">
+			(^q3map_cloneshader)\s+(textures|models|env|levelshots|maps)([^\s]{1,})(\s|$)*
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="1" style-ref="purple"/>
+			<context id="foo2" sub-pattern="2" style-ref="pink"/>
+			<context id="foo3" sub-pattern="3" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="cloneshader2">
+		<match extended="true">
+			(\sq3map_cloneshader)\s+(textures|models|env|levelshots|maps)([^\s]{1,})(\s|$)*
+		</match>
+		<include>
+			<context id="foo1" sub-pattern="1" style-ref="purple"/>
+			<context id="foo2" sub-pattern="2" style-ref="pink"/>
+			<context id="foo3" sub-pattern="3" style-ref="pink"/>
+		</include>
+	</context>
+
+	<context id="texturepath" style-ref="brown" end-at-line-end="true">
+		<start>^textures/</start>
+		<end>\s</end>
+	</context>
+
+	<context id="modelpath" style-ref="brown" end-at-line-end="true">
+		<start>^models/</start>
+		<end>\s</end>
+	</context>
+
+	<context id="envpath" style-ref="pink" end-at-line-end="true">
+		<start>^env/</start>
+		<end> </end>
+	</context>
+
+	<context id="levelshotspath" style-ref="brown" end-at-line-end="true">
+		<start>^levelshots/</start>
+		<end> </end>
+	</context>
+
+      </include>
+    </context>
+  </definitions>
+</language>

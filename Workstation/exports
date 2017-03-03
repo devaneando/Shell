@@ -1,0 +1,1 @@
+/your/export/folder      *(rw,async,no_subtree_check,no_root_squash)

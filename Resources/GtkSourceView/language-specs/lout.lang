@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+
+<!--
+Syntax highlighting v0.1 for Lout
+
+Author: Jani Alanko <jani.alanko@students.turkuamk.fi>
+
+-->
+<language id="lout" _name="Lout" version="2.0" _section="Markup">
+<metadata>
+     <property name="mimetypes">text/x-lout</property>
+     <property name="globs">*.lout</property>
+     <property name="line-comment-start">#</property>
+   </metadata>
+
+   <styles>
+     <style id="command" _name="Command" map-to="def:constant"/>
+     <style id="unit"    _name="Unit"    map-to="def:identifier"/>
+     <style id="parameter" _name="Parameter" map-to="def:preprocessor"/>
+     <style id="keywords" _name="Keywords" map-to="def:keyword"/>
+   </styles>
+
+   <definitions>
+     <context id="keywords" style-ref="keywords">
+	<prefix>@</prefix>
+	<keyword>Doc</keyword>
+	<keyword>Text</keyword>
+	<keyword>BeginSections</keyword>
+	<keyword>EndSections</keyword>
+	<keyword>Section</keyword>
+	<keyword>OptGall</keyword>
+	<keyword>FontDef</keyword>
+	<keyword>Family</keyword>
+	<keyword>Face</keyword>
+	<keyword>Name</keyword>
+	<keyword>Metrics</keyword>
+	<keyword>ExtraMetrics</keyword>
+	<keyword>Mapping</keyword>
+	<keyword>Recode</keyword>
+	<keyword>Filter</keyword>
+	<keyword>FilterIn</keyword>
+	<keyword>FilterOut</keyword>
+	<keyword>FilterErr</keyword>
+	<keyword>Common</keyword>
+	<keyword>Rump</keyword>
+	<keyword>Meld</keyword>
+	<keyword>Insert</keyword>
+	<keyword>OneOf</keyword>
+	<keyword>Next</keyword>
+	<keyword>Plus</keyword>
+	<keyword>Minus</keyword>
+	<keyword>Wide</keyword>
+	<keyword>High</keyword>
+	<keyword>HShift</keyword>
+	<keyword>VShift</keyword>
+	<keyword>BeginHeaderComponent</keyword>
+	<keyword>EndHeaderComponent</keyword>
+	<keyword>SetHeaderComponent</keyword>
+	<keyword>ClearHeaderComponent</keyword>
+	<keyword>OneCol</keyword>
+	<keyword>OneRow</keyword>
+	<keyword>HMirror</keyword>
+	<keyword>VMirror</keyword>
+	<keyword>HScale</keyword>
+	<keyword>VScale</keyword>
+	<keyword>HCover</keyword>
+	<keyword>VCover</keyword>
+	<keyword>Scale</keyword>
+	<keyword>KernShrink</keyword>
+	<keyword>HContract</keyword>
+	<keyword>VContract</keyword>
+	<keyword>HLimited</keyword>
+	<keyword>VLimited</keyword>
+	<keyword>HExpand</keyword>
+	<keyword>VExpand</keyword>
+	<keyword>StartHVSpan</keyword>
+	<keyword>StartHSpan</keyword>
+	<keyword>StartVSpan</keyword>
+	<keyword>HSpan</keyword>
+	<keyword>VSpan</keyword>
+	<keyword>PAdjust</keyword>
+	<keyword>HAdjust</keyword>
+	<keyword>VAdjust</keyword>
+	<keyword>Rotate</keyword>
+	<keyword>Background</keyword>
+	<keyword>IncludeGraphic</keyword>
+	<keyword>SysIncludeGraphic</keyword>
+	<keyword>Graphic</keyword>
+	<keyword>LinkSource</keyword>
+	<keyword>LinkDest</keyword>
+	<keyword>URLLink</keyword>
+	<keyword>PlainGraphic</keyword>
+	<keyword>Verbatim</keyword>
+	<keyword>RawVerbatim</keyword>
+	<keyword>Case</keyword>
+	<keyword>Yield</keyword>
+	<keyword>BackEnd</keyword>
+	<keyword>Char</keyword>
+	<keyword>Font</keyword>
+	<keyword>Space</keyword>
+	<keyword>YUnit</keyword>
+	<keyword>ZUnit</keyword>
+	<keyword>Break</keyword>
+	<keyword>Underline</keyword>
+	<keyword>SetColour</keyword>
+	<keyword>SetColor</keyword>
+	<keyword>SetUnderlineColour</keyword>
+	<keyword>SetUnderlineColor</keyword>
+	<keyword>SetTexture</keyword>
+	<keyword>Outline</keyword>
+	<keyword>Language</keyword>
+	<keyword>CurrLang</keyword>
+	<keyword>CurrFamily</keyword>
+	<keyword>CurrFace</keyword>
+	<keyword>CurrYUnit</keyword>
+	<keyword>CurrZUnit</keyword>
+	<keyword>LEnv</keyword>
+	<keyword>@A</keyword>
+	<keyword>@B</keyword>
+	<keyword>@C</keyword>
+	<keyword>@D</keyword>
+	<keyword>@E</keyword>
+	<keyword>LClos</keyword>
+	<keyword>@V</keyword>
+	<keyword>LUse</keyword>
+	<keyword>LEO</keyword>
+	<keyword>Open</keyword>
+	<keyword>Use</keyword>
+	<keyword>NotRevealed</keyword>
+	<keyword>Tagged</keyword>
+	<keyword>Database</keyword>
+	<keyword>SysDatabase</keyword>
+	<keyword>Include</keyword>
+	<keyword>SysInclude</keyword>
+	<keyword>IncludeGraphicRepeated</keyword>
+	<keyword>SysIncludeGraphicRepeated</keyword>
+	<keyword>PrependGraphic</keyword>
+	<keyword>SysPrependGraphic</keyword>
+	<keyword>Target</keyword>
+	<keyword>Null</keyword>
+	<keyword>PageLabel</keyword>
+	<keyword>Galley</keyword>
+	<keyword>ForceGalley</keyword>
+	<keyword>LInput</keyword>
+	<keyword>Split</keyword>
+	<keyword>Tag</keyword>
+	<keyword>Key</keyword>
+	<keyword>Optimize</keyword>
+	<keyword>Merge</keyword>
+	<keyword>Enclose</keyword>
+	<keyword>Begin</keyword>
+	<keyword>End</keyword>
+	<keyword>Moment</keyword>
+	<keyword>Second</keyword>
+	<keyword>Minute</keyword>
+	<keyword>Hour</keyword>
+	<keyword>Day</keyword>
+	<keyword>Month</keyword>
+	<keyword>Year</keyword>
+	<keyword>Century</keyword>
+	<keyword>WeekDay</keyword>
+	<keyword>YearDay</keyword>
+	<keyword>DaylightSaving</keyword>
+	<keyword>SetContext</keyword>
+	<keyword>GetContext</keyword>
+	<keyword>Math</keyword>
+     </context>
+
+     <context id="command" style-ref="command">
+	<match>@[A-Z]+[A-Z,a-z]+</match>
+<!--	<include>
+		<context ref="keywords"/>	
+	</include>-->
+     </context>
+
+     <context id="parameter" style-ref="parameter">
+	<start>{</start>
+	<end>}</end>
+
+	<include>
+	        <context ref="command"/>
+		<context ref="unit"/>
+	</include>
+     </context>
+
+     <context id="unit" style-ref="unit">
+       <match>[0-9,.]+[a-z]+</match>
+     </context>
+
+     <context id="lout">
+       <include>
+         <context ref="keywords"/>	
+	 <context ref="command"/>
+         <context ref="unit"/>
+	 <context ref="parameter"/>
+       </include>
+
+     </context>
+   </definitions>
+</language> 

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Wesnoth Markup Language definition for GtkSourceView
+
+      Copyright 2012 Boldizsár Lipka <lipka.boldizsar@gmail.com>
+   
+      Redistribution and use in source and binary forms, with or without
+      modification, are permitted provided that the following conditions
+      are met:
+   
+      1. Redistributions of source code must retain the above copyright
+         notice, this list of conditions and the following disclaimer.
+   
+      2. Redistributions in binary form must reproduce the above copyright
+         notice, this list of conditions and the following disclaimer in the
+         documentation and/or other materials provided with the distribution.
+   
+      3. Neither the name of the authors nor the names of its contributors
+         may be used to endorse or promote products derived from this
+         software without specific prior written permission.
+   
+      THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+      "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+      LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+      A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+      OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+      SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+      TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+      PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+      LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+      NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+      SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+-->
+
+<language id="wml" _name="WML" _section="Markup" version="2.0">
+	<metadata>
+		<property name="mimetypes">text/x-cfg</property>
+		<property name="globs">*.cfg</property>
+		<property name="line-comment-start">#</property>
+	</metadata>
+
+	<styles>
+		<style id="comment" _name="Comment" map-to="def:comment" />
+		<style id="string" _name="String" map-to="def:string" />
+		<style id="escaped-character" _name="Escaped character" map-to="def:special-char" />
+		<style id="decimal" _name="Numeric constant" map-to="def:decimal" />
+		<style id="preprocessor" _name="Preprocessor" map-to="def:preprocessor" />
+		<style id="variable" _name="Variable substitution" map-to="def:type" />
+		<style id="tag" _name="Tag" map-to="def:statement" />
+		<style id="boolean" _name="Boolean constant" map-to="def:boolean" />
+		<style id="key" _name="Key" map-to="def:identifier" />
+	</styles>
+	
+	<definitions>
+	
+		<context id="decimal" style-ref="decimal">
+      		<match extended="true">
+        		(?&lt;![\w\.])
+        		[0-9]*
+        		(?![\w\.])
+      		</match>
+    	</context>
+    	
+    	<context id="boolean" style-ref="boolean">
+    		<keyword>true</keyword>
+    		<keyword>false</keyword>
+    		<keyword>yes</keyword>
+    		<keyword>no</keyword>
+    	</context>
+    	
+		<context id="variable" style-ref="variable">
+			<match>\$+(\w|\.|\[|\]){1,}</match>
+			
+		</context>
+		
+	
+		<context id="double-quoted-string" style-ref="string" end-at-line-end="false">
+			<start>(_{0,1}\h{0,})(")</start>
+			<end>"</end>
+			<include>
+				<context ref="macro" />
+				<context ref="variable" />
+				<context id="escaped-character" style-ref="escaped-char">
+					<match>\\.</match>
+				</context>
+			</include>
+		</context>
+		
+		<context id="single-quoted-string" style-ref="string" end-at-line-end="false">
+			<start>(_{0,1}\h{0,})(')</start>
+			<end>'</end>
+			<include>
+				<context ref="macro" />
+				<context ref="variable" />
+				<context ref="escaped-character" />
+			</include>
+		</context>
+		
+		<context id="preprocessor-directive" style-ref="preprocessor" end-at-line-end="true">
+			<start>#textdomain|#define|#enddef|#ifdef|#ifndef|#endif|#ifhave|#ifnhave|#ifver|#ifnver</start>
+			<end>$</end>
+		</context>
+		
+		<context id="macro" style-ref="preprocessor">
+			<start>\{</start>
+			<end>\}</end>
+			<include>
+				<context ref="double-quoted-string" />
+				<context ref="single-quoted-string" />
+				<context ref="variable" />
+				<context ref="decimal" />
+				<context ref="macro" />
+				<context ref="boolean" />
+				<context id="macro-argument" style-ref="string">
+					<start>\(</start>
+					<end>\)</end>
+				</context>
+			</include>
+		</context>
+		
+		<context id="comment" style-ref="comment" end-at-line-end="true">
+			<start>#</start>
+			<end>$</end>
+		</context>
+		
+		<context id="tag" style-ref="tag">
+			<start>\[</start>
+			<end>\]</end>
+		</context>
+		
+		<context id="key" style-ref="key">
+			<match>(\w|,){1,}+\=</match>
+		</context>
+		
+		<context id="wml" class="no-spell-check">
+			<include>
+				<context ref="preprocessor-directive" />
+				<context ref="comment" />
+				<context ref="variable" />
+				<context ref="decimal" />
+				<context ref="boolean" />
+				<context ref="double-quoted-string" />
+				<context ref="macro" />
+				<context ref="single-quoted-string" />
+				<context ref="tag" />
+				<context ref="key" />
+			</include>
+		</context>
+		
+	</definitions>
+	
+</language>

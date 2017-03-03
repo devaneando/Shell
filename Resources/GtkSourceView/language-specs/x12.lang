@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Rob Snelders <programming at ertai dot nl>
+ Copyright (C) 2009 Rob Snelders <programming at ertai dot nl>
+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the
+ Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ Boston, MA 02111-1307, USA.
+
+-->
+<language id="x12" _name="ANSI X12" version="2.0" _section="Markup">
+    <metadata>
+      <property name="mimetypes">text/x-x12</property>
+      <property name="globs">*.x12</property>
+    </metadata>
+    <styles>
+      <style id="invalids" _name="Invalid items" map-to="def:string"/>
+      <style id="delimiters" _name="Delimiters" map-to="def:comment"/>
+      <style id="sections" _name="Begin of Section" map-to="def:preprocessor"/>
+      <style id="keywords" _name="Keyword" map-to="def:keyword"/>
+      <style id="StartStops" _name="Begin and End of message" map-to="def:type"/>
+    </styles>
+    <definitions>
+	<context id="delimiter" style-ref="delimiters">
+	    <match>((?&lt;=\?\?)|(?&lt;=[^\?]))(\*|~)</match>
+        </context>
+
+	<context id="sectionBE" style-ref="StartStops">
+	    <match>^I[S|E]A(?=\*)</match>
+        </context>
+
+	<context id="sectionBE2" style-ref="StartStops">
+	    <match>((?&lt;=\?\?~)|(?&lt;=[^\?]~))I[S|E]A(?=\*)</match>
+        </context>
+
+	<context id="section" style-ref="sections">
+	    <match>^([a-zA-Z0-9]{2,3})(?=\*|~)</match>
+        </context>
+
+	<context id="section2" style-ref="sections">
+	    <match>((?&lt;=\?\?~)|(?&lt;=[^\?]~))([a-zA-Z0-9]{2,3})(?=\*|~)</match>
+        </context>
+
+	<context id="invalid_section" style-ref="invalids">
+	    <match>^[^\*|~]*(?=\*|~)</match>
+        </context>
+
+	<context id="invalid_section2" style-ref="invalids">
+	    <match>((?&lt;=\?\?~)|(?&lt;=[^\?]~))[^\*|~]*(?=\*|~)</match>
+        </context>
+
+        <context id="x12">
+            <include>
+                <context ref="delimiter"/>
+                <context ref="sectionBE"/>
+                <context ref="sectionBE2"/>
+                <context ref="section"/>
+                <context ref="section2"/>
+                <context ref="invalid_section"/>
+                <context ref="invalid_section2"/>
+            </include>
+        </context>
+
+    </definitions>
+</language>
+

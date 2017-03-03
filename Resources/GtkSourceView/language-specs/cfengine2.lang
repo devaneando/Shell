@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+        Chris Hoelzel
+        First-Telecom GmbH
+        
+        E-Mail: chris.hoelzel@first-telecom.de
+
+
+	 This file is free software; you can redistribute it and/or
+	 modify it under the terms of the GNU Lesser General Public
+	 License as published by the Free Software Foundation; either
+	 version 3 of the License, or (at your option) any later version.
+
+	 This file is distributed in the hope that it will be useful,
+	 but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	 Lesser General Public License for more details.
+
+	 You should have received a copy of the GNU Lesser General Public
+	 License along with this library; if not, write to the Free Software
+	 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+
+
+<language id="cfengine2" _name="cfengine V2" version="2.0" _section="Markup">
+  <metadata>
+    <property name="globs">*.cf;cf.*;*.cfengine</property>
+    <property name="line-comment-start">#</property>
+  </metadata>
+
+  <styles>
+	<style id="comment" _name="Comment" map-to="def:comment" />
+	<style id="section" _name="Section" map-to="def:keyword" />
+	<style id="subsection" _name="Subsections with ::" map-to="def:statement"/>
+	<style id="variable"   _name="Variables which are defined in other places" map-to="def:string" />
+	<style id="warn" _name="Warning messages to point directly" map-to="def:error" />
+  </styles>
+
+  <definitions>
+
+     <!-- These are comments -->
+     <context id="CF2comment" style-ref="comment">
+	<start>\#</start>
+	<end>$</end>
+     </context>
+
+     <!-- These are main sections -->
+     <context id="CF2section" style-ref="section">
+	<suffix>:</suffix>
+
+	<keyword>^control</keyword>
+	<keyword>^directories</keyword>
+	<keyword>^copy</keyword>
+	<keyword>^links</keyword>
+	<keyword>^editfiles</keyword>
+	<keyword>^alerts</keyword>
+	<keyword>^shellcommands</keyword>
+	<keyword>^packages</keyword>
+	<keyword>^files</keyword>
+     </context>
+
+     <!-- Error message for special observations -->
+     <context id="CF2errorannounce" style-ref="warn">
+	<keyword>purge=true</keyword>
+	<keyword>backup=false</keyword>
+     </context> 
+
+
+     <!-- These are predefined vars -->
+     <context id="CF2vars" style-ref="variable">
+	<start>\$\(</start>
+	<end>\)</end>
+     </context>
+
+
+    <context id="CF2subsection" style-ref="subsection">
+      <match>\b[ !\ta-zA-Z0-9_\-!.]*\:\:</match>
+    </context>
+
+
+
+   <!-- Main context -->
+   <context id="cfengine2">
+    <include>
+	<context ref="CF2comment"/>
+	<context ref="CF2section"/>
+	<context ref="CF2errorannounce"/>
+	<context ref="CF2vars"/>
+	<context ref="CF2subsection"/>
+    </include>
+   </context>
+  </definitions>
+</language>

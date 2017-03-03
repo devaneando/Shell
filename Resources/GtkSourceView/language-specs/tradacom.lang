@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Rob Snelders <programming at ertai dot nl>
+ Copyright (C) 2009 Rob Snelders <programming at ertai dot nl>
+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the
+ Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ Boston, MA 02111-1307, USA.
+
+-->
+<language id="tradacom" _name="TRADACOM" version="2.0" _section="Markup">
+    <metadata>
+      <property name="mimetypes">text/x-trad</property>
+      <property name="globs">*.tra</property>
+    </metadata>
+    <styles>
+      <style id="invalids" _name="Invalid items" map-to="def:string"/>
+      <style id="delimiters" _name="Delimiters" map-to="def:comment"/>
+      <style id="sections" _name="Begin of Section" map-to="def:preprocessor"/>
+      <style id="keywords" _name="Keyword" map-to="def:keyword"/>
+      <style id="StartStops" _name="Begin and End of message" map-to="def:type"/>
+    </styles>
+    <definitions>
+	<context id="delimiter" style-ref="delimiters">
+	    <match>(\+|'|:)</match>
+        </context>
+
+	<context id="sectionBE" style-ref="StartStops">
+	    <match>^(STX|END)\=</match>
+        </context>
+
+	<context id="sectionBE2" style-ref="StartStops">
+	    <match>(?&lt;=')(STX|END)\=</match>
+        </context>
+
+	<context id="section" style-ref="sections">
+	    <match>^([a-zA-Z]{3})\=</match>
+        </context>
+
+	<context id="section2" style-ref="sections">
+	    <match>(?&lt;=')([a-zA-Z]{3})\=</match>
+        </context>
+
+	<context id="invalid_section" style-ref="invalids">
+	    <match>^[^\=]*\=</match>
+        </context>
+
+	<context id="invalid_section2" style-ref="invalids">
+	    <match>(?&lt;=')[^\=]*\=</match>
+        </context>
+
+	<context id="keyword" style-ref="keywords">
+	    <prefix>(?&lt;=['|:|\+|\=])</prefix>
+	    <suffix>(?=['|:|\+|\=])</suffix>
+	    <keyword>ANA</keyword>
+            <keyword>ANAA</keyword>
+	    <keyword>PROHDR</keyword>
+	    <keyword>PRIHDR</keyword>
+	    <keyword>CUSHDR</keyword>
+	    <keyword>ORDHDR</keyword>
+	    <keyword>PICHDR</keyword>
+	    <keyword>DELHDR</keyword>
+	    <keyword>DLCHDR</keyword>
+	    <keyword>INVFIL</keyword>
+	    <keyword>CREHDR</keyword>
+	    <keyword>SRMHDR</keyword>
+	    <keyword>UPLHDR</keyword>
+	    <keyword>UCNHDR</keyword>
+	    <keyword>SNPHDR</keyword>
+	    <keyword>SADHDR</keyword>
+	    <keyword>AVLHDR</keyword>
+	    <keyword>GENHDR</keyword>
+	    <keyword>CORHDR</keyword>
+	    <keyword>ACKHDR</keyword>
+	    <keyword>PPRHDR</keyword>
+	    <keyword>PAYHDR</keyword>
+	    <keyword>DRAHDR</keyword>
+	    <keyword>CRAHDR</keyword>
+	    <keyword>EXCHDR</keyword>
+	    <keyword>LPRHDR</keyword>
+	    <keyword>UTLHDR</keyword>
+	    <keyword>HOTHDR</keyword>
+	    <keyword>EFTHDR</keyword>
+	    <keyword>INTHDR</keyword>
+	    <keyword>CLAHDR</keyword>
+	    <keyword>ISSUES</keyword>
+	    <keyword>DYEHDR</keyword>
+	    <keyword>BTOHDR</keyword>
+	    <keyword>HSOHDR</keyword>
+	    <keyword>SORHDR</keyword>
+	    <keyword>CAKHDR</keyword>
+	    <keyword>PVUHDR</keyword>
+	    <keyword>PROTES</keyword>
+	    <keyword>PRITES</keyword>
+	    <keyword>CUSTES</keyword>
+	    <keyword>ORDTES</keyword>
+	    <keyword>PICTES</keyword>
+	    <keyword>DELTES</keyword>
+	    <keyword>DLCTES</keyword>
+	    <keyword>INVTES</keyword>
+	    <keyword>CRETES</keyword>
+	    <keyword>SRMTES</keyword>
+	    <keyword>UPLTES</keyword>
+	    <keyword>UCNTES</keyword>
+	    <keyword>SNPTES</keyword>
+	    <keyword>SADTES</keyword>
+	    <keyword>AVLTES</keyword>
+	    <keyword>GENTES</keyword>
+	    <keyword>CORTES</keyword>
+	    <keyword>ACKTES</keyword>
+	    <keyword>PPRTES</keyword>
+	    <keyword>PAYTES</keyword>
+	    <keyword>DRATES</keyword>
+	    <keyword>CRATES</keyword>
+	    <keyword>EXCTES</keyword>
+	    <keyword>LPRTES</keyword>
+	    <keyword>UTLTES</keyword>
+	    <keyword>HOTTES</keyword>
+	    <keyword>EFTTES</keyword>
+	    <keyword>INTTES</keyword>
+	    <keyword>CLATES</keyword>
+	    <keyword>ISSTES</keyword>
+	    <keyword>DYETES</keyword>
+	    <keyword>BTOTES</keyword>
+	    <keyword>HSOTES</keyword>
+	    <keyword>SORTES</keyword>
+	    <keyword>CAKTES</keyword>
+	    <keyword>PVUTES</keyword>
+        </context>
+
+        <context id="tradacom">
+            <include>
+                <context ref="delimiter"/>
+                <context ref="sectionBE"/>
+                <context ref="sectionBE2"/>
+                <context ref="section"/>
+                <context ref="section2"/>
+                <context ref="invalid_section"/>
+                <context ref="invalid_section2"/>
+		<context ref="keyword"/>
+            </include>
+        </context>
+
+    </definitions>
+</language>
+

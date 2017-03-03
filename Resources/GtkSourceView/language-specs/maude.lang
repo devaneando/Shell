@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Author: Giorgos Fourtounis <gfour@softlab.ntua.gr>
+ Copyright (C) 2010 Giorgos Fourtounis <gfour@softlab.ntua.gr>
+ 
+ Basic GTKSourceView syntax highlighting for Maude files.
+
+ Install it in:
+ /usr/share/gtksourceview-2.0/language-specs
+ or locally in:
+ /.gnome2/gtksourceview-2.0/language-specs
+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the
+ Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ Boston, MA 02111-1307, USA.
+
+ -->
+<language id="maude" _name="Maude" version="2.0" _section="Sources">
+<metadata>
+	<property name="globs">*.maude</property>
+</metadata>
+<styles>
+	<style id="comment" _name="Comment" map-to="def:comment"/>
+	<style id="string" _name="String" map-to="def:string"/>
+	<style id="keyword" _name="Keyword" map-to="def:keyword"/>
+	<style id="type" _name="Data Type" map-to="def:type"/>
+</styles>
+<definitions>
+	<context id="maude">
+		<include>
+			<context id="comment" style-ref="comment">
+				<start>(\*\*\*)|(---)</start>
+				<end>$</end>
+			</context>
+			<context id="string" end-at-line-end="true" style-ref="string">
+				<start>"</start>
+				<end>"</end>
+				<include>
+					<context id="escape" style-ref="escaped-character">
+						<match>\\.</match>
+					</context>
+				</include>
+			</context>
+			<context id="keywords" style-ref="keyword">
+				<keyword>abort</keyword>
+				<keyword>advise</keyword>
+				<keyword>advisories</keyword>
+				<keyword>advisory</keyword>
+				<keyword>alias</keyword>
+				<keyword>aliases</keyword>
+				<keyword>aliases</keyword>
+				<keyword>all</keyword>
+				<keyword>assoc</keyword>
+				<keyword>associative</keyword>
+				<keyword>attr</keyword>
+				<keyword>attribute</keyword>
+				<keyword>body</keyword>
+				<keyword>break</keyword>
+				<keyword>breakdown</keyword>
+				<keyword>cd</keyword>
+				<keyword>ceq</keyword>
+				<keyword>clear</keyword>
+				<keyword>cmb</keyword>
+				<keyword>cmd</keyword>
+				<keyword>color</keyword>
+				<keyword>comm</keyword>
+				<keyword>command</keyword>
+				<keyword>command</keyword>
+				<keyword>commutative</keyword>
+				<keyword>components</keyword>
+				<keyword>conceal</keyword>
+				<keyword>conceal</keyword>
+				<keyword>cond</keyword>
+				<keyword>condition</keyword>
+				<keyword>config</keyword>
+				<keyword>configuration</keyword>
+				<keyword>constructor</keyword>
+				<keyword>cont</keyword>
+				<keyword>continue</keyword>
+				<keyword>crl</keyword>
+				<keyword>ctor</keyword>
+				<keyword>debug</keyword>
+				<keyword>deselect</keyword>
+				<keyword>ditto</keyword>
+				<keyword>do</keyword>
+				<keyword>endfm</keyword>
+				<keyword>endfth</keyword>
+				<keyword>endm</keyword>
+				<keyword>endth</keyword>
+				<keyword>endv</keyword>
+				<keyword>eof</keyword>
+				<keyword>eq</keyword>
+				<keyword>eqs</keyword>
+				<keyword>erew</keyword>
+				<keyword>erewrite</keyword>
+				<keyword>ex</keyword>
+				<keyword>exclude</keyword>
+				<keyword>extend</keyword>
+				<keyword>extending</keyword>
+				<keyword>extending</keyword>
+				<keyword>flat</keyword>
+				<keyword>flat</keyword>
+				<keyword>flattened</keyword>
+				<keyword>fmod</keyword>
+				<keyword>format</keyword>
+				<keyword>format</keyword>
+				<keyword>frew</keyword>
+				<keyword>frewrite</keyword>
+				<keyword>from</keyword>
+				<keyword>frozen</keyword>
+				<keyword>fth</keyword>
+				<keyword>gather</keyword>
+				<keyword>gc</keyword>
+				<keyword>graph</keyword>
+				<keyword>id-hook</keyword>
+				<keyword>id</keyword>
+				<keyword>idem</keyword>
+				<keyword>idempotent</keyword>
+				<keyword>identity</keyword>
+				<keyword>in</keyword>
+				<keyword>inc</keyword>
+				<keyword>include</keyword>
+				<keyword>including</keyword>
+				<keyword>including</keyword>
+				<keyword>is</keyword>
+				<keyword>iter</keyword>
+				<keyword>iterated</keyword>
+				<keyword>kinds</keyword>
+				<keyword>kinds</keyword>
+				<keyword>label</keyword>
+				<keyword>labels</keyword>
+				<keyword>labels</keyword>
+				<keyword>left</keyword>
+				<keyword>load</keyword>
+				<keyword>loop</keyword>
+				<keyword>ls</keyword>
+				<keyword>mb</keyword>
+				<keyword>mbs</keyword>
+				<keyword>memo</keyword>
+				<keyword>message</keyword>
+				<keyword>metadata</keyword>
+				<keyword>mixfix</keyword>
+				<keyword>mod</keyword>
+				<keyword>module</keyword>
+				<keyword>modules</keyword>
+				<keyword>msg</keyword>
+				<keyword>newline</keyword>
+				<keyword>nonexec</keyword>
+				<keyword>number</keyword>
+				<keyword>obj</keyword>
+				<keyword>object</keyword>
+				<keyword>off</keyword>
+				<keyword>on</keyword>
+				<keyword>op-hook</keyword>
+				<keyword>op</keyword>
+				<keyword>ops</keyword>
+				<keyword>otherwise</keyword>
+				<keyword>owise</keyword>
+				<keyword>paren</keyword>
+				<keyword>parens</keyword>
+				<keyword>parentheses</keyword>
+				<keyword>parse</keyword>
+				<keyword>parse</keyword>
+				<keyword>path</keyword>
+				<keyword>poly</keyword>
+				<keyword>polymorphic</keyword>
+				<keyword>popd</keyword>
+				<keyword>pr</keyword>
+				<keyword>prec</keyword>
+				<keyword>precedence</keyword>
+				<keyword>print</keyword>
+				<keyword>profile</keyword>
+				<keyword>protect</keyword>
+				<keyword>protecting</keyword>
+				<keyword>push</keyword>
+				<keyword>pwd</keyword>
+				<keyword>q</keyword>
+				<keyword>quit</keyword>
+				<keyword>rat</keyword>
+				<keyword>rational</keyword>
+				<keyword>red</keyword>
+				<keyword>reduce</keyword>
+				<keyword>resume</keyword>
+				<keyword>reveal</keyword>
+				<keyword>rew</keyword>
+				<keyword>rewrite</keyword>
+				<keyword>right</keyword>
+				<keyword>rl</keyword>
+				<keyword>rls</keyword>
+				<keyword>rule</keyword>
+				<keyword>rules</keyword>
+				<keyword>search</keyword>
+				<keyword>select</keyword>
+				<keyword>set</keyword>
+				<keyword>show</keyword>
+				<keyword>sort</keyword>
+				<keyword>sorts</keyword>
+				<keyword>special</keyword>
+				<keyword>stats</keyword>
+				<keyword>step</keyword>
+				<keyword>strat</keyword>
+				<keyword>strat</keyword>
+				<keyword>strategy</keyword>
+				<keyword>subsorts</keyword>
+				<keyword>subst</keyword>
+				<keyword>substitution</keyword>
+				<keyword>substitution</keyword>
+				<keyword>such</keyword>
+				<keyword>summary</keyword>
+				<keyword>term-hook</keyword>
+				<keyword>th</keyword>
+				<keyword>that</keyword>
+				<keyword>timing</keyword>
+				<keyword>to</keyword>
+				<keyword>trace</keyword>
+				<keyword>unify</keyword>
+				<keyword>var</keyword>
+				<keyword>vars</keyword>
+				<keyword>verbose</keyword>
+				<keyword>view</keyword>
+				<keyword>view</keyword>
+				<keyword>views</keyword>
+				<keyword>where</keyword>
+				<keyword>whole</keyword>
+				<keyword>with</keyword>
+				<keyword>xmatch</keyword>
+			</context>
+		</include>
+	</context>
+</definitions>
+</language>

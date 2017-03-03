@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ GtkSourceView language definition for iMacros scripts
+ http://wiki.imacros.net
+
+ Author: Andratx Bellmunt
+ Copyright (C) 2013 Andratx Bellmunt <andratx.bellmunt@gmail.com>
+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the
+ Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ Boston, MA 02111-1307, USA.
+
+-->
+
+<language id="iim" _name="iMacros" version="2.0" _section="Scripts">
+
+	<metadata>
+		<property name="mymetipes">text/x-iim</property>
+		<property name="globs">*.iim</property>
+		<property name="line-comment-start">'</property>
+	</metadata>
+
+	
+	<styles>
+		<style	id="operator"		_name="Operator"	map-to="def:constant"/>
+		<style 	id="comment"		_name="Comment"		map-to="def:comment"/>
+		<style 	id="keyword"		_name="Keyword"		map-to="def:keyword"/>
+		<style 	id="type"		_name="Data Type"	map-to="def:type"/>
+		<style 	id="preprocessor"	_name="Preprocessor"	map-to="def:preprocessor"/>
+	</styles>
+
+	
+	<definitions>
+		<context id="iim">
+			<include>
+
+
+				<context id="operator" style-ref="operator">
+							<match extended="true">
+							(\.)?\+{1,2}?(?!\+) |
+							(\.)?\*{1,2}?(?!\*) |
+							&lt;=? | &gt;=? | &lt;&gt; |
+							= |
+							} |
+							{ |
+							</match>
+				</context> 
+
+
+				<context id="comment" style-ref="comment" end-at-line-end="true">
+					<start>'</start>
+
+					<include>
+						<context ref="def:in-line-comment"/>
+					</include>
+				</context>
+
+		
+				<context id="words1" style-ref="keyword" class="no-spell-check">
+					<keyword>ADD</keyword>
+					<keyword>BACK</keyword>
+					<keyword>CLEAR</keyword>
+					<keyword>CLICK</keyword>
+					<keyword>CMDLINE</keyword>
+					<keyword>DISCONNECT</keyword>
+					<keyword>DS</keyword>
+					<keyword>EXTRACT</keyword>
+					<keyword>FILEDELETE</keyword>
+					<keyword>FILTER</keyword>
+					<keyword>FRAME</keyword>
+					<keyword>IMAGECLICK</keyword>
+					<keyword>IMAGESEARCH</keyword>
+					<keyword>ONCERTIFICATEDIALOG</keyword>
+					<keyword>ONDIALOG</keyword>
+					<keyword>ONDOWNLOAD</keyword>
+					<keyword>ONERRORDIALOG</keyword>
+					<keyword>ONLOGIN</keyword>
+					<keyword>ONPRINT</keyword>
+					<keyword>ONSECURITYDIALOG</keyword>
+					<keyword>ONWEBPAGEDIALOG</keyword>
+					<keyword>PAUSE</keyword>
+					<keyword>PRINT</keyword>
+					<keyword>PROMPT</keyword>
+					<keyword>PROXY</keyword>
+					<keyword>REDIAL</keyword>
+					<keyword>REFRESH</keyword>
+					<keyword>SAVEAS</keyword>
+					<keyword>SET</keyword>
+					<keyword>SIZE</keyword>
+					<keyword>STOPWATCH</keyword>
+					<keyword>TAB</keyword>
+					<keyword>TAG</keyword>
+					<keyword>URL</keyword>
+					<keyword>VERSION</keyword>
+					<keyword>WAIT</keyword>
+					<keyword>WINCLICK</keyword>
+				</context>
+
+
+				<context id="words2" style-ref="type" class="no-spell-check">
+					<keyword>GOTO</keyword>
+					<keyword>T</keyword>
+					<keyword>POS</keyword>
+					<keyword>TYPE</keyword>
+					<keyword>FORM</keyword>
+					<keyword>ATTR</keyword>
+					<keyword>CONTENT</keyword>
+					<keyword>BUILD</keyword>
+					<keyword>RECORDER</keyword>
+					<keyword>EXTRACT</keyword>
+					<keyword>CLOSEALLOTHERS</keyword>
+					<keyword>FOLDER</keyword>
+					<keyword>FILE</keyword>
+					<keyword>CLICK</keyword>
+					<keyword>X</keyword>
+					<keyword>Y</keyword>
+					<keyword>CMD</keyword>
+					<keyword>STATUS</keyword>
+					<keyword>F</keyword>
+					<keyword>IMAGE</keyword>
+					<keyword>CONFIDENCE</keyword>
+					<keyword>C</keyword>
+					<keyword>BUTTON</keyword>
+					<keyword>CONTINUE</keyword>
+					<keyword>USER</keyword>
+					<keyword>PASSWORD</keyword>
+					<keyword>KEYS</keyword>
+					<keyword>ADDRESS</keyword>
+					<keyword>BYPASS</keyword>
+					<keyword>ISP</keyword>
+					<keyword>ID</keyword>
+					<keyword>SECONDS</keyword>
+				</context>
+
+
+				<context id="words3" style-ref="preprocessor" class="no-spell-check">
+					<prefix>!</prefix>
+					<keyword>COL1</keyword>
+					<keyword>COL2</keyword>
+					<keyword>COL3</keyword>
+					<keyword>DATASOURCE</keyword>
+					<keyword>DATASOURCE_COLUMNS</keyword>
+					<keyword>DATASOURCE_LINE</keyword>
+					<keyword>DIALOGMANAGER</keyword>
+					<keyword>ENCRYPTION</keyword>
+					<keyword>ERRORIGNORE</keyword>
+					<keyword>ERRORMACRO</keyword>
+					<keyword>EXTRACT</keyword>
+					<keyword>EXTRACT_TEST_POPUP</keyword>
+					<keyword>EXTRACTADD</keyword>
+					<keyword>EXTRACTDIALOG</keyword>
+					<keyword>FILELOG</keyword>
+					<keyword>FILESTOPWATCH</keyword>
+					<keyword>FOLDERIMACROS</keyword>
+					<keyword>IMAGEX</keyword>
+					<keyword>IMAGEY</keyword>
+					<keyword>LOADCHECK</keyword>
+					<keyword>LOOP</keyword>
+					<keyword>MACROTIMEOUT</keyword>
+					<keyword>NOW</keyword>
+					<keyword>POINTER</keyword>
+					<keyword>REPLAYSPEED</keyword>
+					<keyword>SINGLESTEP</keyword>
+					<keyword>STOPWATCHTIME</keyword>
+					<keyword>TIMEOUT</keyword>
+					<keyword>URLCURRENT</keyword>
+					<keyword>URLSTART</keyword>
+					<keyword>USERAGENT</keyword>
+					<keyword>VAR1</keyword>
+					<keyword>VAR2</keyword>
+					<keyword>VAR3</keyword>
+					<keyword>VARDEFAULT</keyword>
+				</context>
+
+
+			</include>
+		</context>
+	</definitions>
+</language>
