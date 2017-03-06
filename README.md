@@ -4,16 +4,27 @@ My bash and other shell related settings, with aliases and other tweaks to make 
 
 Basically, all you need is to clone the repository to the intended folder (I suggest ~/.Shell), execute the *install.sh* script and you're done.
 
+### My other repositories
+
+Those are mainly personal and you might not have access:
+```
+git clone --recursive git_psicofrenia:psicofrenia/Escritos.git ~/Things/Escritos
+git clone --recursive git_psicofrenia:psicofrenia/Shell.git ~/.Shell
+git clone --recursive git@gitlab.com:devaneando/Notas.git ~/Things/Notas
+git clone --recursive git@gitlab.com:devaneando/Novels.git ~/Things/Novels
+git clone --recursive git@git.cleverti.com:eduardo.fernandes/spindots.git ~/Things/Spindots
+```
+
 ## Install
 
 - Go to your home folder and clone the repository into the *~/.Shell* folder:
-```
-git clone --recursive https://github.com/psicofrenia/Shell.git ~/.Shell
-```
+
+        git clone --recursive https://github.com/psicofrenia/Shell.git ~/.Shell
+
 - If you failed to clone the repository with the *--recursive* parameter, execute the following code to update the submodules:
-```
-git submodule update --init --recursive
-```
+
+        git submodule update --init --recursive
+
 - Execute the install script: 
 ```
 ./.Shell/install.sh
