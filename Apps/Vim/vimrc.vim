@@ -3,20 +3,9 @@ source ${HOME}/.vim/inc/startify.vim
 source ${HOME}/.vim/inc/colors.vim
 source ${HOME}/.vim/inc/settings.vim
 
-" === Clean white spaces
-autocmd BufEnter * EnableStripWhitespaceOnSave
-
 " === NERDTree
 nmap <C-n> :NERDTreeToggle<CR>
 set laststatus=2
-
-" GoldenView
-let g:goldenview__enable_default_mapping = 0
-nmap <silent> <Tab> <Plug>GoldenViewNext
-
-" === Airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme='distinguished'
 
 " === vim-template
 let g:templates_directory='~/Templates'
@@ -28,14 +17,6 @@ let g:phpqa_codesniffer_args = "--standard=psr2"
 " == CtrlP ==
 nmap <C-Tab> :CtrlPBuffer<CR>
 nmap <C-u> :CtrlPMRU<CR>
-
-"== Ctrl funky
-nnoremap <C-f> :CtrlPFunky<Cr>
-
-" === phpcomplete
-let g:phpcomplete_index_composer_command = 'composer'
-autocmd  FileType  php setlocal omnifunc=phpcomplete_extended#CompletePHP
-set completeopt=longest,menuone
 
 " === omnicomplete on spacebar
 inoremap <C-Space> <C-x><C-o>

@@ -9,35 +9,60 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin('~/.vim/bundle/')
 
-" vim usability plugins
+"""""""""" Usability plugins
+
+" The NERD tree allows you to explore your filesystem and to open files and directories.
 Plugin 'scrooloose/nerdtree'
+
+" This plugin add capability to search in folders via NERDtree.
 Plugin 'taiansu/nerdtree-ag'
+
+" Lean & mean status/tabline for vim that's light as air.
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+" This plugin provides a start screen for Vim.
 Plugin 'mhinz/vim-startify'
+
+" Allows you to create an after/colors/ script for customizing any colorscheme.
 Plugin 'vim-scripts/AfterColors.vim'
+
+" This plugin causes all trailing whitespace characters (see Supported Whitespace Characters below) to be highlighted.
 Plugin 'ntpeters/vim-better-whitespace'
+
+"""""""""" Color scheme
+
 Plugin 'kiddos/malokai.vim'
 
-" tools plugins
-Plugin 'rking/ag.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
+"""""""""" tools plugins
+
+" vimproc is a great asynchronous execution library for Vim
 Plugin 'Shougo/vimproc.vim'
+
+" A Vim plugin which shows a git diff in the 'gutter' (sign column). It shows whether each line has been added, modified, and where lines have been removed.
 Plugin 'airblade/vim-gitgutter'
+
+" I'm not going to lie to you; fugitive.vim may very well be the best Git wrapper of all time. Check out these features:
 Plugin 'tpope/vim-fugitive'
+
+" Comment stuff out.
 Plugin 'tpope/vim-commentary'
+
+" This is a simple plugin for Vim that will allow you to have a set of templates for certain file types.
 Plugin 'aperezdc/vim-template'
 
-" programming languages plugins
-Plugin 'StanAngeloff/php.vim'
-Plugin 'm2mdas/phpcomplete-extended'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'groenewege/vim-less'
+"""""""""" Syntax highlight
+Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'evidens/vim-twig'
+Plugin 'groenewege/vim-less'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'smerrill/vcl-vim-plugin'
+Plugin 'StanAngeloff/php.vim'
 Plugin 'stephpy/vim-yaml'
+Plugin 'vim-scripts/httplog'
+Plugin 'vim-scripts/nginx.vim'
 
-" Latex plugins
+"""""""""" Latex plugins
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'bjoernd/vim-ycm-tex'
 
