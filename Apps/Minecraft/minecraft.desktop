@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Minecraft
+Comment=Minecraft is a game about placing blocks and going on adventures.
+Keywords=game;simulator
+Exec=/home/devaneando/.Shell/Apps/Minecraft/minecraft.sh
+Icon=/home/devaneando/.Shell/Apps/Minecraft/minecraft.svg
+Terminal=false
+Type=Application
+StartupNotify=true
+X-Ubuntu-Gettext-Domain=minecraft
+
