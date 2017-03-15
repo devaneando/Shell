@@ -14,7 +14,7 @@ ExecStart=/usr/sbin/varnishd -j unix,user=vcache \
                              -T localhost:6082 \
                              -f /home/devaneando/.Shell/Workstation/Varnish/vcl/ezp_18x.varnish_4.vcl \
                              -S /home/devaneando/.Shell/Workstation/Varnish/secret \
-                             -s file,/var/lib/varnish/devaneando/varnish_storage.bin,2G
+                             -s file,/var/lib/varnish/$(uname -n)/varnish_storage.bin,2G
 ExecReload=/usr/share/varnish/reload-vcl
 ProtectSystem=full
 ProtectHome=true
