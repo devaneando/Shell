@@ -13,13 +13,13 @@ ExecStart=/usr/sbin/varnishd -j unix,user=vcache \
                              -F \
                              -a :6081 \
                              -T localhost:6082 \
-                             -f /home/devaneando/.Shell/Workstation/Varnish/vcl/ezp_18x.varnish_3.vcl \
+                             -f /etc/varnish/ezpublish.vcl \
                              -S /etc/varnish/secret \
                              -s "file,/var/lib/varnish/${BIN_FILE}/varnish_storage.bin,2G"
 ExecReload=/usr/share/varnish/reload-vcl
 ProtectSystem=full
 ProtectHome=true
-PrivateTmp=truecat
+PrivateTmp=true
 PrivateDevices=true
 
 [Install]
