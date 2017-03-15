@@ -8,14 +8,13 @@ Documentation=https://www.varnish-cache.org/docs/4.1/ man:varnishd
 Type=simple
 LimitNOFILE=131072
 LimitMEMLOCK=82000
-BIN_FILE="/var/lib/varnish/`uname -n`/varnish_storage.bin"
 ExecStart=/usr/sbin/varnishd -j unix,user=vcache \
                              -F \
                              -a :6081 \
                              -T localhost:6082 \
                              -f /etc/varnish/ezpublish.vcl \
                              -S /etc/varnish/secret \
-                             -s "file,/var/lib/varnish/${BIN_FILE}/varnish_storage.bin,2G"
+                             -s "file,/var/lib/varnish/qa-002/varnish_storage.bin,2G"
 ExecReload=/usr/share/varnish/reload-vcl
 ProtectSystem=full
 ProtectHome=true
