@@ -1,0 +1,25 @@
+# Link this file to /lib/systemd/system
+
+[Unit]
+Description=Varnish HTTP accelerator
+Documentation=https://www.varnish-cache.org/docs/4.1/ man:varnishd
+
+[Service]
+Type=simple
+LimitNOFILE=131072
+LimitMEMLOCK=82000
+ExecStart=/usr/sbin/varnishd -j unix,user=vcache \
+                             -F \
+                             -a :6081 \
+                             -T localhost:6082 \
+                             -f /home/devaneando/.Shell/Workstation/Varnish/vcl/ezp_18x.varnish_3.vcl \
+                             -S /home/devaneando/.Shell/Workstation/Varnish/secret \
+                             -s file,/var/lib/varnish/devaneando/varnish_storage.bin,2G
+ExecReload=/usr/share/varnish/reload-vcl
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+
+[Install]
+WantedBy=multi-user.target
