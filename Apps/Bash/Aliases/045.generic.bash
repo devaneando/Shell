@@ -38,6 +38,18 @@ function vmStart()
   env vboxmanage startvm "$1" --type headless
 }
 
+##### Stop a virtualbox VM
+##### $1: VM Name
+function vmStop()
+{
+  if [ $# -ne 1 ]; then
+    print error "It's not possible to proceed without the VM name."
+    return 999
+  fi
+
+  env vboxmanage controlvm "$1" savestate
+}
+
 ##### Allows command line calculations
 ##### $1: mathematical expressions
 function calc()
