@@ -17,6 +17,7 @@ alias aptInstall='apt-get install'
 alias aptPurge='apt-get purge'
 alias aptUpdate='apt-get update'
 alias aptUpgrade='apt-get dist-upgrade --assume-yes'
+alias aptAllTheWay='apt-get update && apt-get dist-upgrade --assume-yes && apt autoremove --assume-yes'
 
 
 
