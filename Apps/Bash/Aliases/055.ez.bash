@@ -10,6 +10,19 @@ function eZClear()
 
 }
 
+function eZ54Clear()
+{
+    if [ -d ezpublish_legacy/var/cache ]; then
+        rm -Rf ezpublish/cache/*
+        rm -Rf ezpublish_legacy/var/cache/*
+        rm -Rf ezpublish_legacy/var/*/cache/*ez
+
+        /usr/bin/env php ezpublish/console cache:clear --env=prod --no-debug
+        /usr/bin/env php ezpublish/console ezpublish:legacy:script --env=prod bin/php/ezcache.php --clear-all --expiry=now --purge
+
+    fi
+}
+
 function eZAssets()
 {
 
@@ -27,7 +40,7 @@ function eZ54Update()
 
     env echo -e "\e[97m Don't forget to  edit your ezpublish/EzPublishKernel.php file and add\e[0m"
     env echo -e "\e[93m \tuse eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle;\e[0m"
-    env echo -e "\e[97m also, just before 'new EzPublishLegacyBundle( $this ),' add \e[0m"
+    env echo -e "\e[97m also, just before 'new EzPublishLegacyBundle( \$this ),' add \e[0m"
     env echo -e "\e[93m \tnew EzPublishLegacySearchEngineBundle(),\e[0m"
     env echo -e "\e[44m\e[97m do you want to proceed? \e[0m"
     read -p "" -n 1 -r
