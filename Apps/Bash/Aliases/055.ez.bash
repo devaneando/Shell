@@ -1,39 +1,50 @@
-function installEZPClean()
+function eZClear()
 {
+    if [ -d app/cache ]; then
+        rm -Rf app/cache/*
+    fi
 
-    if [ $# -eq 1 ]; then
-
-        composer create-project --no-dev --repository-url=https://updates.ez.no/bul ezsystems/ezstudio "${1}"
-        cd "${1}"
-        chmod 777 app/console
-        php -d memory_limit=-1 app/console ezplatform:install --env=prod studio-clean
-        php -d memory_limit=-1 app/console assetic:dump
-        php -d memory_limit=-1 app/console cache:clear
-        composer update --prefer-dist --no-dev
-
+    if [ -d app ]; then
+        /usr/bin/env php app/console cache:clear --env=prod
     fi
 
 }
 
-function installEZPDemo()
+function eZAssets()
 {
 
-    if [ $# -eq 1 ]; then
-
-        composer create-project --no-dev ezsystems/ezstudio-demo "${1}" v1.7.0
-        
-        cd "${1}"
-        chmod 777 app/console
-        php -d memory_limit=-1 app/console ezplatform:install --env=prod demo
-        php -d memory_limit=-1 app/console assetic:dump
-        php -d memory_limit=-1 app/console cache:clear
-        composer update --prefer-dist --no-dev
-
+    if [ -d app ]; then
+        /usr/bin/env php app/console cache:clear --env=prod
+        /usr/bin/env app/console assetic:dump
+        /usr/bin/env app/console assets:install
     fi
 
 }
 
-function symfonySecret()
+function eZ54Update()
 {
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1
+
+
+    env echo -e "\e[97m Don't forget to  edit your ezpublish/EzPublishKernel.php file and add\e[0m"
+    env echo -e "\e[93m \tuse eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle;\e[0m"
+    env echo -e "\e[97m also, just before 'new EzPublishLegacyBundle( $this ),' add \e[0m"
+    env echo -e "\e[93m \tnew EzPublishLegacySearchEngineBundle(),\e[0m"
+    env echo -e "\e[44m\e[97m do you want to proceed? \e[0m"
+    read -p "" -n 1 -r
+    echo
+
+    # First install Composer v1.0 that works with old version of ezpublish-legacy-installer
+    php -r "copy('https://getcomposer.org/download/1.0.3/composer.phar', 'composer.phar');"
+
+    # Then install newer version
+    php -d memory_limit=-1 composer.phar update --no-dev --prefer-dist --no-scripts ezsystems/ezpublish-legacy-installer
+
+    rm composer.phar
+
+    composer remove --no-update --dev behat/mink-selenium-driver
+
+    composer require --no-update symfony/symfony:~2.7.0 sensio/distribution-bundle:~3.0
+
+    composer update --no-dev --prefer-dist
+
 }

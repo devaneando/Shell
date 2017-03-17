@@ -113,5 +113,11 @@ function cowsayfortune {
   THISCOW=`cowsay -l | tail -n +2 | sed -e 's/\ /\'$'\n/g' | sed $WHICHCOW'q;d'`
 
    #echo "Selected cow: ${THISCOW}, from ${WHICHCOW}"
-   fortune -as | cowsay -f $THISCOW 
+   fortune -as | cowsay -f $THISCOW
+}
+
+# Generates a Symfony secret key
+function symfonySecret()
+{
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1
 }
