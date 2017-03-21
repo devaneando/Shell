@@ -10,24 +10,21 @@
 
 192.168.2.7          devaneando-hp.local
 192.168.2.70         devaneando-work.local
-192.168.2.71         qa-001.local
-192.168.2.72         qa-002.local
+192.168.2.47         qa-001.local
+192.168.2.64         qa-002.local
 
 # ●▬▬▬▬▬๑۩ Overriden Hostnames ۩๑▬▬▬▬▬●
 
 127.0.0.1            sublimetext.com
 127.0.0.1            www.sublimetext.com
 
-# ●▬▬▬▬▬๑۩ Cleverti ۩๑▬▬▬▬▬●
+# ●▬▬▬▬▬๑۩ Other sites ۩๑▬▬▬▬▬●
 
+54.77.213.27         1.support.ez.no
 192.168.2.202        cleverti
 192.168.2.202        git.cleverti
 192.168.2.202        intra.cleverti
-192.168.2.140        CTI-SRV7-ACS-VM
-
-# ●▬▬▬▬▬๑۩ eZ Systems ۩๑▬▬▬▬▬●
-
-54.77.213.27         1.support.ez.no
+192.168.2.140        cti-srv7-acs-vm
 
 # ●▬▬▬▬▬๑۩ Spindots ۩๑▬▬▬▬▬●
 
@@ -43,4 +40,8 @@
 
 # ●▬▬▬▬▬๑۩ Virtual machines ۩๑▬▬▬▬▬●
 
-192.168.2.75         ezp_18x.qa-001.local
+192.168.2.47         ezp_54x.qa-001.dev
+192.168.2.64         ezp_16x.qa-002.dev
+192.168.2.64         ezp_17x.qa-002.dev
+192.168.2.64         ezp_18x.qa-002.dev
+192.168.2.64         ezp_54x.qa-002.dev
