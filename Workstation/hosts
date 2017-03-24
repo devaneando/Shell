@@ -17,6 +17,7 @@
 
 127.0.0.1            sublimetext.com
 127.0.0.1            www.sublimetext.com
+127.0.0.1            notas notas.local
 
 # ●▬▬▬▬▬๑۩ Other sites ۩๑▬▬▬▬▬●
 
@@ -44,4 +45,3 @@
 192.168.2.64         ezp_16x.qa-002.dev
 192.168.2.64         ezp_17x.qa-002.dev
 192.168.2.64         ezp_18x.qa-002.dev
-192.168.2.64         ezp_54x.qa-002.dev
