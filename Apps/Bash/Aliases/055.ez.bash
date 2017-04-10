@@ -1,17 +1,11 @@
 function eZClear()
 {
-    if [ -d app/cache ]; then
-        rm -Rf app/cache/*
-    fi
 
     if [ -d app ]; then
+        rm -Rf app/cache/*
         /usr/bin/env php app/console cache:clear --env=prod
     fi
 
-}
-
-function eZ54Clear()
-{
     if [ -d ezpublish_legacy/var/cache ]; then
         rm -Rf ezpublish/cache/*
         rm -Rf ezpublish_legacy/var/cache/*
@@ -21,6 +15,7 @@ function eZ54Clear()
         /usr/bin/env php ezpublish/console ezpublish:legacy:script --env=prod bin/php/ezcache.php --clear-all --expiry=now --purge
 
     fi
+
 }
 
 function eZAssets()
@@ -30,6 +25,13 @@ function eZAssets()
         /usr/bin/env app/console assetic:dump
         /usr/bin/env app/console assets:install
     fi
+
+    if [ -d ezpublish ]; then
+        /usr/bin/env php ezpublish/console cache:clear --env=prod
+        /usr/bin/env ezpublish/console assetic:dump
+        /usr/bin/env ezpublish/console assets:install
+    fi
+
 }
 
 function eZ54Update()
@@ -57,7 +59,7 @@ function eZ54Update()
     composer update --no-dev --prefer-dist
 }
 
-function eZInstall()
+function eZPlatformInstall()
 {
     WWW="/var/www"
     FOLDER="NOGO"
@@ -93,5 +95,44 @@ function eZInstall()
     fi
 
     composer create-project --no-dev --keep-vcs ezsystems/ezplatform ${FOLDER} ${VERSION}
+
+}
+
+function eZStudionInstall()
+{
+    WWW="/var/www"
+    FOLDER="NOGO"
+    VERSION="NOGO"
+
+    if [[ ${1} == "master" ]]; then
+        FOLDER="ezp_18x"
+        VERSION="dev-master"
+    fi
+
+    if [[ ${1} == "1.8" ]]; then
+        FOLDER="/var/www/ezp_18x"
+        VERSION="v1.8"
+    fi
+
+    if [[ ${1} == "1.7" ]]; then
+        FOLDER="/var/www/ezp_17x"
+        VERSION="v1.7"
+    fi
+
+    if [[ ${1} == "1.6" ]]; then
+        FOLDER="/var/www/ezp_16x"
+        VERSION="v1.6"
+    fi
+
+    if [[ ${FOLDER} == "NOGO" ]]; then
+        echo -e "You must use this command in the following format:\neZInstall 1.8"
+        return
+    fi
+
+    if [[ -d ${WWW}/${FOLDER} ]]; then
+        rm -Rf -v ${WWW}/${FOLDER}
+    fi
+
+    composer create-project --no-dev ezsystems/ezstudio-demo ${FOLDER} ${VERSION}
 
 }
