@@ -10,14 +10,15 @@
 
 192.168.2.7          devaneando-hp.local
 192.168.2.70         devaneando-work.local
-192.168.2.47         qa-001.local
-192.168.2.64         qa-002.local
+192.168.2.71         qa-001.local
+192.168.2.72         qa-002.local
 
 # ●▬▬▬▬▬๑۩ Overriden Hostnames ۩๑▬▬▬▬▬●
 
 127.0.0.1            sublimetext.com
 127.0.0.1            www.sublimetext.com
 127.0.0.1            notas notas.local
+127.0.0.1            blog blog.local
 
 # ●▬▬▬▬▬๑۩ Other sites ۩๑▬▬▬▬▬●
 
@@ -41,7 +42,9 @@
 
 # ●▬▬▬▬▬๑۩ Virtual machines ۩๑▬▬▬▬▬●
 
-192.168.2.47         ezp_54x.qa-001.dev
-192.168.2.64         ezp_16x.qa-002.dev
-192.168.2.64         ezp_17x.qa-002.dev
-192.168.2.64         ezp_18x.qa-002.dev
+192.168.2.71         ezp_54x.qa-001.dev
+192.168.2.72         ezp_16x.qa-002.dev
+192.168.2.72         ezp_17x.qa-002.dev
+192.168.2.72         ezp_18x.qa-002.dev
+
+192.168.2.89        ezenterprise172-studio-clean.local

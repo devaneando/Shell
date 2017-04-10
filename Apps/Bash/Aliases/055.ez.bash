@@ -25,19 +25,15 @@ function eZ54Clear()
 
 function eZAssets()
 {
-
     if [ -d app ]; then
         /usr/bin/env php app/console cache:clear --env=prod
         /usr/bin/env app/console assetic:dump
         /usr/bin/env app/console assets:install
     fi
-
 }
 
 function eZ54Update()
 {
-
-
     env echo -e "\e[97m Don't forget to  edit your ezpublish/EzPublishKernel.php file and add\e[0m"
     env echo -e "\e[93m \tuse eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle;\e[0m"
     env echo -e "\e[97m also, just before 'new EzPublishLegacyBundle( \$this ),' add \e[0m"
@@ -59,5 +55,43 @@ function eZ54Update()
     composer require --no-update symfony/symfony:~2.7.0 sensio/distribution-bundle:~3.0
 
     composer update --no-dev --prefer-dist
+}
+
+function eZInstall()
+{
+    WWW="/var/www"
+    FOLDER="NOGO"
+    VERSION="NOGO"
+
+    if [[ ${1} == "master" ]]; then
+        FOLDER="ezp_18x"
+        VERSION="dev-master"
+    fi
+
+    if [[ ${1} == "1.8" ]]; then
+        FOLDER="/var/www/ezp_18x"
+        VERSION="v1.8"
+    fi
+
+    if [[ ${1} == "1.7" ]]; then
+        FOLDER="/var/www/ezp_17x"
+        VERSION="v1.7"
+    fi
+
+    if [[ ${1} == "1.6" ]]; then
+        FOLDER="/var/www/ezp_16x"
+        VERSION="v1.6"
+    fi
+
+    if [[ ${FOLDER} == "NOGO" ]]; then
+        echo -e "You must use this command in the following format:\neZInstall 1.8"
+        return
+    fi
+
+    if [[ -d ${WWW}/${FOLDER} ]]; then
+        rm -Rf -v ${WWW}/${FOLDER}
+    fi
+
+    composer create-project --no-dev --keep-vcs ezsystems/ezplatform ${FOLDER} ${VERSION}
 
 }

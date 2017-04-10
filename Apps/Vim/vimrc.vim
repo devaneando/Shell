@@ -1,11 +1,14 @@
 source ${HOME}/.vim/inc/vundle.vim
-source ${HOME}/.vim/inc/startify.vim
+source ${HOME}/.vim/inc/bundles/nerdtree.vim
+source ${HOME}/.vim/inc/bundles/startify.vim
+source ${HOME}/.vim/inc/bundles/better-whitespace.vim
+
+
 source ${HOME}/.vim/inc/colors.vim
 source ${HOME}/.vim/inc/settings.vim
 
-" === NERDTree
-nmap <C-n> :NERDTreeToggle<CR>
-set laststatus=2
+
+
 
 " === vim-template
 let g:templates_directory='~/Templates'
