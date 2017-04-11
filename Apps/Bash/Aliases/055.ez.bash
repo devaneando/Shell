@@ -94,7 +94,7 @@ function eZPlatformInstall()
         rm -Rf -v ${WWW}/${FOLDER}
     fi
 
-    composer create-project --no-dev --keep-vcs ezsystems/ezplatform ${FOLDER} ${VERSION}
+    composer create-project --no-dev --keep-vcs ezsystems/ezplatform "${FOLDER}" ${VERSION}
 
 }
 
@@ -133,6 +133,8 @@ function eZStudionInstall()
         rm -Rf -v ${WWW}/${FOLDER}
     fi
 
-    composer create-project --no-dev ezsystems/ezstudio-demo ${FOLDER} ${VERSION}
+    composer create-project --no-dev ezsystems/ezstudio "${FOLDER}" ${VERSION}
+    cd "${FOLDER}"
+    php -d memory_limit=-1 app/console ezplatform:install --env prod studio-clean
 
 }
