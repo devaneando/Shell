@@ -1,0 +1,33 @@
+# ●▬▬▬▬▬๑۩ Localhost ۩๑▬▬▬▬▬●
+
+127.0.0.1		localhost
+127.0.1.1		devaneando-hp
+127.0.1.1		go-dev
+
+# ●▬▬▬▬▬๑۩ Pesudo localhost ۩๑▬▬▬▬▬●
+
+192.168.2.70		devaneando-hp.local
+192.168.2.71		go-dev.local
+
+
+# ●▬▬▬▬▬๑۩ Other sites ۩๑▬▬▬▬▬●
+
+54.77.213.27		1.support.ez.no
+192.168.2.202		cleverti git.cleverti intra.cleverti
+192.168.2.140		cti-srv7-acs-vm
+
+# ●▬▬▬▬▬๑۩ Spindots ۩๑▬▬▬▬▬●
+
+176.111.104.15		001.sql.spindots.com
+176.111.105.27		002.sql.spindots.com
+176.111.106.121		003.sql.spindots.com
+176.111.106.223		004.sql.spindots.com
+176.111.107.199		005.sql.spindots.com
+176.111.107.197		006.sql.spindots.com
+176.111.107.22		001.web.spindots.com
+176.111.107.62		002.web.spindots.com
+176.111.107.157		003.web.spindots.com
+
+# ●▬▬▬▬▬๑۩ Virtual machines ۩๑▬▬▬▬▬●
+
+192.168.2.71        ezp_18x.go-dev.local
