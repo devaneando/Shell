@@ -3,7 +3,7 @@ function eZClear()
 
     if [ -d app ]; then
         rm -Rf app/cache/*
-        /usr/bin/env php app/console cache:clear --env=prod
+        /usr/bin/env php -d memory_limit=-1 app/console cache:clear --env=prod
     fi
 
     if [ -d ezpublish_legacy/var/cache ]; then
@@ -11,8 +11,8 @@ function eZClear()
         rm -Rf ezpublish_legacy/var/cache/*
         rm -Rf ezpublish_legacy/var/*/cache/*ez
 
-        /usr/bin/env php ezpublish/console cache:clear --env=prod --no-debug
-        /usr/bin/env php ezpublish/console ezpublish:legacy:script --env=prod bin/php/ezcache.php --clear-all --expiry=now --purge
+        /usr/bin/env php5.6 -d memory_limit=-1 ezpublish/console cache:clear --env=prod --no-debug
+        /usr/bin/env php5.6 -d memory_limit=-1 ezpublish/console ezpublish:legacy:script --env=prod bin/php/ezcache.php --clear-all --expiry=now --purge
 
     fi
 
@@ -21,15 +21,15 @@ function eZClear()
 function eZAssets()
 {
     if [ -d app ]; then
-        /usr/bin/env php app/console cache:clear --env=prod
-        /usr/bin/env app/console assetic:dump
-        /usr/bin/env app/console assets:install
+        /usr/bin/env php -d memory_limit=-1 app/console cache:clear --env=prod
+        /usr/bin/env php -d memory_limit=-1 app/console assetic:dump
+        /usr/bin/env php -d memory_limit=-1 app/console assets:install
     fi
 
     if [ -d ezpublish ]; then
-        /usr/bin/env php ezpublish/console cache:clear --env=prod
-        /usr/bin/env ezpublish/console assetic:dump
-        /usr/bin/env ezpublish/console assets:install
+        /usr/bin/env php5.6 -d memory_limit=-1 ezpublish/console cache:clear --env=prod
+        /usr/bin/env php5.6 -d memory_limit=-1 ezpublish/console assetic:dump
+        /usr/bin/env php5.6 -d memory_limit=-1 ezpublish/console assets:install
     fi
 
 }
@@ -48,15 +48,15 @@ function eZ54Update()
     php -r "copy('https://getcomposer.org/download/1.0.3/composer.phar', 'composer.phar');"
 
     # Then install newer version
-    php -d memory_limit=-1 composer.phar update --no-dev --prefer-dist --no-scripts ezsystems/ezpublish-legacy-installer
+    /usr/bin/env php5.6 -d memory_limit=-1 composer.phar update --no-dev --prefer-dist --no-scripts ezsystems/ezpublish-legacy-installer
 
     rm composer.phar
 
-    composer remove --no-update --dev behat/mink-selenium-driver
+    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer remove --no-update --dev behat/mink-selenium-driver
 
-    composer require --no-update symfony/symfony:~2.7.0 sensio/distribution-bundle:~3.0
+    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer require --no-update symfony/symfony:~2.7.0 sensio/distribution-bundle:~3.0
 
-    composer update --no-dev --prefer-dist
+    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
 }
 
 function eZPlatformInstall()
