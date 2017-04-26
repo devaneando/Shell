@@ -17,7 +17,7 @@ this.$ = this.jQuery = jQuery.noConflict( true );
 var signature = {
 	name: "Eduardo Fernandes",
 	position: "Product Support Engineer",
-	headline: "eZ Platform Enterprise Edition v1.7 is now available, Easier to Build a Solid Content Business.",
+	headline: "eZ Platform Enterprise Edition v1.9 is now available, Easier to Build a Solid Content Business.",
 	url: "[ez.no/Products/eZ-Platform-Enterprise-Edition|http://ez.no/Products/eZ-Platform-Enterprise-Edition]",
 	color: "gray",
 	hruler: "__________________________________________________"

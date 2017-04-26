@@ -70,6 +70,11 @@ function eZPlatformInstall()
         VERSION="dev-master"
     fi
 
+    if [[ ${1} == "1.9" ]]; then
+        FOLDER="/var/www/ezp_19x"
+        VERSION="v1.9"
+    fi
+
     if [[ ${1} == "1.8" ]]; then
         FOLDER="/var/www/ezp_18x"
         VERSION="v1.8"
@@ -107,6 +112,11 @@ function eZStudionInstall()
     if [[ ${1} == "master" ]]; then
         FOLDER="ezp_18x"
         VERSION="dev-master"
+    fi
+
+    if [[ ${1} == "1.9" ]]; then
+        FOLDER="/var/www/ezp_19x"
+        VERSION="v1.9"
     fi
 
     if [[ ${1} == "1.8" ]]; then

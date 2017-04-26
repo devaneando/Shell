@@ -27,3 +27,11 @@ then
         linkFile "${BASE}/Resources/Gimp/plugins" "${GIMP}/plugins"
     fi
 fi
+
+printConfirmation "Do you want to install and configure Latex?"
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	sudo apt-get install --assume-yes --quiet \
+		texlive-full latexila
+    
+fi
