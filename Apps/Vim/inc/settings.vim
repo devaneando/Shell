@@ -1,102 +1,108 @@
-"# Sets how many lines of history VIM has to remember"
-set history=700
+" Sets how many lines of history VIM has to remember"
+set             history=700
 
-"# Redraw only when necessary"
-set lazyredraw
+" Redraw only when necessary"
+set             lazyredraw
 
-"# Handle paste without formating"
-set nopaste
-set pastetoggle=<F12>
+" Handle paste without formating"
+set             paste
+set             pastetoggle=<F12>
 
-"# No annoying sound on errors"
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
+" No annoying sound on errors"
+set             noerrorbells
+set             novisualbell
+set             t_vb=
+set             tm=500
 
-"##### User Interface"
-"######################################################################"
+"#### User Interface"
+"#####################################################################"
 
-"# Turn on the Wild menu"
-set wildmenu
+" Turn on the Wild menu"
+set             wildmenu
 
-"# Set 7 lines to the cursor - when moving vertically using j/k"
-set so=7
+" Set 7 lines to the cursor - when moving vertically using j/k"
+set             so=7
 
-"#Always show current position"
-set ruler
+" Mark a line at the 120 character for you to know the line is too big
+let             &colorcolumn=join(range(121,121),",")
 
-"# Display line numbers"
-set number
+"Always show current position"
+set             ruler
 
-"# Height of the command bar"
-set cmdheight=1
+" Display line numbers"
+set             number
 
-"# Configure backspace so it acts as it should act"
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
+" Height of the command bar"
+set             cmdheight=1
 
-"# Show matching brackets when text indicator is over them"
-set showmatch
+" Configure backspace so it acts as it should act"
+set             backspace=eol,start,indent
+set             whichwrap+=<,>,h,l
 
-"# Disable paired bracked display"
-let loaded_matchparen = 1
+" Show matching brackets when text indicator is over them"
+set             showmatch
 
-"# How many tenths of a second to blink when matching brackets"
-set mat=2
+" Disable paired bracked display"
+let             loaded_matchparen = 1
 
-"# Use spaces instead of tabs"
-set expandtab!
+" How many tenths of a second to blink when matching brackets"
+set             mat=2
 
-"# Be smart when using tabs and set 4 spaces for a tab"
-set smarttab
-set shiftwidth=4
-set tabstop=4
+" Prevent copy of line numbers along with the text
+set             mouse=a
 
-"# Linebreak on 500 characters and wrap line"
-set lbr
-set tw=500
+" Use spaces instead of tabs"
+set             expandtab!
 
-"# Auto indent"
-set ai
+" Be smart when using tabs and set 4 spaces for a tab"
+set             smarttab
+set             shiftwidth=4
+set             tabstop=4
 
-"# Wrap lines"
-set wrap
+" Linebreak on 500 characters and wrap line"
+set             lbr
+set             tw=500
 
-"# Enable syntax
-syntax on
+" Auto indent"
+set             ai
 
-"##### File handling"
-"######################################################################"
+" Wrap lines"
+set             wrap
 
-"# Set utf8 as standard encoding and en_US as the standard language"
-set encoding=utf8
+" Enable syntax
+syntax          on
 
-"# Use Unix as the standard file type"
-set ffs=unix,dos,mac
+"#### File handling"
+"#####################################################################"
 
-"# Disable backups"
-set nobackup
-set nowb
-set noswapfile
+" Set utf8 as standard encoding and en_US as the standard language"
+set             encoding=utf8
 
-"##### Searches"
-"######################################################################"
+" Use Unix as the standard file type"
+set             ffs=unix,dos,mac
 
-"# Highlight search results"
-set hlsearch
+" Disable backups"
+set             nobackup
+set             nowb
+set             noswapfile
 
-"# Makes search act like search in modern browsers"
-set incsearch
+"#### Searches"
+"#####################################################################"
 
-"# When searching try to be smart about cases"
-set smartcase
+" Highlight search results"
+set             hlsearch
 
-"# Ignore case when searching"
-set ignorecase
+" Makes search act like search in modern browsers"
+set             incsearch
 
-"# Ignore compiled files"
-set wildignore=*.o,*~,*.pyc
+" When searching try to be smart about cases"
+set             smartcase
 
-"# Allow saving of files as sudo when I forgot to start vim using sudo"
-cmap w!! w !sudo tee > /dev/null %
+" Ignore case when searching"
+set             ignorecase
+
+" Ignore compiled files"
+set             wildignore=*.o,*~,*.pyc
+
+" Allow saving of files as sudo when I forgot to start vim using sudo"
+cmap            w!! w !sudo tee > /dev/null %

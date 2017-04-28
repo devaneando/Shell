@@ -1,17 +1,11 @@
-source ${HOME}/.vim/inc/vundle.vim
-source ${HOME}/.vim/inc/bundles/nerdtree.vim
-source ${HOME}/.vim/inc/bundles/startify.vim
-source ${HOME}/.vim/inc/bundles/better-whitespace.vim
-
-
-source ${HOME}/.vim/inc/colors.vim
-source ${HOME}/.vim/inc/settings.vim
+source          ${HOME}/.vim/inc/vundle.vim
+source          ${HOME}/.vim/inc/better-whitespace.vim
+source          ${HOME}/.vim/inc/colors.vim
+source          ${HOME}/.vim/inc/settings.vim
 
 
 
 
-" === vim-template
-let g:templates_directory='~/Templates'
 
 " === phpqa
 let g:phpqa_messdetector_autorun = 0
@@ -46,9 +40,6 @@ map <C-k> mzgg=G`z<CR>
 
 "=== help my plox (credits to http://vimsheet.com) ~/.vim/help/AGreatVimCheatSheet.html
 :map <silent> <F2> :silent !google-chrome --app="file:///home/miguel/.vim/help/AGreatVimCheatSheet.html" && sleep 0.5 && wmctrl -a "A Great Vim Cheat Sheet" -b add,above &<CR>
-
-" === ColorScheme
-colorscheme molokai
 
 " === GUI View Settings
 set guioptions-=m  "remove menu bar
