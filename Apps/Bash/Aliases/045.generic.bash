@@ -121,3 +121,13 @@ function symfonySecret()
 {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1
 }
+
+# Generates a Symfony secret key
+function strongPassword()
+{
+    if [ -z "$1" ]; then
+        cat /dev/urandom | tr -dc 'a-zA-Z0-9#%' | fold -w 12 | head -n 1
+    else
+        cat /dev/urandom | tr -dc 'a-zA-Z0-9#%' | fold -w ${1} | head -n 1
+    fi
+}
