@@ -24,11 +24,6 @@ export SQL_HOST='localhost'
 export SQL_USER='yourUser'
 export SQL_PASSWORD='yourPassword'
 
-# ●▬▬▬▬▬๑۩  Java settings ۩๑▬▬▬▬▬●
-
-export JAVA_HOME=/usr/lib/jvm/default-java
-export JRE_HOME=${JAVA_HOME}/jre
-
 # ●▬▬▬▬▬๑۩  Path ۩๑▬▬▬▬▬●
 
 export PATH=$PATH:.:\

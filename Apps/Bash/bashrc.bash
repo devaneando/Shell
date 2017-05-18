@@ -34,8 +34,4 @@ if [ -f "${HOME}/.bashPrivate" ]; then
 	source ${HOME}/.bashPrivate
 fi
 
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    echo "${FORE_WHITE}`fortune -s`${FORE_RESET}"
-else
-    cowsayfortune
-fi
+echo "${FORE_WHITE}`fortune -s`${FORE_RESET}"

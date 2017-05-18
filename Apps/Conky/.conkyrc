@@ -1,0 +1,99 @@
+# vim: ts=4 sw=4 noet ai cindent syntax=lua
+# http://conky.sourceforge.net/config_settings.html
+# http://conky.sourceforge.net/variables.html
+
+############################# Window positioning
+alignment                   top_right
+gap_x                       15
+gap_y                       15
+
+############################# Window size
+maximum_width               300
+minimum_size                270 250
+
+############################# Window configuration
+background                  false
+border_inner_margin         2
+border_outer_margin         0
+own_window                  true
+own_window_class            Conky
+own_window_type             desktop
+own_window_colour           000000
+own_window_transparent      false
+own_window_hints            "undecorated,below,sticky,skip_taskbar,skip_pager"
+
+############################# Stop flickering
+double_buffer               yes
+no_buffers                  true
+update_interval             1
+
+############################# Generic settings
+draw_shades                 false
+default_shade_color         FFFFFF
+draw_outline                false
+default_outline_color       FFFFFF
+draw_borders                false
+border_width                0
+stippled_borders            0
+cpu_avg_samples             2
+net_avg_samples             2
+extra_newline               false
+use_spacer                  none
+top_cpu_separate            false
+top_name_width              12
+
+############################# Graphs and other drawings
+draw_graph_borders          false
+default_graph_size          40 10
+show_graph_scale            false
+show_graph_range            false
+default_bar_size            40 10
+default_gauge_size          40 10
+
+############################# Text settings
+use_xft                     true
+xftalpha                    1
+xftfont                     Kingthings Trypewriter 2:size=12
+override_utf8_locale        true
+uppercase                   false
+
+############################# Colors
+default_color               FFFFFF # White
+color1                      000000 # Black
+color2                      2D2D2D # Dark gray
+color3                      DCDCDC # Medium gray
+color4                      F9F9F9 # Light gray
+color5                      3775D6 # Sea blue
+color6                      D64937 # Redish
+color7                      37D699 # Sea green
+color8                      D69937 # Mustard
+
+TEXT
+${alignc}${font Open 24 Display St:pixelsize=60}${time %H:%M}${font}${color}
+${alignc}${font Open 24 Display St:pixelsize=16}${time %A, %d de %B}${font}${color}
+
+${goto 50}${color6}............${goto 170}${acpitemp} ºc${font}${color}${image /home/devaneando/.Shell/Apps/Conky/img/laptop_2x.png  -p 5,110 -s 36x36}${font}${color}
+${goto 50}CPU${goto 120}${color5}${cpugraph CPU0 10,40 3775d6 D64937 -t -l}${goto 170}${color7}${cpu CPU0}%${font}${color}
+${goto 50}RAM${goto 120}${color5}${memgraph 10,40 3775d6 D64937 -t -l}${goto 170}${color7}${memperc}%${font}${color}
+${goto 50}SWAP${goto 120}${color5}${swapbar 10,40 3775d6 D64937 -t -l}${goto 170}${color7}${swapperc}%${font}${color}
+
+${goto 50}${color6}............${goto 170}${execi 1 sudo hddtemp /dev/sda -n}ºc${color}${image /home/devaneando/.Shell/Apps/Conky/img/harddisk_2x.png  -p 5,200 -s 36x36}${font}${color}
+${goto 50}/${goto 120}${color5}${fs_bar /}${goto 170}${color7}${fs_free /}${font}${color}
+${goto 50}/data${goto 120}${color5}${fs_bar /data}${goto 170}${color7}${fs_free /data}${font}${color}
+${goto 50}/WD2Tb${goto 120}${color5}${fs_bar /data/FS/WD2Tb}${goto 170}${color7}${fs_free /data/FS/WD2Tb}${font}${color}
+
+${goto 50}${color7}${addr enp1s0}${color}
+${goto 50}${font Material Icons:pixelsize=16}${color8}${font}${color}${goto 70}${upspeed enp1s0}${goto 150}${upspeedgraph enp1s0 10,40 3775d6 D64937 -t -l}${font}${color}${image /home/devaneando/.Shell/Apps/Conky/img/lan_2x.png  -p 5,280 -s 36x36}${font}${color}
+${goto 50}${font Material Icons:pixelsize=16}${color8}${font}${color}${goto 70}${downspeed enp1s0}${goto 150}${downspeedgraph enp1s0 10,40 3775d6 D64937 -t -l}${font}${color}
+
+${goto 50}${color7}${addr wlp2s0}${color}
+${goto 50}${font Material Icons:pixelsize=16}${color8}${font}${color}${goto 70}${upspeed wlp2s0}${goto 150}${upspeedgraph wlp2s0 10,40 3775d6 D64937 -t -l}${font}${color}${image /home/devaneando/.Shell/Apps/Conky/img/wifi_2x.png  -p 5,345 -s 36x36}${font}${color}
+${goto 50}${font Material Icons:pixelsize=16}${color8}${font}${color}${goto 70}${downspeed wlp2s0}${goto 150}${downspeedgraph wlp2s0 10,40 3775d6 D64937 -t -l}${font}${color}
+
+${goto 50}${top name 1}${color7} ${top cpu 1}%${font}${color}${image /home/devaneando/.Shell/Apps/Conky/img/engine_2x.png  -p 5,420 -s 36x36}${font}${color}
+${goto 50}${top name 2}${color7} ${top cpu 2}%${font}${color}
+${goto 50}${top name 3}${color7} ${top cpu 3}%${font}${color}
+${goto 50}${top name 4}${color7} ${top cpu 4}%${font}${color}
+${goto 50}${top name 5}${color7} ${top cpu 5}%${font}${color}
+
+
