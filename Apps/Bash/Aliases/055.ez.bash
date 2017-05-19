@@ -59,6 +59,15 @@ function eZ54Update()
     /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
 }
 
+function eZUpdate()
+{
+    if [ -d app ]; then
+        /usr/bin/env php -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
+    else
+        /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
+    fi
+}
+
 function eZPlatformInstall()
 {
     WWW="/var/www"
