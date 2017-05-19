@@ -32,5 +32,9 @@
 
 # ●▬▬▬▬▬๑۩ Virtual machines ۩๑▬▬▬▬▬●
 
+192.168.2.71        ezp_20x.go-dev.local
+192.168.2.71        ezp_19x.go-dev.local
 192.168.2.71        ezp_18x.go-dev.local
+192.168.2.71        ezp_17x.go-dev.local
+192.168.2.71        ezp_16x.go-dev.local
 192.168.2.71        ezp_54x.go-dev.local
