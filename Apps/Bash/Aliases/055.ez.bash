@@ -61,20 +61,6 @@ function eZ54Update()
 
 function eZ53Update()
 {
-    ##### 5.3.2
-
-    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer remove --no-update \
-        zetacomponents/archive zetacomponents/authentication zetacomponents/authentication-database-tiein \
-        zetacomponents/base zetacomponents/cache zetacomponents/configuration zetacomponents/console-tools \
-        zetacomponents/database zetacomponents/debug zetacomponents/event-log zetacomponents/feed \
-        zetacomponents/image-conversion zetacomponents/mail zetacomponents/mvc-tools zetacomponents/mvc-authentication-tiein \
-        zetacomponents/persistent-object zetacomponents/php-generator zetacomponents/signal-slot \
-        zetacomponents/system-information
-
-    ##### 5.3.4
-
-    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer remove --no-update --dev behat/mink-selenium-driver
-
 
     ##### 5.3.8
 
@@ -94,6 +80,20 @@ function eZ53Update()
 
     /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/compose require --no-plugins --no-update \
         "sensio/distribution-bundle ~2.3|~3.0"
+    
+    ##### 5.3.2
+
+    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer remove --no-update \
+        zetacomponents/archive zetacomponents/authentication zetacomponents/authentication-database-tiein \
+        zetacomponents/base zetacomponents/cache zetacomponents/configuration zetacomponents/console-tools \
+        zetacomponents/database zetacomponents/debug zetacomponents/event-log zetacomponents/feed \
+        zetacomponents/image-conversion zetacomponents/mail zetacomponents/mvc-tools zetacomponents/mvc-authentication-tiein \
+        zetacomponents/persistent-object zetacomponents/php-generator zetacomponents/signal-slot \
+        zetacomponents/system-information
+
+    ##### 5.3.4
+
+    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer remove --no-update --dev behat/mink-selenium-driver
 
     ##### Clear the caches
 
