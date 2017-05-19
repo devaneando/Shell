@@ -59,6 +59,53 @@ function eZ54Update()
     /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
 }
 
+function eZ53Update()
+{
+    ##### 5.3.2
+
+    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer remove --no-update \
+        zetacomponents/archive zetacomponents/authentication zetacomponents/authentication-database-tiein \
+        zetacomponents/base zetacomponents/cache zetacomponents/configuration zetacomponents/console-tools \
+        zetacomponents/database zetacomponents/debug zetacomponents/event-log zetacomponents/feed \
+        zetacomponents/image-conversion zetacomponents/mail zetacomponents/mvc-tools zetacomponents/mvc-authentication-tiein \
+        zetacomponents/persistent-object zetacomponents/php-generator zetacomponents/signal-slot \
+        zetacomponents/system-information
+
+    ##### 5.3.4
+
+    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer remove --no-update --dev behat/mink-selenium-driver
+
+
+    ##### 5.3.8
+
+    # First install Composer v1.0 that works with old version of ezpublish-legacy-installer
+    php -r "copy('https://getcomposer.org/download/1.0.3/composer.phar', 'composer.phar');"
+     
+    # As authentication is built in to composer now, we can remove the following plugin
+    /usr/bin/env php5.6 -d memory_limit=-1 composer.phar remove --no-update --no-plugins bitexpert/composer-authstore-plugin
+
+    # Then install newer version of ezpublish-legacy-installer that works on Composer 1.1
+    # (will warn about the outdated versions you have from before)
+    /usr/bin/env php5.6 -d memory_limit=-1 composer.phar update --no-dev --prefer-dist --no-scripts \
+        ezsystems/ezpublish-legacy-installer
+     
+    # Then make sure composer is updated to latests
+    rm composer.phar
+
+    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/compose require --no-plugins --no-update \
+        "sensio/distribution-bundle ~2.3|~3.0"
+
+    ##### Clear the caches
+
+    rm ezpublish/cache/*/*ProjectContainer.php
+    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
+
+    echo "Don't forget to update the database"
+    echo "/<ezp5-root>/ezpublish_legacy/update/database/<mysql|postgresql>/5.3/dbupdate-5.3.2-to-5.3.3.sql"
+    echo "And if you use Cluster (DFS) the following:"
+    echo "/<ezp5-root>/ezpublish_legacy/update/database/mysql/5.3/dbupdate-cluster-5.3.2-to-5.3.3.sql"
+}
+
 function eZUpdate()
 {
     if [ -d app ]; then
