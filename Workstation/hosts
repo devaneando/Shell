@@ -4,13 +4,13 @@
 127.0.1.1		devaneando-hp
 127.0.1.1		go-dev
 127.0.0.1       notas
-127.0.0.1       kadu kadu.local
-127.0.0.1       rest rest.local
+127.0.0.1       its7
+
 # ●▬▬▬▬▬๑۩ Pesudo localhost ۩๑▬▬▬▬▬●
 
 192.168.2.70		devaneando-hp.local
 192.168.2.71		go-dev.local
-
+192.168.2.92        its7.local
 
 # ●▬▬▬▬▬๑۩ Other sites ۩๑▬▬▬▬▬●
 
@@ -39,3 +39,5 @@
 192.168.2.71        ezp_16x.go-dev.local
 192.168.2.71        ezp_54x.go-dev.local
 192.168.2.71        ezp_53x.go-dev.local
+192.168.2.92        ezp_53x.inf7.local
+192.168.2.92        ezp_54x.its7.local

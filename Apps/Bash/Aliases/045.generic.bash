@@ -131,3 +131,21 @@ function strongPassword()
         cat /dev/urandom | tr -dc 'a-zA-Z0-9#%' | fold -w ${1} | head -n 1
     fi
 }
+
+# Generates a SSH Key
+function sshKey()
+{
+    if [ -z "$1" ]; then
+        echo "${FORE_RED_DARK}${SET_ITALIC}You must provide the email and the key name${RESET_FULL}"
+        echo "${FORE_RED_DARK}${SET_ITALIC}Ex.: sshKey john.doe@gmail.com johnDoe.rsa${RESET_FULL}"
+        return 9
+    fi
+
+    if [ -z "$2" ]; then
+        myKey="myKey.rsa"
+    else
+        myKey="${2}"
+    fi
+    
+    /usr/bin/env ssh-keygen -t rsa -b 4096 -C "${1}" -f "${myKey}"
+}
