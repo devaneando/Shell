@@ -12,7 +12,7 @@ alias find='sudo env find'
 function findHere()
 {
     if [ -z "$1" ]; then
-        print error "No search pattern provided"
+        printError "No search pattern provided"
         return 999
     fi
 
@@ -25,18 +25,18 @@ function findHere()
 function findMove()
 {
     if [ -z "$1" ]; then
-        print error "No search pattern provided"
+        printError "No search pattern provided"
         return 999
     fi
 
     shopt -s nocasematch
     if [[ "$1" == "the" ]]; then
-        print error "This command won't work with the word THE as search pattern"
+        printError "This command won't work with the word THE as search pattern"
         return 999
     fi
 
     if [ -z "$2" ]; then
-        print error "No destination folder provided"
+        printError "No destination folder provided"
         return 999
     fi
 
@@ -48,13 +48,13 @@ function findMove()
 function findDelete()
 {
     if [ -z "$1" ]; then
-        print error "No search pattern provided"
+        printError "No search pattern provided"
         return 999
     fi
 
     shopt -s nocasematch
     if [[ "$1" == "the" ]]; then
-        print error "This command won't work with the word THE as search pattern"
+        printError "This command won't work with the word THE as search pattern"
         return 999
     fi
 

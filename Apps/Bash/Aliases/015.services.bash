@@ -10,11 +10,11 @@ function __services()
 		echo "Usage: __services your_service your_action"
 		return 0
 	fi
-	
+
 	if [ -z "$2" ]; then
 		sudo --preserve-env env service ${1} start
 	fi
-	
+
 	if [ "${2}" == "start" ]; then
 		sudo --preserve-env env service ${1} stop
 		sudo --preserve-env env service ${1} start
@@ -26,7 +26,7 @@ function __services()
 ##### Finds the correct PHP-FPM service's name
 function __serviceFpm()
 {
-	echo '$(env ps | env grep -m 1 -o "php.*fpm.*")'
+	echo $(env ps -ef |grep -m1 -o " php[^:/\n]*-fpm")
 }
 
 # ●▬▬▬▬▬๑۩  Aliases ۩๑▬▬▬▬▬●
@@ -36,25 +36,24 @@ alias service="sudo env service"
 ##### Apache
 alias apacheStart="__services apache start"
 alias apacheStop="__services apache stop"
+alias apacheRestart="__services apache stop && __services apache start"
 
 ##### FPM
 alias fpmStart="__services $(__serviceFpm) start"
 alias fpmStop="__services $(__serviceFpm) stop"
+alias fpmRestart="__services $(__serviceFpm) stop && __services $(__serviceFpm) start"
 
 ##### MySQL
 alias mySqlStart="__services mysql start"
 alias mySqlStop="__services mysql stop"
+alias mySqlRestart="__services mysql stop && __services mysql start"
 
 ##### Nginx
 alias nginxStart="__services nginx start"
 alias nginxStop="__services nginx stop"
+alias nginxRestart="__services nginx stop && __services nginx start"
 
 ##### Varnish
 alias varnishStart="__services varnish start"
 alias varnishStop="__services varnish stop"
-
-
-
-
-
-
+alias varnishRestart="__services varnish stop && __services varnish start"
