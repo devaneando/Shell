@@ -273,4 +273,5 @@ Apps/SSH/authorized_keys
 Apps/SSH/Keys
 Apps/SSH/*.rsa
 Apps/SSH/*.rsa.pub
-
+sites-enabled/*.conf
+pools-enabled/*.conf

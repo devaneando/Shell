@@ -66,7 +66,7 @@ function findDelete()
 
     shopt -s nocasematch
     if [[ "$REPLY" == "y" ]]; then
-        env sudo --preserve-env env find . -type d -iname "*$1*" -exec echo -e "\e[94m Deleting "{}" \e[0m \n" \; -exec rm -Rf {} \;
+        env sudo --preserve-env env find . -type f -iname "*$1*" -exec echo -e "\e[94m Deleting "{}" \e[0m \n" \; -exec rm -Rfv {} \;
     fi
 }
 
@@ -81,6 +81,6 @@ function deleteEmptyFolders()
 
     shopt -s nocasematch
     if [[ "$REPLY" == "y" ]]; then
-        fenv sudo --preserve-env env find . -empty -type d -exec echo -e "\e[94m Deleting "{}" \e[0m \n" \; -exec rm -Rf {} \;
+        env sudo --preserve-env env find . -empty -type d -exec echo -e "\e[94m Deleting "{}" \e[0m \n" \; -exec rm -Rfv {} \;
     fi
 }
