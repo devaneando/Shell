@@ -261,9 +261,6 @@ TSWLatexianTemp*
 # Automcomplete
 .phpcomplete_*
 
-# Enabled files are local only
-*.enabled
-
 # Specific files #
 ##################
 Apps/Vim/bundle/*
