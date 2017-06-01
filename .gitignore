@@ -273,5 +273,6 @@ Apps/SSH/authorized_keys
 Apps/SSH/Keys
 Apps/SSH/*.rsa
 Apps/SSH/*.rsa.pub
+Workstation/Lamp/Nginx/sites-enabled/*.conf
 sites-enabled/*.conf
 pools-enabled/*.conf
