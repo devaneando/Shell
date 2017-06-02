@@ -33,7 +33,7 @@
 
 # ●▬▬▬▬▬๑۩ Virtual machines ۩๑▬▬▬▬▬●
 
-192.168.2.71        master.go-dev.local
+192.168.2.71        ezp_master.go-dev.local
 192.168.2.71        ezp_20x.go-dev.local
 192.168.2.71        ezp_19x.go-dev.local
 192.168.2.71        ezp_18x.go-dev.local
