@@ -117,89 +117,91 @@ function eZUpdate()
 
 function eZPlatformInstall()
 {
-    WWW="/var/www"
-    FOLDER="NOGO"
-    VERSION="NOGO"
+    case ${1} in
+        "master")
+            FOLDER="ezp_master"
+            VERSION="dev-master"
+            ;;
+        "1.10")
+            FOLDER="ezp_110x"
+            VERSION="v1.10"
+            ;;
+        "1.9")
+            FOLDER="ezp_19x"
+            VERSION="v1.9"
+            ;;
+        "1.8")
+            FOLDER="ezp_18x"
+            VERSION="v1.8"
+            ;;
+        "1.7")
+            FOLDER="ezp_17x"
+            VERSION="v1.7"
+            ;;
+        "1.6")
+            FOLDER="ezp_16x"
+            VERSION="v1.6"
+            ;;            
+        *)
+            echo -e "You must use this command in the following format:\neZInstall 1.8"
+            return
+            ;;
+    esac
 
-    if [[ ${1} == "master" ]]; then
-        FOLDER="ezp_18x"
-        VERSION="dev-master"
-    fi
-
-    if [[ ${1} == "1.9" ]]; then
-        FOLDER="/var/www/ezp_19x"
-        VERSION="v1.9"
-    fi
-
-    if [[ ${1} == "1.8" ]]; then
-        FOLDER="/var/www/ezp_18x"
-        VERSION="v1.8"
-    fi
-
-    if [[ ${1} == "1.7" ]]; then
-        FOLDER="/var/www/ezp_17x"
-        VERSION="v1.7"
-    fi
-
-    if [[ ${1} == "1.6" ]]; then
-        FOLDER="/var/www/ezp_16x"
-        VERSION="v1.6"
-    fi
-
-    if [[ ${FOLDER} == "NOGO" ]]; then
-        echo -e "You must use this command in the following format:\neZInstall 1.8"
-        return
-    fi
+    WWW="/var/www/"
 
     if [[ -d ${WWW}/${FOLDER} ]]; then
         rm -Rf -v ${WWW}/${FOLDER}
     fi
 
+    cd ${WWW}
     composer create-project --no-dev --keep-vcs ezsystems/ezplatform "${FOLDER}" ${VERSION}
+    cd "${FOLDER}"
+    php -d memory_limit=-1 app/console ezplatform:install --env prod clean
 
 }
 
 function eZStudionInstall()
 {
-    WWW="/var/www"
-    FOLDER="NOGO"
-    VERSION="NOGO"
+    case ${1} in
+        "master")
+            FOLDER="ezp_master"
+            VERSION="dev-master"
+            ;;
+        "1.10")
+            FOLDER="ezp_110x"
+            VERSION="v1.10"
+            ;;
+        "1.9")
+            FOLDER="ezp_19x"
+            VERSION="v1.9"
+            ;;
+        "1.8")
+            FOLDER="ezp_18x"
+            VERSION="v1.8"
+            ;;
+        "1.7")
+            FOLDER="ezp_17x"
+            VERSION="v1.7"
+            ;;
+        "1.6")
+            FOLDER="ezp_16x"
+            VERSION="v1.6"
+            ;;            
+        *)
+            echo -e "You must use this command in the following format:\neZInstall 1.8"
+            return
+            ;;
+    esac
 
-    if [[ ${1} == "master" ]]; then
-        FOLDER="ezp_18x"
-        VERSION="dev-master"
-    fi
-
-    if [[ ${1} == "1.9" ]]; then
-        FOLDER="/var/www/ezp_19x"
-        VERSION="v1.9"
-    fi
-
-    if [[ ${1} == "1.8" ]]; then
-        FOLDER="/var/www/ezp_18x"
-        VERSION="v1.8"
-    fi
-
-    if [[ ${1} == "1.7" ]]; then
-        FOLDER="/var/www/ezp_17x"
-        VERSION="v1.7"
-    fi
-
-    if [[ ${1} == "1.6" ]]; then
-        FOLDER="/var/www/ezp_16x"
-        VERSION="v1.6"
-    fi
-
-    if [[ ${FOLDER} == "NOGO" ]]; then
-        echo -e "You must use this command in the following format:\neZInstall 1.8"
-        return
-    fi
+    WWW="/var/www/"
 
     if [[ -d ${WWW}/${FOLDER} ]]; then
         rm -Rf -v ${WWW}/${FOLDER}
     fi
 
-    composer create-project --no-dev ezsystems/ezstudio "${FOLDER}" ${VERSION}
+    cd ${WWW}
+    composer create-project --no-dev --keep-vcs ezsystems/ezstudio "${FOLDER}" ${VERSION}
     cd "${FOLDER}"
     php -d memory_limit=-1 app/console ezplatform:install --env prod studio-clean
 
