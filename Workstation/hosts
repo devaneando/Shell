@@ -5,6 +5,7 @@
 127.0.1.1		go-dev
 127.0.0.1       notas
 127.0.0.1       its7
+192.168.2.221    ezp51.paulo
 
 # ●▬▬▬▬▬๑۩ Pesudo localhost ۩๑▬▬▬▬▬●
 
@@ -17,6 +18,7 @@
 
 54.77.213.27		1.support.ez.no
 192.168.2.202		cleverti git.cleverti intra.cleverti
+192.168.2.71        ezp_53x.go-dev.local
 192.168.2.140		cti-srv7-acs-vm
 
 # ●▬▬▬▬▬๑۩ Spindots ۩๑▬▬▬▬▬●
@@ -41,5 +43,6 @@
 192.168.2.71        ezp_16x.go-dev.local
 192.168.2.71        ezp_54x.go-dev.local
 192.168.2.71        ezp_53x.go-dev.local
+192.168.2.71        ezp_51x.go-dev.local
 192.168.2.92        ezp_53x.inf7.local
 192.168.2.92        ezp_54x.its7.local
