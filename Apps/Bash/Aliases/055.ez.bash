@@ -11,8 +11,8 @@ function eZClear()
         rm -Rf ezpublish_legacy/var/cache/*
         rm -Rf ezpublish_legacy/var/*/cache/*ez
 
-        /usr/bin/env php5.6 -d memory_limit=-1 ezpublish/console cache:clear --env=prod --no-debug
-        /usr/bin/env php5.6 -d memory_limit=-1 ezpublish/console ezpublish:legacy:script --env=prod bin/php/ezcache.php --clear-all --expiry=now --purge
+        php -d memory_limit=-1 ezpublish/console cache:clear --env=prod --no-debug
+        php -d memory_limit=-1 ezpublish/console ezpublish:legacy:script --env=prod bin/php/ezcache.php --clear-all --expiry=now --purge
 
     fi
 
@@ -27,9 +27,9 @@ function eZAssets()
     fi
 
     if [ -d ezpublish ]; then
-        /usr/bin/env php5.6 -d memory_limit=-1 ezpublish/console cache:clear --env=prod
-        /usr/bin/env php5.6 -d memory_limit=-1 ezpublish/console assetic:dump
-        /usr/bin/env php5.6 -d memory_limit=-1 ezpublish/console assets:install
+        php -d memory_limit=-1 ezpublish/console cache:clear --env=prod
+        php -d memory_limit=-1 ezpublish/console assetic:dump
+        php -d memory_limit=-1 ezpublish/console assets:install
     fi
 
 }
@@ -48,15 +48,15 @@ function eZ54Update()
     php -r "copy('https://getcomposer.org/download/1.0.3/composer.phar', 'composer.phar');"
 
     # Then install newer version
-    /usr/bin/env php5.6 -d memory_limit=-1 composer.phar update --no-dev --prefer-dist --no-scripts ezsystems/ezpublish-legacy-installer
+    php -d memory_limit=-1 composer.phar update --no-dev --prefer-dist --no-scripts ezsystems/ezpublish-legacy-installer
 
     rm composer.phar
 
-    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer remove --no-update --dev behat/mink-selenium-driver
+    php -d memory_limit=-1 /usr/local/bin/composer remove --no-update --dev behat/mink-selenium-driver
 
-    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer require --no-update symfony/symfony:~2.7.0 sensio/distribution-bundle:~3.0
+    php -d memory_limit=-1 /usr/local/bin/composer require --no-update symfony/symfony:~2.7.0 sensio/distribution-bundle:~3.0
 
-    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
+    php -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
 }
 
 function eZ53Update()
@@ -68,22 +68,22 @@ function eZ53Update()
     php -r "copy('https://getcomposer.org/download/1.0.3/composer.phar', 'composer.phar');"
      
     # As authentication is built in to composer now, we can remove the following plugin
-    /usr/bin/env php5.6 -d memory_limit=-1 composer.phar remove --no-update --no-plugins bitexpert/composer-authstore-plugin
+    php -d memory_limit=-1 composer.phar remove --no-update --no-plugins bitexpert/composer-authstore-plugin
 
     # Then install newer version of ezpublish-legacy-installer that works on Composer 1.1
     # (will warn about the outdated versions you have from before)
-    /usr/bin/env php5.6 -d memory_limit=-1 composer.phar update --no-dev --prefer-dist --no-scripts \
+    php -d memory_limit=-1 composer.phar update --no-dev --prefer-dist --no-scripts \
         ezsystems/ezpublish-legacy-installer
      
     # Then make sure composer is updated to latests
     rm composer.phar
 
-    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/compose require --no-plugins --no-update \
+    php -d memory_limit=-1 /usr/local/bin/compose require --no-plugins --no-update \
         "sensio/distribution-bundle ~2.3|~3.0"
     
     ##### 5.3.2
 
-    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer remove --no-update \
+    php -d memory_limit=-1 /usr/local/bin/composer remove --no-update \
         zetacomponents/archive zetacomponents/authentication zetacomponents/authentication-database-tiein \
         zetacomponents/base zetacomponents/cache zetacomponents/configuration zetacomponents/console-tools \
         zetacomponents/database zetacomponents/debug zetacomponents/event-log zetacomponents/feed \
@@ -93,12 +93,12 @@ function eZ53Update()
 
     ##### 5.3.4
 
-    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer remove --no-update --dev behat/mink-selenium-driver
+    php -d memory_limit=-1 /usr/local/bin/composer remove --no-update --dev behat/mink-selenium-driver
 
     ##### Clear the caches
 
     rm ezpublish/cache/*/*ProjectContainer.php
-    /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
+    php -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
 
     echo "Don't forget to update the database"
     echo "/<ezp5-root>/ezpublish_legacy/update/database/<mysql|postgresql>/5.3/dbupdate-5.3.2-to-5.3.3.sql"
@@ -111,7 +111,7 @@ function eZUpdate()
     if [ -d app ]; then
         /usr/bin/env php -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
     else
-        /usr/bin/env php5.6 -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
+        php -d memory_limit=-1 /usr/local/bin/composer update --no-dev --prefer-dist
     fi
 }
 
@@ -148,7 +148,7 @@ function eZPlatformInstall()
             ;;
     esac
 
-    WWW="/var/www/"
+    WWW="/var/www/ez/"
 
     if [[ -d ${WWW}/${FOLDER} ]]; then
         rm -Rf -v ${WWW}/${FOLDER}
@@ -194,7 +194,7 @@ function eZStudionInstall()
             ;;
     esac
 
-    WWW="/var/www/"
+    WWW="/var/www/ez"
 
     if [[ -d ${WWW}/${FOLDER} ]]; then
         rm -Rf -v ${WWW}/${FOLDER}

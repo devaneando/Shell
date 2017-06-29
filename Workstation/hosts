@@ -11,6 +11,7 @@
 
 192.168.2.70		devaneando-hp.local
 192.168.2.71		go-dev.local
+192.168.2.71        juba.org www.juba.org
 127.0.0.1	     	notas.local
 192.168.2.92        its7.local
 
@@ -46,3 +47,4 @@
 192.168.2.71        ezp_51x.go-dev.local
 192.168.2.92        ezp_53x.inf7.local
 192.168.2.92        ezp_54x.its7.local
+192.168.2.93        ezp_53x.dev-05.local

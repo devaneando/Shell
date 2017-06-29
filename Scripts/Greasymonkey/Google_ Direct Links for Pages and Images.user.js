@@ -1,8 +1,11 @@
 // ==UserScript==
 // @namespace   VA_i
-// @version     4.1.0.20160110
+// @version     5.0.0.20170629
 // @grant       GM_addStyle
-// @include     /^https?://(?:www|encrypted|ipv6)\.google\.[^/]+/(?:$|[#?]|search|webhp|imgres)/
+// @grant       GM_getValue
+// @grant       GM_setValue
+// @grant       unsafeWindow
+// @include     /^https?://(?:www|encrypted|ipv[46])\.google\.[^/]+/(?:$|[#?]|search|webhp|imgres)/
 // @match       https://news.google.com/*
 // @match       https://cse.google.com/cse/*
 // @run-at      document-start
@@ -14,16 +17,30 @@
 // @description:zh-TW 令 Google 直接鏈接至搜尋結果網頁以及圖片，跳過重定向及圖片預覽。
 // ==/UserScript==
 
+GM_addStyle('a.x_source_link {' + [
+  'line-height: 1.0',  // increment the number for a taller thumbnail info-bar
+  'text-decoration: none !important',
+  'color: inherit !important',
+  'display: block !important'
+].join(';') + '}');
+
+// For example: open https://ipv4.google.com/#x-option:open-inplace
+switch (location.hash) {
+  // Open links in the current tab.
+  case '#x-option:open-inplace': GM_setValue('opt_noopen', true); break;
+  // Do not ...
+  case '#x-option:no-open-inplace': GM_setValue('opt_noopen', false); break;
+}
+var opt_noopen = GM_getValue('opt_noopen', false);
+
+unsafeWindow.Function((function () {
+
 var debug = false;
 var count = 0;
 
-GM_addStyle('a.x_source_link {' + [
-  'color: inherit !important',
-  'text-decoration: none',
-  'line-height: 1.2',
-  'font-size: 1.2em',
-  'display: block'
-].join(';') + '}');
+var opt_noopen = Boolean(arguments[0]);
+var options = {noopen: opt_noopen};
+debug && console.log('Options:', options);
 
 // web pages: url?url=
 // images: imgres?imgurl=
@@ -35,30 +52,54 @@ var restore = function (link, url) {
   var newUrl = url || oldUrl;
   var matches = newUrl.match(re);
   if (matches) {
+    debug && console.log('restoring', link._x_id, newUrl);
+    link.setAttribute('href', decodeURIComponent(matches[2]));
+    enhanceLink(link);
     if (matches[1] === 'imgres') {
       if (link.querySelector('img[src^="data:"]')) {
         link._x_href = newUrl;
       }
-      var page = decodeURIComponent(newUrl.match(/[?&]imgrefurl=([^&#]+)/)[1]);
-      var pagelink = document.createElement('a');
-      removeReferrer(pagelink);
-      pagelink.href = page;
-      pagelink.className = 'x_source_link';
-      var info = link.querySelector('img~div span');
-      pagelink.textContent = info.textContent;
-      info.textContent = '';
-      info.appendChild(pagelink);
+      enhanceThumbnail(link, newUrl);
     }
-    link.setAttribute('href', decodeURIComponent(matches[2]));
-    removeReferrer(link);
-  } else {
+  } else if (url != null) {
     link.setAttribute('href', newUrl);
   }
 };
 
-var removeReferrer = function (a) {
+var purifyLink = function (a) {
+  if (/\brwt\(/.test(a.getAttribute('onmousedown'))) {
+    a.removeAttribute('onmousedown');
+  }
+};
+
+var enhanceLink = function (a) {
+  purifyLink(a);
   a.setAttribute('rel', 'noreferrer');
   a.setAttribute('referrerpolicy', 'no-referrer');
+  if (options.noopen) {
+    a.setAttribute('target', '_self');
+    a.addEventListener('click', function (event) {
+      event.stopImmediatePropagation();
+      event.stopPropagation();
+    }, true);
+  }
+};
+
+var enhanceThumbnail = function (link, url) {
+  // make thumbnail info-bar clickable
+  var infos = [].slice.call(link.querySelectorAll('img~div span'));
+  if (infos.length > 0) {
+    var pageUrl = decodeURIComponent(url.match(/[?&]imgrefurl=([^&#]+)/)[1]);
+    infos.forEach(function (info) {
+      var pagelink = document.createElement('a');
+      enhanceLink(pagelink);
+      pagelink.href = pageUrl;
+      pagelink.className = 'x_source_link';
+      pagelink.textContent = info.textContent;
+      info.textContent = '';
+      info.appendChild(pagelink);
+    });
+  }
 };
 
 var fakeLink = document.createElement('a');
@@ -69,6 +110,7 @@ var normalizeUrl = function (url) {
 
 var setter = function (v) {
   v = String(v);  // in case an object is passed by clever Google
+  debug && console.log('State:', document.readyState);
   debug && console.log('set', this._x_id, this.getAttribute('href'), v);
   restore(this, v);
 };
@@ -84,9 +126,11 @@ var blocker = function (event) {
 
 var handler = function (a) {
   if (a._x_id) {
+    restore(a);
     return;
   }
-  a._x_id = debug ? ++count : true;
+  a._x_id = ++count;
+  debug && a.setAttribute('x-id', a._x_id);
   if (Object.defineProperty) {
     debug && console.log('define property', a._x_id);
     Object.defineProperty(a, 'href', {get: getter, set: setter});
@@ -99,37 +143,31 @@ var handler = function (a) {
     a.onmouseenter = a.onmousemove = a.onmouseup = a.onmousedown =
       a.ondbclick = a.onclick = a.oncontextmenu = blocker;
   }
+  if (/^_(?:blank|self)$/.test(a.getAttribute('target')) ||
+      /\brwt\(/.test(a.getAttribute('onmousedown')) ||
+      /\bmouse/.test(a.getAttribute('jsaction'))) {
+    enhanceLink(a);
+  }
   restore(a);
 };
 
-var update = function () {
-  [].slice.call(document.querySelectorAll('a[href]')).forEach(handler);
-};
-
-var tid = null;
-var prev = (new Date()).getTime();
-var check = function (mutation) {
-  return mutation.addedNodes.length > 0;
-};
 var checkNewNodes = function (mutations) {
-  mutations.forEach && mutations.forEach(checkAttribute);
-  var next = (new Date()).getTime();
-  if (next - prev > 1000) {  // Don't let me wait too long.
-    prev = next;
-    clearTimeout(tid);
-    update();  // Throttle is what?
-  } else if (!mutations.some || mutations.some(check)) {
-    clearTimeout(tid);
-    tid = setTimeout(update, 200);
+  debug && console.log('State:', document.readyState);
+  if (mutations.target) {
+    checkAttribute(mutations);
+  } else {
+    mutations.forEach && mutations.forEach(checkAttribute);
   }
 };
 var checkAttribute = function (mutation) {
   var target = mutation.target;
-  if (target && target.nodeName.toUpperCase() === 'A' &&
-      (mutation.attributeName || mutation.attrName) === 'href' &&
-      re.test(target.getAttribute('href'))) {
-    debug && console.log('restore attribute', target._x_id, target.getAttribute('href'));
-    restore(target);
+  if (target && target.nodeName.toUpperCase() === 'A') {
+    if ((mutation.attributeName || mutation.attrName) === 'href') {
+      debug && console.log('restore attribute', target._x_id, target.getAttribute('href'));
+    }
+    handler(target);
+  } else if (target instanceof Element) {
+    [].slice.call(target.querySelectorAll('a')).forEach(handler);
   }
 };
 
@@ -148,3 +186,5 @@ if (MutationObserver) {
   document.addEventListener('DOMAttrModified', checkAttribute, false);
   document.addEventListener('DOMNodeInserted', checkNewNodes, false);
 }
+
+}).toString().match(/{([\s\S]*)}/)[1]).call(unsafeWindow, opt_noopen);
