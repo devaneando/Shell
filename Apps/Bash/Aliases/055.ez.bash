@@ -2,14 +2,14 @@ function eZClear()
 {
 
     if [ -d app ]; then
-        rm -Rf app/cache/*
+        rm -Rfv app/cache/*
         /usr/bin/env php -d memory_limit=-1 app/console cache:clear --env=prod
     fi
 
     if [ -d ezpublish_legacy/var/cache ]; then
-        rm -Rf ezpublish/cache/*
-        rm -Rf ezpublish_legacy/var/cache/*
-        rm -Rf ezpublish_legacy/var/*/cache/*ez
+        rm -Rfv ezpublish/cache/*
+        rm -Rfv ezpublish_legacy/var/cache/*
+        rm -Rfv ezpublish_legacy/var/*/cache/*ez
 
         php -d memory_limit=-1 ezpublish/console cache:clear --env=prod --no-debug
         php -d memory_limit=-1 ezpublish/console ezpublish:legacy:script --env=prod bin/php/ezcache.php --clear-all --expiry=now --purge
