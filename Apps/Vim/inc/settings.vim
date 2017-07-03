@@ -49,7 +49,7 @@ let             loaded_matchparen = 1
 set             mat=2
 
 " Prevent copy of line numbers along with the text
-set             mouse=a
+" set             mouse=a
 
 " Use spaces instead of tabs"
 set             expandtab!
