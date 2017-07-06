@@ -49,6 +49,6 @@
 192.168.2.92        ezp_53x.inf7.local
 192.168.2.92        ezp_54x.its7.local
 192.168.2.93        ezp_53x.dev-05.local
-192.168.2.102       ezp_master.dev-07.local
-192.168.2.102       ezp_17x.dev-07.local
-
+192.168.56.11       ezp_master.dev-07.local
+192.168.56.11       ezp_17x.dev-07.local
+192.168.56.10       ezp_54x.dev-05.local

@@ -5,5 +5,10 @@ hostName:/your/nfs/share                        /your/mount/point           nfs 
 
 # ●▬▬▬▬▬๑۩ External HDs ۩๑▬▬▬▬▬●
 
-UUID=a05fab8c-5c4c-42be-9898-830ec5ad45dc       /data/FS/WD2Tb              ext4    defaults,nofail,noauto,noatime                                               0       0
-UUID=3ff9a15f-c511-4496-af55-cb5422ae0fdd       /data/FS/ezData             ext4    defaults,nofail,noauto,noatime                                               0       0
+UUID=a05fab8c-5c4c-42be-9898-830ec5ad45dc /data/FS/WD2Tb    ext4    defaults,nofail,noatime 0 0
+UUID=3ff9a15f-c511-4496-af55-cb5422ae0fdd /data/FS/ezData   ext4    defaults,nofail,noatime 0 0
+
+# ●▬▬▬▬▬๑۩ NFS Shares ۩๑▬▬▬▬▬●
+
+192.168.56.10:/var/www /data/Projects/dev-05/ nfs nofail,noauto,bg,soft,intr,rsize=32768,wsize=32768,actimeo=30,retrans=2 0 0
+192.168.56.11:/var/www /data/Projects/dev-07/ nfs nofail,noauto,bg,soft,intr,rsize=32768,wsize=32768,actimeo=30,retrans=2 0 0
