@@ -2,21 +2,18 @@
 
 127.0.0.1		localhost
 127.0.1.1		devaneando-hp
-127.0.1.1		go-dev
 127.0.0.1       notas
-127.0.0.1       its7
-192.168.2.221    ezp51.paulo
+127.0.0.1       dev-05
+127.0.0.1       dev-06
+127.0.0.1       dev-07
 
 # ●▬▬▬▬▬๑۩ Pesudo localhost ۩๑▬▬▬▬▬●
 
 192.168.2.70		devaneando-hp.local
-192.168.2.71		go-dev.local
-192.168.2.71        juba.org www.juba.org
 127.0.0.1	     	notas.local
-192.168.2.92        its7.local
-192.168.56.10       www.eshorizonte2020.es
-192.168.56.10       cidob.pt www.cidob.pt
-192.168.56.10       dev_54x.dev-05.local www.dev_54x.dev-05.local
+192.168.56.10       dev-05.local
+192.168.56.12       dev-06.local
+192.168.56.11       dev-07.local
 
 # ●▬▬▬▬▬๑۩ Other sites ۩๑▬▬▬▬▬●
 
@@ -39,18 +36,18 @@
 
 # ●▬▬▬▬▬๑۩ Virtual machines ۩๑▬▬▬▬▬●
 
-192.168.2.71        ezp_master.go-dev.local
-192.168.2.71        ezp_20x.go-dev.local
-192.168.2.71        ezp_19x.go-dev.local
-192.168.2.71        ezp_18x.go-dev.local
-192.168.2.71        ezp_17x.go-dev.local
-192.168.2.71        ezp_16x.go-dev.local
-192.168.2.71        ezp_54x.go-dev.local
-192.168.2.71        ezp_53x.go-dev.local
-192.168.2.71        ezp_51x.go-dev.local
-192.168.2.92        ezp_53x.inf7.local
-192.168.2.92        ezp_54x.its7.local
-192.168.2.93        ezp_53x.dev-05.local
-192.168.56.11       ezp_master.dev-07.local
+
+192.168.56.11       ezp_19x.dev-07.local
+192.168.56.11       ezp_18x.dev-07.local
 192.168.56.11       ezp_17x.dev-07.local
+192.168.56.11       ezp_16x.dev-07.local
+192.168.56.11       ezp_54x.dev-07.local
+
 192.168.56.10       ezp_54x.dev-05.local
+192.168.56.10       dev_54x.dev-05.local
+192.168.2.93        ezp_53x.dev-05.local
+
+192.168.56.11       ezp_master.dev-07.local
+192.168.56.10       www.eshorizonte2020.es
+192.168.56.10       cidob.pt www.cidob.pt
+192.168.2.71        juba.org www.juba.org
