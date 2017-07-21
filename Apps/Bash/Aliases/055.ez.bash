@@ -6,15 +6,25 @@ function eZClear()
         /usr/bin/env php -d memory_limit=-1 app/console cache:clear --env=prod
     fi
 
-    if [ -d ezpublish_legacy/var/cache ]; then
+    if [ -d ezpublish ]; then
         rm -Rfv ezpublish/cache/*
-        rm -Rfv ezpublish_legacy/var/cache/*
-        rm -Rfv ezpublish_legacy/var/*/cache/*ez
+        /usr/bin/env php -d memory_limit=-1 ezpublish/console cache:clear --env=prod
+    fi
 
+    if [ -d ezpublish_legacy/var/cache ]; then
+        rm -Rfv ezpublish_legacy/var/cache/*
+        rm -Rfv ezpublish_legacy/var/*/cache/*
         php -d memory_limit=-1 ezpublish/console cache:clear --env=prod --no-debug
         php -d memory_limit=-1 ezpublish/console ezpublish:legacy:script --env=prod bin/php/ezcache.php --clear-all --expiry=now --purge
-
+        php -d memory_limit=-1 ezpublish/console ezpublish:legacy:script --env=prod bin/php/ezpgenerateautoloads.php --progress
     fi
+
+    if [ -d var/cache ]; then
+        rm -Rfv var/cache/*
+        rm -Rfv var/*/cache/*
+        php -d memory_limit=-1 bin/php/ezcache.php --clear-all --expiry=now --purge
+        php -d memory_limit=-1 bin/php/ezpgenerateautoloads.php --progress
+    fi    
 
 }
 
