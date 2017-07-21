@@ -20,7 +20,7 @@ alias mv='env mv --verbose --interactive'
 alias mysqldump='env mysqldump --host=${SQL_HOST} --user=${SQL_USER} --password=${SQL_PASSWORD}'
 alias mysql='env mysql --host=${SQL_HOST}  --user=${SQL_USER} --password=${SQL_PASSWORD}'
 alias ps='env ps -H -e --sort=ruser --lines 30 -o"%p   %P   %U %t     %c" --headers --forest '
-alias ripit='env ripit --outputdir ~/CDRip --coder 0 --bitrate 320 --tracktemplate '"'"'"$tracknum - $trackname"'"'"' --dirtemplate '"'"'"$artist/$album"'"'"
+alias ripit='env ripit --nosubmission --eject --outputdir ~/CDRip --coder 0 --bitrate 320 --tracktemplate '"'"'"$tracknum - $trackname"'"'"' --dirtemplate '"'"'"$artist/$album"'"'"
 alias sl='env games/sl -ale'
 alias sort='env sort --ignore-leading-blanks --ignore-case --unique --ignore-nonprinting'
 alias syndaemon='env syndaemon -d -K -i 2'
