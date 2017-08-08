@@ -84,3 +84,8 @@ function deleteEmptyFolders()
         env sudo --preserve-env env find . -empty -type d -exec echo -e "\e[94m Deleting {} \e[0m \n" \; -exec rm -Rfv {} \;
     fi
 }
+
+function gitKeepIt()
+{
+    find . -type d -name ".git" -prune -o -type d  -exec touch {}/.gitkeep \;
+}
