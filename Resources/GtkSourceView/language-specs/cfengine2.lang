@@ -75,7 +75,7 @@
 
 
     <context id="CF2subsection" style-ref="subsection">
-      <match>\b[ !\ta-zA-Z0-9_\-!.]*\:\:</match>
+      <match>\b[ !\s\s\s\sa-zA-Z0-9_\-!.]*\:\:</match>
     </context>
 
 

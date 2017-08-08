@@ -76,7 +76,7 @@
     </context>
 
     <context id="indented-lines-c-code">
-      <start>^(?=[ \t])</start>
+      <start>^(?=[ \s\s\s\s])</start>
       <end>$</end>
       <include>
         <context ref="c:c" />
@@ -127,12 +127,12 @@
     </context>
 
     <context id="rule">
-      <start>^(?=[^% \t])</start>
+      <start>^(?=[^% \s\s\s\s])</start>
       <end>$</end>
       <include>
         <context id="pattern" style-ref="expression">
           <start>^</start>
-          <end>[ \t]</end>
+          <end>[ \s\s\s\s]</end>
           <include>
             <context ref="round-brackets" />
             <context ref="square-brackets" />

@@ -50,7 +50,7 @@
       <keyword>TIMESTAMP</keyword>
       <keyword>INTERVAL</keyword>
       <!-- FIXME no \n in patterns! -->
-      <keyword>(LONG[ \t\n]+)?RAW</keyword>
+      <keyword>(LONG[ \s\s\s\s\n]+)?RAW</keyword>
       <keyword>U?ROWID</keyword>
       <keyword>N?CHAR</keyword>
       <keyword>(N?C|B)LOB</keyword>
@@ -60,19 +60,19 @@
 
     <context id="ansi-datatypes" style-ref="type">
       <!-- FIXME no \n in patterns! -->
-      <keyword>(NATIONAL[ \t\n]+)?CHAR(ACTER)?([ \t\n]+VARYING)?</keyword>
+      <keyword>(NATIONAL[ \s\s\s\s\n]+)?CHAR(ACTER)?([ \s\s\s\s\n]+VARYING)?</keyword>
       <!-- FIXME no \n in patterns! -->
-      <keyword>NCHAR([ \t\n]+VARYING)?</keyword>
+      <keyword>NCHAR([ \s\s\s\s\n]+VARYING)?</keyword>
       <keyword>NUMERIC|DECIMAL</keyword>
       <keyword>INTEGER|INT|SMALLINT</keyword>
       <!-- FIXME no \n in patterns! -->
-      <keyword>FLOAT|DOUBLE[ \t\n]+PRECISION|REAL</keyword>
+      <keyword>FLOAT|DOUBLE[ \s\s\s\s\n]+PRECISION|REAL</keyword>
     </context>
 
     <context id="sql-ds-and-db2-datatypes" style-ref="type">
       <keyword>CHARACTER</keyword>
       <!-- FIXME no \n in patterns! -->
-      <keyword>(LONG[ \t\n]+)?VARCHAR</keyword>
+      <keyword>(LONG[ \s\s\s\s\n]+)?VARCHAR</keyword>
       <keyword>DECIMAL</keyword>
       <keyword>INTEGER|SMALLINT</keyword>
       <keyword>FLOAT</keyword>
@@ -105,7 +105,7 @@
     </context>
 
     <context id="size-clause" style-ref="decimal">
-      <match>\b[0-9]+[ \t]*([Kk]|[Mm]|[Gg]|[Tt])\b</match>
+      <match>\b[0-9]+[ \s\s\s\s]*([Kk]|[Mm]|[Gg]|[Tt])\b</match>
     </context>
 
     <context id="unlimited" style-ref="decimal">
@@ -425,12 +425,12 @@
       <keyword>CLUSTER</keyword>
       <keyword>COMMENT</keyword>
       <keyword>COMPRESS</keyword>
-      <keyword>CONNECT[ \t]+BY</keyword>
+      <keyword>CONNECT[ \s\s\s\s]+BY</keyword>
       <keyword>CUBE</keyword>
       <keyword>EXCLUSIVE</keyword>
       <keyword>EXISTS</keyword>
       <keyword>FILE</keyword>
-      <keyword>GROUPING[ \t]+SETS</keyword>
+      <keyword>GROUPING[ \s\s\s\s]+SETS</keyword>
       <keyword>IDENTIFIED</keyword>
       <keyword>INCREMENT</keyword>
       <keyword>INDEX</keyword>
@@ -455,7 +455,7 @@
       <keyword>ROWNUM</keyword>
       <keyword>SHARE</keyword>
       <keyword>SIBLINGS</keyword>
-      <keyword>START[ \t]+WITH</keyword>
+      <keyword>START[ \s\s\s\s]+WITH</keyword>
       <keyword>SUCCESSFUL</keyword>
       <keyword>SYNONYM</keyword>
       <keyword>TRIGGER</keyword>
@@ -464,65 +464,65 @@
     </context>
 
     <context id="sql-statements" style-ref="keyword">
-      <prefix>^[ \t]*</prefix>
-      <keyword>ALTER[ \t]+(CLUSTER|DATABASE|DIMENSION|DISKGROUP|FUNCTION|INDEX(TYPE)?|JAVA|MATERIALIZED[ \t]+VIEW([ \t]+LOG)?|OPERATOR|OUTLINE|PACKAGE|PROCEDURE|PROFILE|RESOURCE[ \t]+COST|ROLE|ROLLBACK[ \t]+SEGMENT|SEQUENCE|SESSION|SYSTEM|TABLE(SPACE)?|TRIGGER|TYPE|USER|VIEW)</keyword>
+      <prefix>^[ \s\s\s\s]*</prefix>
+      <keyword>ALTER[ \s\s\s\s]+(CLUSTER|DATABASE|DIMENSION|DISKGROUP|FUNCTION|INDEX(TYPE)?|JAVA|MATERIALIZED[ \s\s\s\s]+VIEW([ \s\s\s\s]+LOG)?|OPERATOR|OUTLINE|PACKAGE|PROCEDURE|PROFILE|RESOURCE[ \s\s\s\s]+COST|ROLE|ROLLBACK[ \s\s\s\s]+SEGMENT|SEQUENCE|SESSION|SYSTEM|TABLE(SPACE)?|TRIGGER|TYPE|USER|VIEW)</keyword>
       <keyword>ANALYZE</keyword>
-      <keyword>(DIS)?ASSOCIATE[ \t]+STATISTICS</keyword>
+      <keyword>(DIS)?ASSOCIATE[ \s\s\s\s]+STATISTICS</keyword>
       <keyword>CALL</keyword>
-      <keyword>COMMIT([ \t]+WORK)?</keyword>
-      <keyword>CREATE[ \t]+(CLUSTER|CONTEXT|CONTROLFILE|DATABASE([ \t]+LINK)?|DIMENSION|DIRECTORY|DISKGROUP|FUNCTION|INDEX(TYPE)?|JAVA|LIBRARY|MATERIALIZED[ \t]+VIEW([ \t]+LOG)?|OPERATOR|OUTLINE|PACKAGE([ \t]+BODY)?|S?PFILE|PROCEDURE|PROFILE|RESTORE[ \t]+POINT|ROLE|ROLLBACK[ \t]+SEGMENT|SCHEMA|SEQUENCE|SYNONYM|TABLE(SPACE)?|TRIGGER|TYPE([ \t]+BODY)?|USER|VIEW)</keyword>
-      <keyword>DROP[ \t]+(CLUSTER|CONTEXT|DATABASE([ \t]+LINK)?|DIMENSION|DIRECTORY|DISKGROUP|FUNCTION|INDEX(TYPE)?|JAVA|LIBRARY|MATERIALIZED[ \t]+VIEW([ \t]+LOG)?|OPERATOR|OUTLINE|PACKAGE|PROCEDURE|PROFILE|RESTORE[ \t]+POINT|ROLE|ROLLBACK[ \t]+SEGMENT|SEQUENCE|SYNONYM|TABLE(SPACE)?|TRIGGER|TYPE([ \t]+BODY)?|USER|VIEW)</keyword>
-      <keyword>EXPLAIN[ \t]+PLAN</keyword>
-      <keyword>FLASHBACK[ \t]+(DATABASE|TABLE)</keyword>
-      <keyword>LOCK[ \t]+TABLE</keyword>
+      <keyword>COMMIT([ \s\s\s\s]+WORK)?</keyword>
+      <keyword>CREATE[ \s\s\s\s]+(CLUSTER|CONTEXT|CONTROLFILE|DATABASE([ \s\s\s\s]+LINK)?|DIMENSION|DIRECTORY|DISKGROUP|FUNCTION|INDEX(TYPE)?|JAVA|LIBRARY|MATERIALIZED[ \s\s\s\s]+VIEW([ \s\s\s\s]+LOG)?|OPERATOR|OUTLINE|PACKAGE([ \s\s\s\s]+BODY)?|S?PFILE|PROCEDURE|PROFILE|RESTORE[ \s\s\s\s]+POINT|ROLE|ROLLBACK[ \s\s\s\s]+SEGMENT|SCHEMA|SEQUENCE|SYNONYM|TABLE(SPACE)?|TRIGGER|TYPE([ \s\s\s\s]+BODY)?|USER|VIEW)</keyword>
+      <keyword>DROP[ \s\s\s\s]+(CLUSTER|CONTEXT|DATABASE([ \s\s\s\s]+LINK)?|DIMENSION|DIRECTORY|DISKGROUP|FUNCTION|INDEX(TYPE)?|JAVA|LIBRARY|MATERIALIZED[ \s\s\s\s]+VIEW([ \s\s\s\s]+LOG)?|OPERATOR|OUTLINE|PACKAGE|PROCEDURE|PROFILE|RESTORE[ \s\s\s\s]+POINT|ROLE|ROLLBACK[ \s\s\s\s]+SEGMENT|SEQUENCE|SYNONYM|TABLE(SPACE)?|TRIGGER|TYPE([ \s\s\s\s]+BODY)?|USER|VIEW)</keyword>
+      <keyword>EXPLAIN[ \s\s\s\s]+PLAN</keyword>
+      <keyword>FLASHBACK[ \s\s\s\s]+(DATABASE|TABLE)</keyword>
+      <keyword>LOCK[ \s\s\s\s]+TABLE</keyword>
       <keyword>MERGE</keyword>
       <keyword>PURGE</keyword>
       <keyword>ROLLBACK</keyword>
       <keyword>SAVEPOINT</keyword>
-      <keyword>SET[ \t]+CONSTRAINTS?</keyword>
-      <keyword>SET[ \t]+ROLE</keyword>
-      <keyword>SET[ \t]+TRANSACTION</keyword>
+      <keyword>SET[ \s\s\s\s]+CONSTRAINTS?</keyword>
+      <keyword>SET[ \s\s\s\s]+ROLE</keyword>
+      <keyword>SET[ \s\s\s\s]+TRANSACTION</keyword>
       <keyword>TRUNCATE</keyword>
     </context>
 
     <context id="operators" style-ref="keyword">
       <keyword>CONNECT_BY_ROOT</keyword>
-      <keyword>MULTISET[ \t]+(EXCEPT|INTERSECT|UNION)</keyword>
+      <keyword>MULTISET[ \s\s\s\s]+(EXCEPT|INTERSECT|UNION)</keyword>
     </context>
 
     <context id="conditions" style-ref="keyword">
       <keyword>SOME</keyword>
-      <keyword>IS[ \t]+(NOT[ \t]+)?(NAN|INFINITE)</keyword>
-      <keyword>IS[ \t]+(NOT[ \t]+)?NULL</keyword>
+      <keyword>IS[ \s\s\s\s]+(NOT[ \s\s\s\s]+)?(NAN|INFINITE)</keyword>
+      <keyword>IS[ \s\s\s\s]+(NOT[ \s\s\s\s]+)?NULL</keyword>
       <keyword>(EQUALS|UNDER)_PATH</keyword>
-      <keyword>(NOT[ \t]+)?IN</keyword>
-      <keyword>IS[ \t]+(NOT[ \t]+)?A[ \t]+SET</keyword>
-      <keyword>IS[ \t]+(NOT[ \t]+)?EMPTY</keyword>
-      <keyword>IS[ \t]+(NOT[ \t]+)?OF([ \t]+TYPE)?</keyword>
-      <keyword>IS[ \t]+PRESENT</keyword>
-      <keyword>(NOT[ \t]+)?LIKE(C|2|4)?</keyword>
-      <keyword>(NOT[ \t]+)?MEMBER([ \t]+OF)?</keyword>
+      <keyword>(NOT[ \s\s\s\s]+)?IN</keyword>
+      <keyword>IS[ \s\s\s\s]+(NOT[ \s\s\s\s]+)?A[ \s\s\s\s]+SET</keyword>
+      <keyword>IS[ \s\s\s\s]+(NOT[ \s\s\s\s]+)?EMPTY</keyword>
+      <keyword>IS[ \s\s\s\s]+(NOT[ \s\s\s\s]+)?OF([ \s\s\s\s]+TYPE)?</keyword>
+      <keyword>IS[ \s\s\s\s]+PRESENT</keyword>
+      <keyword>(NOT[ \s\s\s\s]+)?LIKE(C|2|4)?</keyword>
+      <keyword>(NOT[ \s\s\s\s]+)?MEMBER([ \s\s\s\s]+OF)?</keyword>
       <keyword>REGEXP_LIKE</keyword>
-      <keyword>(NOT[ \t]+)?SUBMULTISET([ \t]+OF)?</keyword>
+      <keyword>(NOT[ \s\s\s\s]+)?SUBMULTISET([ \s\s\s\s]+OF)?</keyword>
     </context>
 
     <context id="sql-plus-at-sign" style-ref="some-thing">
-      <match>^[ \t]*@</match>
+      <match>^[ \s\s\s\s]*@</match>
     </context>
 
     <context id="sql-plus-double-at-sign" style-ref="some-thing">
-      <match>^[ \t]*@@</match>
+      <match>^[ \s\s\s\s]*@@</match>
     </context>
 
     <context id="sql-plus-slash" style-ref="some-thing">
-      <match>^[ \t]*/</match>
+      <match>^[ \s\s\s\s]*/</match>
     </context>
 
     <context id="sql-plus-commands" style-ref="some-thing">
-      <prefix>^[ \t]*</prefix>
+      <prefix>^[ \s\s\s\s]*</prefix>
       <keyword>ACC(EPT)?</keyword>
       <keyword>A(PPEND)?</keyword>
-      <keyword>ARCHIVE[ \t]LOG</keyword>
+      <keyword>ARCHIVE[ \s\s\s\s]LOG</keyword>
       <keyword>ATTRIBUTE</keyword>
       <keyword>BRE(AK)?</keyword>
       <keyword>BTI(TLE)?</keyword>
@@ -554,7 +554,7 @@
       <keyword>REPH(EADER)?</keyword>
       <keyword>R(UN)?</keyword>
       <keyword>SAV(E)?</keyword>
-      <keyword>SET[ \t]+(APPI(NFO)?|ARRAY(SIZE)?|AUTO(COMMIT)?|AUTOP(RINT)?|AUTORECOVERY|AUTOT(RACE)?|BLO(CKTERMINATOR)?|CMDS(EP)?|COLSEP|COM(PATIBILITY)?|CON(CAT)?|COPYC(OMMIT)?|COPYTYPECHECK|DEF(INE)?|DESCRIBE|ECHO|EDITF(ILE)?|EMB(EDDED)?|ESC(APE)?|FEED(BACK)?|FLAGGER|FLU(SH)?|HEA(DING)?|HEADS(EP)?|INSTANCE|LIN(ESIZE)?|LOBOF(FSET)?|LOGSOURCE|LONG|LONGC(HUNKSIZE)?|MARK(UP)?|NEWP(AGE)?|NULL|NUMF(ORMAT)?|NUM(WIDTH)?|PAGES(IZE)?|PAU(SE)?|RECSEP|RECSEPCHAR|SERVEROUT(PUT)?|SHIFT(INOUT)?|SHOW(MODE)?|SQLBL(ANKLINES)?|SQLC(ASE)?|SQLCO(NTINUE)?|SQLN(UMBER)?|SQLPLUSCOMPAT(IBILITY)?|SQLPRE(FIX)?|SQLP(ROMPT)?|SQLT(ERMINATOR)?|SUF(FIX)?|TAB|TERM(OUT)?|TI(ME)?|TIMI(NG)?|TRIM(OUT)?|TRIMS(POOL)?|UND(ERLINE)?|VER(IFY)?|WRA(P)?)</keyword>
+      <keyword>SET[ \s\s\s\s]+(APPI(NFO)?|ARRAY(SIZE)?|AUTO(COMMIT)?|AUTOP(RINT)?|AUTORECOVERY|AUTOT(RACE)?|BLO(CKTERMINATOR)?|CMDS(EP)?|COLSEP|COM(PATIBILITY)?|CON(CAT)?|COPYC(OMMIT)?|COPYTYPECHECK|DEF(INE)?|DESCRIBE|ECHO|EDITF(ILE)?|EMB(EDDED)?|ESC(APE)?|FEED(BACK)?|FLAGGER|FLU(SH)?|HEA(DING)?|HEADS(EP)?|INSTANCE|LIN(ESIZE)?|LOBOF(FSET)?|LOGSOURCE|LONG|LONGC(HUNKSIZE)?|MARK(UP)?|NEWP(AGE)?|NULL|NUMF(ORMAT)?|NUM(WIDTH)?|PAGES(IZE)?|PAU(SE)?|RECSEP|RECSEPCHAR|SERVEROUT(PUT)?|SHIFT(INOUT)?|SHOW(MODE)?|SQLBL(ANKLINES)?|SQLC(ASE)?|SQLCO(NTINUE)?|SQLN(UMBER)?|SQLPLUSCOMPAT(IBILITY)?|SQLPRE(FIX)?|SQLP(ROMPT)?|SQLT(ERMINATOR)?|SUF(FIX)?|TAB|TERM(OUT)?|TI(ME)?|TIMI(NG)?|TRIM(OUT)?|TRIMS(POOL)?|UND(ERLINE)?|VER(IFY)?|WRA(P)?)</keyword>
       <keyword>SHO(W)?</keyword>
       <keyword>SHUTDOWN</keyword>
       <keyword>SPO(OL)?</keyword>
@@ -565,7 +565,7 @@
       <keyword>TTI(TLE)?</keyword>
       <keyword>UNDEF(INE)?</keyword>
       <keyword>VAR(IABLE)?</keyword>
-      <keyword>WHENEVER[ \t]+(OS|SQL)ERROR</keyword>
+      <keyword>WHENEVER[ \s\s\s\s]+(OS|SQL)ERROR</keyword>
     </context>
 
     <context id="sql" class="no-spell-check">

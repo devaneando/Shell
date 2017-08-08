@@ -7,6 +7,6 @@
 	url = https://github.com/VundleVim/Vundle.vim.git
 	branch = master
 [submodule "Apps/Geany/geany-themes"]
-	path = Apps/Geany/geany-themes
+	path = Resources/Geany
 	url = https://github.com/codebrainz/geany-themes.git
 	branch = master

@@ -1,5 +1,12 @@
 #! /usr/bin/env bash
 
+printConfirmation "Do you want to install and configure sound and video packages?"
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo apt-get install --assume-yes --quiet \
+         easytag flac id3 id3v2 lame ripit vlc
+fi
+
 printConfirmation "Do you want to install and configure Geany?"
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -7,7 +14,7 @@ then
          geany geany-plugins
     CSDIR="$HOME/.config/geany/colorschemes/"
     mkdir -p "$CSDIR"
-    for SCHEME in `ls ${BASE}/Apps/Geany/geany-themes/colorschemes/*.conf`
+    for SCHEME in `ls ${BASE}/Resources/Geany/colorschemes/*.conf`
     do
       BNAME=`basename "$SCHEME"`
       echo " => $BNAME"
@@ -33,5 +40,5 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	sudo apt-get install --assume-yes --quiet \
 		texlive-full latexila
-    
+
 fi

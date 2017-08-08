@@ -104,7 +104,7 @@
     </context>
 
     <context id="function" style-ref="function">
-      <match>\b[a-zA-Z_][a-zA-Z0-9_]+[ \t]*\(\)</match>
+      <match>\b[a-zA-Z_][a-zA-Z0-9_]+[ \s\s\s\s]*\(\)</match>
     </context>
 
     <context id="redirection" style-ref="others">
@@ -133,7 +133,7 @@
           (?P&lt;HDB&gt;[^\s&lt;]+)       # EOF
         )$
       </start>
-      <end>^\t*\%{HDB@start}$</end>
+      <end>^\s\s\s\s*\%{HDB@start}$</end>
       <include>
         <context sub-pattern="0" where="start" style-ref="here-doc-bound"/>
         <context sub-pattern="0" where="end" style-ref="here-doc-bound"/>

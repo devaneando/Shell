@@ -65,7 +65,7 @@
     -->
     <!-- Note: line break can't be used in regex, so only underline is matched. -->
     <context id="setext-header" style-ref="header">
-      <match>^(-+|=+)[ \t]*$</match>
+      <match>^(-+|=+)[ \s\s\s\s]*$</match>
     </context>
 
     <!-- Examples:
@@ -81,7 +81,7 @@
           (_[ ]{0,2}){3,} | # Idem, but with underscores.
           (\*[ ]{0,2}){3,}  # Idem, but with asterisks.
         )
-        [ \t]*$              # Optional trailing spaces or tabs.
+        [ \s\s\s\s]*$              # Optional trailing spaces or tabs.
       </match>
     </context>
 
@@ -121,7 +121,7 @@
           \*|\+|-| # Asterisk, plus or hyphen for unordered list.
           [0-9]+\. # Number followed by period for ordered list.
         )
-        [ \t]+     # Must be followed by at least 1 space or 1 tab.
+        [ \s\s\s\s]+     # Must be followed by at least 1 space or 1 tab.
       </match>
     </context>
 
@@ -129,7 +129,7 @@
                  <em>HTML code</em> displayed <strong>literally</strong>.
     -->
     <context id="code-block" class="no-spell-check">
-      <match>^( {8,}|\t{2,})([^ \t]+.*)</match>
+      <match>^( {8,}|\s\s\s\s{2,})([^ \s\s\s\s]+.*)</match>
 
       <include>
         <context sub-pattern="2" style-ref="code"/>
@@ -217,11 +217,11 @@
       <match extended="true">
         \[(.*?)\]          # Link text.
         \(                 # Literal opening parenthesis.
-          [ \t]*           # Optional spaces or tabs after the opening parenthesis.
+          [ \s\s\s\s]*           # Optional spaces or tabs after the opening parenthesis.
           (&lt;(.*?)&gt; | # URL with brackets.
           (.*?))           # URL without brackets.
-          ([ \t]+(".*?"))? # Optional title.
-          [ \t]*           # Optional spaces or tabs before the closing parenthesis.
+          ([ \s\s\s\s]+(".*?"))? # Optional title.
+          [ \s\s\s\s]*           # Optional spaces or tabs before the closing parenthesis.
         \)                 # Literal closing parenthesis.
       </match>
 
@@ -242,7 +242,7 @@
     <!-- Note: some assertions are used to differentiate reference link from
          link label. -->
     <context id="reference-link">
-      <match>(?&lt;!^ |^  |^   )\[(.*?)\]([ \t]?\[(.*?)\])?(?!:)</match>
+      <match>(?&lt;!^ |^  |^   )\[(.*?)\]([ \s\s\s\s]?\[(.*?)\])?(?!:)</match>
 
       <include>
         <context sub-pattern="1" style-ref="link-text"/>
@@ -259,11 +259,11 @@
       <match extended="true">
         ^[ ]{0,3}             # Maximum 3 spaces at the beginning of the line.
         \[(.+?)\]:            # Link label and colon.
-        [ \t]*                # Optional spaces or tabs.
-        (&lt;([^ \t]+?)&gt; | # URL with brackets.
-        ([^ \t]+?))           # URL without brackets.
-        ([ \t]+(".*?"))?      # Optional title.
-        [ \t]*$               # Optional trailing spaces or tabs.
+        [ \s\s\s\s]*                # Optional spaces or tabs.
+        (&lt;([^ \s\s\s\s]+?)&gt; | # URL with brackets.
+        ([^ \s\s\s\s]+?))           # URL without brackets.
+        ([ \s\s\s\s]+(".*?"))?      # Optional title.
+        [ \s\s\s\s]*$               # Optional trailing spaces or tabs.
       </match>
 
       <include>
@@ -284,11 +284,11 @@
         (!)                     # Leading ! sign.
         \[(.*?)\][ ]?           # Alternate text for the image (and optional space).
         \(                      # Literal parenthesis.
-          [ \t]*                # Optional spaces or tabs after the opening parenthesis.
-          (&lt;([^ \t]*?)&gt; | # Image path or URL with brackets.
-          ([^ \t]*?))           # Image path or URL without brackets.
-          ([ \t]+(".*?"))?      # Optional title.
-          [ \t]*                # Optional spaces or tabs before the closing parenthesis.
+          [ \s\s\s\s]*                # Optional spaces or tabs after the opening parenthesis.
+          (&lt;([^ \s\s\s\s]*?)&gt; | # Image path or URL with brackets.
+          ([^ \s\s\s\s]*?))           # Image path or URL without brackets.
+          ([ \s\s\s\s]+(".*?"))?      # Optional title.
+          [ \s\s\s\s]*                # Optional spaces or tabs before the closing parenthesis.
         \)                      # Literal parenthesis.
       </match>
 
@@ -320,7 +320,7 @@
          Here's an _emphasized text containing an underscore (\_)_.
     -->
     <context id="underscores-emphasis" style-ref="emphasis">
-      <match>(?&lt;!_)_[^_ \t].*?(?&lt;!\\|_| |\t)_(?!_)</match>
+      <match>(?&lt;!_)_[^_ \s\s\s\s].*?(?&lt;!\\|_| |\s\s\s\s)_(?!_)</match>
     </context>
 
     <!-- Examples:
@@ -328,7 +328,7 @@
          Here's an *emphasized text containing an asterisk (\*)*.
     -->
     <context id="asterisks-emphasis" style-ref="emphasis">
-      <match>(?&lt;!\*)\*[^\* \t].*?(?&lt;!\\|\*| |\t)\*(?!\*)</match>
+      <match>(?&lt;!\*)\*[^\* \s\s\s\s].*?(?&lt;!\\|\*| |\s\s\s\s)\*(?!\*)</match>
     </context>
 
     <!-- Examples:
@@ -336,7 +336,7 @@
          Here's a __strongly emphasized text containing an underscore (\_)__.
     -->
     <context id="underscores-strong-emphasis" style-ref="strong-emphasis">
-      <match>__[^_ \t].*?(?&lt;!\\|_| |\t)__</match>
+      <match>__[^_ \s\s\s\s].*?(?&lt;!\\|_| |\s\s\s\s)__</match>
     </context>
 
     <!-- Examples:
@@ -344,7 +344,7 @@
          Here's a **strongly emphasized text containing an asterisk (\*).**
     -->
     <context id="asterisks-strong-emphasis" style-ref="strong-emphasis">
-      <match>\*\*[^\* \t].*?(?&lt;!\\|\*| |\t)\*\*</match>
+      <match>\*\*[^\* \s\s\s\s].*?(?&lt;!\\|\*| |\s\s\s\s)\*\*</match>
     </context>
 
     <context id="backslash-escape" style-ref="backslash-escape">
@@ -355,7 +355,7 @@
          but since line break can't be used in regex, only trailing spaces or tabs
          are matched. -->
     <context id="line-break">
-      <match>(?&lt;=[^ \t])([ \t]{2,})$</match>
+      <match>(?&lt;=[^ \s\s\s\s])([ \s\s\s\s]{2,})$</match>
 
       <include>
         <context sub-pattern="1" style-ref="line-break"/>

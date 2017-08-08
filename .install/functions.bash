@@ -27,7 +27,7 @@ function printConfirmation(){
 ## Prints the date in the YYY-MM-DD.HH:MM:SS format
 function getDate()
 {
-    echo $(date +%Y-%m-%d.%H:%M:%S)
+    echo "$(date +%Y-%m-%d.%H:%M:%S)"
 }
 
 ## Copies a file to another destination.

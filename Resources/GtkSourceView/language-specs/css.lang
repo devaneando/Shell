@@ -64,7 +64,7 @@
   <definitions>
 
     <context id="unicode-character-reference" style-ref="others-2">
-      <match>\\([a-fA-F0-9]{1,5}[ \t]|[a-fA-F0-9]{6})</match>
+      <match>\\([a-fA-F0-9]{1,5}[ \s\s\s\s]|[a-fA-F0-9]{6})</match>
     </context>
 
     <context id="selector-pseudo-elements" style-ref="function">
@@ -104,7 +104,7 @@
     </context>
 
     <context id="css3-at-rules" style-ref="at-rules">
-      <prefix>^[ \t]*@</prefix>
+      <prefix>^[ \s\s\s\s]*@</prefix>
       <keyword>annotation</keyword>
       <keyword>character-variant</keyword>
       <keyword>font-face</keyword>
@@ -117,7 +117,7 @@
     </context>
 
     <context id="at-rules" style-ref="at-rules">
-      <prefix>^[ \t]*@</prefix>
+      <prefix>^[ \s\s\s\s]*@</prefix>
       <keyword>charset</keyword>
       <keyword>import</keyword>
       <keyword>media</keyword>
@@ -199,7 +199,7 @@
     </context>
 
     <context id="importance-modifier" style-ref="keyword">
-      <match>\![ \t]*important</match>
+      <match>\![ \s\s\s\s]*important</match>
     </context>
 
     <context id="css3-media-features" style-ref="keyword">

@@ -54,7 +54,7 @@
     <style id="character"           _name="Character"             map-to="def:constant"/>
     <!-- A string constant: "this is a string" -->
     <style id="string"              _name="String"                map-to="def:constant"/>
-    <!-- Special character in a string constant: "%s", "\t" -->
+    <!-- Special character in a string constant: "%s", "\s\s\s\s" -->
     <!-- This style doesn't map to anything since it must be used as an additional
          style for text which is already styled as a "string" -->
     <style id="special-char"        _name="Special character (inside a string)" />

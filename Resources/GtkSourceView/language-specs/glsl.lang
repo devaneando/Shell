@@ -48,10 +48,10 @@ http://www.opengl.org/registry/doc/GLSLangSpec.4.00.7.pdf
 
   <definitions>
     <context id="preprocessor" style-ref="preprocessor">
-      <prefix>^[ \t]*#[ \t]*</prefix>
+      <prefix>^[ \s\s\s\s]*#[ \s\s\s\s]*</prefix>
       <keyword>define</keyword>
       <keyword>undef</keyword>
-      <keyword>(if|elif)([ \t]+defined)?</keyword>
+      <keyword>(if|elif)([ \s\s\s\s]+defined)?</keyword>
       <keyword>ifdef</keyword>
       <keyword>ifndef</keyword>
       <keyword>else</keyword>

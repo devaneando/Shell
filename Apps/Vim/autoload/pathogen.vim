@@ -240,7 +240,7 @@ function! pathogen#fnameescape(string) abort
   elseif a:string ==# '-'
     return '\-'
   else
-    return substitute(escape(a:string," \t\n*?[{`$\\%#'\"|!<"),'^[+>]','\\&','')
+    return substitute(escape(a:string," \s\s\s\s\n*?[{`$\\%#'\"|!<"),'^[+>]','\\&','')
   endif
 endfunction
 

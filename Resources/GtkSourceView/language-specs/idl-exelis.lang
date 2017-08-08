@@ -551,7 +551,7 @@
     </context>
 
     <context id="include-pragma" style-ref="preprocessor" end-at-line-end="true">
-      <start>^#[ \t]*(include|pragma)</start>
+      <start>^#[ \s\s\s\s]*(include|pragma)</start>
       <include>
         <context ref="def:escape"/>
         <context ref="def:line-continue"/>

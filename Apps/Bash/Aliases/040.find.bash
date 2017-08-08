@@ -85,6 +85,7 @@ function deleteEmptyFolders()
     fi
 }
 
+##### Adds a .gitkeep file to all folders
 function gitKeepIt()
 {
     find . -type d -name ".git" -prune -o -type d  -exec touch {}/.gitkeep \;

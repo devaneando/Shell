@@ -1,0 +1,21 @@
+# http://www.linuxcommand.org/man_pages/logrotate8.html
+
+# General settings for the logs in the folder
+/var/www/logs/*.log {
+    weekly
+    rotate 14
+    nocompress
+    missingok
+    notifempty
+    create 0600 devaneando adm
+}
+
+# General settings for the logs in the folder
+/var/log/apache2/*.log {
+    weekly
+    rotate 14
+    nocompress
+    missingok
+    notifempty
+    create 0600 devaneando adm
+}

@@ -160,8 +160,8 @@
         </context>
 
         <context id="rule">
-          <start>^([^\t\:][^\:]*)\:</start>
-          <end>^(?!\t)</end>
+          <start>^([^\s\s\s\s\:][^\:]*)\:</start>
+          <end>^(?!\s\s\s\s)</end>
           <include>
             <context sub-pattern="1" where="start" style-ref="targets"/>
             <context ref="def:shell-like-comment"/>
@@ -177,7 +177,7 @@
               </include>
             </context>
             <context id="trailing-tab" style-ref="trailing-tab">
-              <match>^\t+$</match>
+              <match>^\s\s\s\s+$</match>
             </context>
             <context ref="command"/>
           </include>
