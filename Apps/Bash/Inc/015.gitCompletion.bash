@@ -1,4 +1,4 @@
-# !/usr/bin/env bash
+#!/usr/bin/env bash
 # vi:syntax=bash
 # 
 # bash/zsh completion support for core Git.
@@ -219,7 +219,7 @@ __gitcomp ()
 	--*=)
 		;;
 	*)
-		local c i=0 IFS=$' \t\n'
+		local c i=0 IFS=$' \s\s\s\s\n'
 		for c in $1; do
 			c="$c${4-}"
 			if [[ $c == "$cur_"* ]]; then
@@ -2811,7 +2811,7 @@ if [[ -n ${ZSH_VERSION-} ]]; then
 		--*=)
 			;;
 		*)
-			local c IFS=$' \t\n'
+			local c IFS=$' \s\s\s\s\n'
 			local -a array
 			for c in ${=1}; do
 				c="$c${4-}"

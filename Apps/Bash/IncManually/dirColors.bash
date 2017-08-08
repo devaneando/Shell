@@ -1,4 +1,4 @@
-# !/usr/bin/env bash
+#!/usr/bin/env bash
 # vi:syntax=bash
 #
 # http://misc.flogisoft.com/bash/tip_colors_and_formatting

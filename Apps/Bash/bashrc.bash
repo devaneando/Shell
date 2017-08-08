@@ -1,15 +1,18 @@
-# !/usr/bin/env bash
+#!/usr/bin/env bash
+
+export SHELLCHECK_OPTS="-e SC1090"
 
 # If not running interactively, don't do anything
 [[ $- == *i* ]] || return
 
 if [ -L "${HOME}/.bashrc" ]; then
-	export BASE=`env readlink --canonicalize-missing ${HOME}/.bashrc | /bin/grep --color=never -P "^.*(?=\/Apps)" -o`
+	export BASE
+    BASE=`env readlink --canonicalize-missing ${HOME}/.bashrc | /bin/grep --color=never -P "^.*(?=\/Apps)" -o`
     export BASE_BASH="${BASE}/Apps/Bash"
 fi
 
 if [ -d "${BASE_BASH}/IncManually" ]; then
-    eval `dircolors ${BASE_BASH}/IncManually/dirColors.bash`
+    eval "`dircolors ${BASE_BASH}/IncManually/dirColors.bash`"
 fi
 
 if [ -d "${BASE_BASH}/Inc" ]; then

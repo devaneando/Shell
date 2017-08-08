@@ -1,4 +1,4 @@
-# !/usr/bin/env bash
+#!/usr/bin/env bash
 # vi:syntax=bash
 
 # ●▬▬▬▬▬๑۩  Functions ۩๑▬▬▬▬▬●
@@ -32,7 +32,7 @@ function vmStart()
 {
   if [ $# -ne 1 ]; then
     print error "It's not possible to proceed without the VM name."
-    return 999
+    return 255
   fi
 
   env vboxmanage startvm "$1" --type headless
@@ -44,7 +44,7 @@ function vmStop()
 {
   if [ $# -ne 1 ]; then
     print error "It's not possible to proceed without the VM name."
-    return 999
+    return 255
   fi
 
   env vboxmanage controlvm "$1" savestate
@@ -66,9 +66,9 @@ function loremIpsum()
   size="medium"
 
   if [ -z "$1" ]; then
-    print info "-h/--help\tDisplays this help"
-    print info "-p/--paragraph\tNumbers of paragraphs to display"
-    print info "-s/--size\tSize of the paragraphs. Accepted values: 'short', 'medium', 'long', 'verylong'"
+    print info "-h/--help\s\s\s\sDisplays this help"
+    print info "-p/--paragraph\s\s\s\sNumbers of paragraphs to display"
+    print info "-s/--size\s\s\s\sSize of the paragraphs. Accepted values: 'short', 'medium', 'long', 'verylong'"
     echo -e "\n"
     curl "${url}/2/medium"
     return 0
@@ -85,9 +85,9 @@ function loremIpsum()
         shift # past argument=value
         ;;
       -h|--help)
-        print info "-h/--help\tDisplays this help"
-        print info "-p/--paragraph\tNumbers of paragraphs to display"
-        print info "-s/--size\tSize of the paragraphs. Accepted values: 'short', 'medium', 'long', 'verylong'"
+        print info "-h/--help\s\s\s\sDisplays this help"
+        print info "-p/--paragraph\s\s\s\sNumbers of paragraphs to display"
+        print info "-s/--size\s\s\s\sSize of the paragraphs. Accepted values: 'short', 'medium', 'long', 'verylong'"
         return 0
         ;;
     esac
@@ -146,6 +146,6 @@ function sshKey()
     else
         myKey="${2}"
     fi
-    
+
     /usr/bin/env ssh-keygen -t rsa -b 4096 -C "${1}" -f "${myKey}"
 }

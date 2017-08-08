@@ -1,4 +1,4 @@
-# !/usr/bin/env bash
+#!/usr/bin/env bash
 # vi:syntax=bash
 
 # ●▬▬▬▬▬๑۩  Custom locale settings ۩๑▬▬▬▬▬●
@@ -35,9 +35,7 @@ export PATH=$PATH:.:\
 /usr/local/bin:\
 /usr/local/games:\
 /usr/local/sbin:\
-/usr/sbin:\
-:${JAVA_HOME}/bin:\
-${JRE_HOME}/bin:
+/usr/sbin:
 
 # ●▬▬▬▬▬๑۩  CDPATH: Allows you to add other directories to cd builtin ۩๑▬▬▬▬▬●
 
@@ -50,4 +48,3 @@ export CDPATH=.:\
 
 export COWPATH="${BASE}/Apps/Funnies/cowfiles"
 export SYMFONY_ENV="prod"
-

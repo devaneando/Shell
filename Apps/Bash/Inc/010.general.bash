@@ -1,4 +1,4 @@
-# !/usr/bin/env bash
+#!/usr/bin/env bash
 # vi:syntax=bash
 
 # Check http://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html

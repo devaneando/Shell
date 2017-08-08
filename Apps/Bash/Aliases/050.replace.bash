@@ -1,4 +1,4 @@
-# !/usr/bin/env bash
+#!/usr/bin/env bash
 # vi:syntax=bash
 
 # ●▬▬▬▬▬๑۩  Functions ۩๑▬▬▬▬▬●

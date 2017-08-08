@@ -27,4 +27,3 @@ alias syndaemon='env syndaemon -d -K -i 2'
 alias toilet='env toilet --metal --width 1100 --font=future'
 alias tree='env tree -d --noreport'
 alias gitTime="env git commit -m \"$(date +'%Y-%m-%d %H:%M')\""
-

@@ -1,8 +1,8 @@
-# !/usr/bin/env bash
+#!/usr/bin/env bash
 # vi:syntax=bash
 # http://misc.flogisoft.com/bash/tip_colors_and_formatting
 
-########## Foreground
+# ●▬▬▬▬▬๑۩  Foreground ۩๑▬▬▬▬▬●
 export FORE_RESET='\e[0;49m'
 export FORE_BLACK='\e[0;30m'
 export FORE_WHITE='\e[1;37m'
@@ -21,7 +21,7 @@ export FORE_RED_LIGHT='\e[1;31m'
 export FORE_YELLOW_DARK='\e[0;33m'
 export FORE_YELLOW_LIGHT='\e[1;33m'
 
-########## Background
+# ●▬▬▬▬▬๑۩  Background ۩๑▬▬▬▬▬●
 export BACK_RESET='\e[49m'
 export BACK_BLACK='\e[40m'
 export BACK_WHITE='\e[107m'
@@ -40,7 +40,7 @@ export BACK_RED_LIGHT='\e[101m'
 export BACK_YELLOW_DARK='\e[43m'
 export BACK_YELLOW_LIGHT='\e[103m'
 
-########## Formats
+# ●▬▬▬▬▬๑۩  Formats ۩๑▬▬▬▬▬●
 export SET_BLINK='\e[5m'
 export RESET_BLINK='\e[25m'
 export SET_BOLD='\e[1m'

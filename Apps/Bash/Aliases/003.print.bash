@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# vi:syntax=bash
+
 ##### Echoes an error on the screen
 ##### $1: the error message
 function printError()

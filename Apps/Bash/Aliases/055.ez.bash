@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# vi:syntax=bash
+
 function eZClear()
 {
 
@@ -24,7 +27,7 @@ function eZClear()
         rm -Rfv var/*/cache/*
         php -d memory_limit=-1 bin/php/ezcache.php --clear-all --expiry=now --purge
         php -d memory_limit=-1 bin/php/ezpgenerateautoloads.php --progress
-    fi    
+    fi
 
 }
 
@@ -47,9 +50,9 @@ function eZAssets()
 function eZ54Update()
 {
     env echo -e "\e[97m Don't forget to  edit your ezpublish/EzPublishKernel.php file and add\e[0m"
-    env echo -e "\e[93m \tuse eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle;\e[0m"
+    env echo -e "\e[93m \s\s\s\suse eZ\Bundle\EzPublishLegacySearchEngineBundle\EzPublishLegacySearchEngineBundle;\e[0m"
     env echo -e "\e[97m also, just before 'new EzPublishLegacyBundle( \$this ),' add \e[0m"
-    env echo -e "\e[93m \tnew EzPublishLegacySearchEngineBundle(),\e[0m"
+    env echo -e "\e[93m \s\s\s\snew EzPublishLegacySearchEngineBundle(),\e[0m"
     env echo -e "\e[44m\e[97m do you want to proceed? \e[0m"
     read -p "" -n 1 -r
     echo
@@ -76,7 +79,7 @@ function eZ53Update()
 
     # First install Composer v1.0 that works with old version of ezpublish-legacy-installer
     php -r "copy('https://getcomposer.org/download/1.0.3/composer.phar', 'composer.phar');"
-     
+
     # As authentication is built in to composer now, we can remove the following plugin
     php -d memory_limit=-1 composer.phar remove --no-update --no-plugins bitexpert/composer-authstore-plugin
 
@@ -84,13 +87,13 @@ function eZ53Update()
     # (will warn about the outdated versions you have from before)
     php -d memory_limit=-1 composer.phar update --no-dev --prefer-dist --no-scripts \
         ezsystems/ezpublish-legacy-installer
-     
+
     # Then make sure composer is updated to latests
     rm composer.phar
 
     compose require --no-plugins --no-update \
         "sensio/distribution-bundle ~2.3|~3.0"
-    
+
     ##### 5.3.2
 
     composer remove --no-update \
@@ -151,7 +154,7 @@ function eZPlatformInstall()
         "1.6")
             FOLDER="ezp_16x"
             VERSION="v1.6"
-            ;;            
+            ;;
         *)
             echo -e "You must use this command in the following format:\neZInstall 1.8"
             return
@@ -161,12 +164,12 @@ function eZPlatformInstall()
     WWW="/var/www/ez/"
 
     if [[ -d ${WWW}/${FOLDER} ]]; then
-        rm -Rf -v ${WWW}/${FOLDER}
+        rm -Rf -v "${WWW:?}/${FOLDER}"
     fi
 
-    cd ${WWW}
+    cd "${WWW}" || exit
     composer create-project --no-dev --keep-vcs ezsystems/ezplatform "${FOLDER}" ${VERSION}
-    cd "${FOLDER}"
+    cd "${FOLDER}" || exit
     php -d memory_limit=-1 app/console ezplatform:install --env prod clean
 
 }
@@ -197,7 +200,7 @@ function eZStudionInstall()
         "1.6")
             FOLDER="ezp_16x"
             VERSION="v1.6"
-            ;;            
+            ;;
         *)
             echo -e "You must use this command in the following format:\neZInstall 1.8"
             return
@@ -207,12 +210,12 @@ function eZStudionInstall()
     WWW="/var/www/ez"
 
     if [[ -d ${WWW}/${FOLDER} ]]; then
-        rm -Rf -v ${WWW}/${FOLDER}
+        rm -Rf -v "${WWW:?}/${FOLDER}"
     fi
 
-    cd ${WWW}
+    cd "${WWW}" || exit
     composer create-project --no-dev --keep-vcs ezsystems/ezstudio "${FOLDER}" ${VERSION}
-    cd "${FOLDER}"
+    cd "${FOLDER}" || exit
     php -d memory_limit=-1 app/console ezplatform:install --env prod studio-clean
 
 }
