@@ -30,6 +30,9 @@ shopt -q -s dirspell
 # Correct dir spellings
 shopt -q -s cdspell
 
+# If set, Bash replaces directory names with the results of word expansion when performing filename completion.
+shopt -q -s direxpand
+
 # CD is assumed by default
 shopt -q -s autocd  
 
@@ -38,6 +41,9 @@ shopt -q -s checkwinsize
 
 # Turn on the extended pattern matching features 
 shopt -q -s extglob
+
+# If set, and Readline is being used, Bash will not attempt to search the PATH for possible completions when completion is attempted on an empty line.
+shopt -q -s no_empty_cmd_completion
 
 # Append rather than overwrite history on exit
 shopt -q -s histappend

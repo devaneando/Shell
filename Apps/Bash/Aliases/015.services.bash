@@ -7,8 +7,8 @@ alias service="sudo env service"
 
 ##### Apache
 alias apacheStart="sudo env service apache2 start"
-alias apacheStop="sudo env serviceapache2 stop"
-alias apacheRestart="sudo env service apache2 stop && sudo env apache2 start"
+alias apacheStop="sudo env service apache2 stop"
+alias apacheRestart="sudo env service apache2 stop && sudo env service apache2 start"
 
 ##### MySQL
 alias mySqlStart="sudo env service mysql start"

@@ -162,6 +162,10 @@ function eZPlatformInstall()
     esac
 
     WWW="/var/www/ez/"
+    
+    if [[ ! -d ${WWW} ]]; then
+        WWW="`pwd`"
+    fi    
 
     if [[ -d ${WWW}/${FOLDER} ]]; then
         rm -Rf -v "${WWW:?}/${FOLDER}"
@@ -208,6 +212,10 @@ function eZStudionInstall()
     esac
 
     WWW="/var/www/ez"
+
+    if [[ ! -d ${WWW} ]]; then
+        WWW="`pwd`"
+    fi
 
     if [[ -d ${WWW}/${FOLDER} ]]; then
         rm -Rf -v "${WWW:?}/${FOLDER}"

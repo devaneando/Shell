@@ -274,3 +274,4 @@ Workstation/Lamp/Nginx/sites-enabled/*.conf
 Workstation/Lamp/PHP/fpm/pools-enabled/7.1/*.conf
 Workstation/Lamp/PHP/fpm/pools-enabled/7.0/*.conf
 Workstation/Lamp/PHP/fpm/pools-enabled/5.6/*.conf
+/nbproject/private/
