@@ -330,7 +330,11 @@ prompt_time() {
 
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
-    prompt_segment blue white "\h"
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    prompt_segment cyan_light blue "\h@ssh"
+else
+    prompt_segment blue white "\h@ssh"
+fi
 }
 
 # Dir: current working directory
