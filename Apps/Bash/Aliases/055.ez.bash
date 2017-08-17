@@ -227,3 +227,69 @@ function eZStudioInstall()
     php -d memory_limit=-1 app/console ezplatform:install --env prod studio-clean
 
 }
+
+function solrInstall
+{
+    if [ -z "$1" ]; then
+        printError "The Solr version (4 or 6) must be provided.\nExample solrInstall 4 /var/www/ezpublish"
+        return 255
+    fi
+
+    if [ -z "$2" ] || [ ! -d "$2" ]; then
+        printError "The eZ Platform root dir is invalid or does not exist.\nExample solrInstall 4 /var/www/ezpublish"
+        return 255
+    fi
+
+    EZ_FOLDER="${2}/vendor/ezsystems/ezplatform-solr-search-engine"
+
+    case ${1} in
+        "6")
+            SOLR_FOLDER="/opt/solr6"
+            SOLR_TAR="/tmp/‘solr-6.6.0.tgz"
+            SOLR_TAR_FOLDER="/opt/solr-6*"
+            SOLR_URL="http://archive.apache.org/dist/lucene/solr/6.6.0/solr-6.6.0.tgz"
+            ;;
+        "*")
+            SOLR_FOLDER="/opt/solr4"
+            SOLR_TAR="/tmp/solr-4.10.4.tgz"
+            SOLR_TAR_FOLDER="/opt/solr-4*"
+            SOLR_URL="http://archive.apache.org/dist/lucene/solr/4.10.4/solr-4.10.4.tgz"
+            ;;
+    esac
+    
+
+    if [ ! -f "${SOLR_TAR}" ]; then
+        cd /tmp && wget --show-progress "${URL}"
+    fi
+
+    if [ -d "${SOLR_FOLDER}" ]; then
+        rm -Rf "${SOLR_FOLDER}"
+    else
+        cd /opt && sudo tar -xzf "${SOLR_TAR}"
+        sudo mv "${SOLR_TAR_FOLDER}" "${SOLR_FOLDER}"
+        sudo chown -R `whoami`:`whoami` "${SOLR_FOLDER}"
+    fi
+
+    case ${1} in
+        "6")
+            cd "${SOLR_FOLDER}"
+            mkdir -p server/ez/template
+            cp -R "${EZ_FOLDER}"/lib/Resources/config/solr/* server/ez/template
+            cp server/solr/configsets/basic_configs/conf/{currency.xml,solrconfig.xml,stopwords.txt,synonyms.txt,elevate.xml} server/ez/template
+            cp server/solr/solr.xml server/ez
+            ## Modify solrconfig.xml to remove section that doesn't agree with our schema
+            sed -i.bak '/<updateRequestProcessorChain name="add-unknown-fields-to-the-schema">/,/<\/updateRequestProcessorChain>/d' server/ez/template/solrconfig.xml
+            ;;
+        "*")
+            cd "${SOLR_FOLDER}"/example
+            mkdir -p examulticore/collection1/conf
+            cp -R "${EZ_FOLDER}"/lib/Resources/config/solr/* multicore/collection1/conf
+            cp solr/collection1/conf/{currency.xml,stopwords.txt,synonyms.txt} multicore/collection1/conf
+            ## Remove default cores configuration and add core configuration
+            sed -i.bak 's/<core name=".*" instanceDir=".*" \/>//g' multicore/solr.xml
+            sed -i.bak "s/<shardHandlerFactory/<core name=\"collection1\" instanceDir=\"collection1\" \/><shardHandlerFactory/g" multicore/solr.xml
+            cp multicore/core0/conf/solrconfig.xml multicore/collection1/conf
+            sed -i.bak s/core0/collection1/g multicore/collection1/conf/solrconfig.xml
+    esac    
+
+}
