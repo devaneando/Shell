@@ -47,7 +47,7 @@ function vmStop()
     return 255
   fi
 
-  env vboxmanage controlvm "$1" savestate
+  env vboxmanage controlvm "$1" acpipowerbutton
 }
 
 ##### Allows command line calculations
