@@ -156,7 +156,7 @@ function eZPlatformInstall()
             VERSION="v1.6"
             ;;
         *)
-            echo -e "You must use this command in the following format:\neZInstall 1.8"
+            echo -e "You must use this command in the following format:\eZPlatformInstall 1.8"
             return
             ;;
     esac
@@ -178,7 +178,7 @@ function eZPlatformInstall()
 
 }
 
-function eZStudionInstall()
+function eZStudioInstall()
 {
     case ${1} in
         "master")
