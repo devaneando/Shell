@@ -283,7 +283,7 @@ function solrInstall
         "*")
             cd "${SOLR_FOLDER}"/example
             mkdir -p examulticore/collection1/conf
-            cp -R "${EZ_FOLDER}"/lib/Resources/config/solr/* multicore/collection1/conf
+            cp -R "${EZ_FOLDER}"e/lib/Resources/config/solr/* multicore/collection1/conf
             cp solr/collection1/conf/{currency.xml,stopwords.txt,synonyms.txt} multicore/collection1/conf
             ## Remove default cores configuration and add core configuration
             sed -i.bak 's/<core name=".*" instanceDir=".*" \/>//g' multicore/solr.xml
