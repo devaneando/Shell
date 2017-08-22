@@ -10,11 +10,20 @@ function symClear()
     if [ -d var/cache ]; then
         rm -Rfv var/cache/*
     fi
+    
+    if [ -d app/cache ]; then
+        rm -Rfv app/cache/*
+    fi    
 
     if [ -f bin/console ]; then
 		php -d memory_limit=-1 bin/console cache:clear --no-warmup --env=prod
 		php -d memory_limit=-1 bin/console cache:warmup --env=prod
     fi    
+    
+    if [ -f app/console ]; then
+		php -d memory_limit=-1 app/console cache:clear --no-warmup --env=prod
+		php -d memory_limit=-1 app/console cache:warmup --env=prod
+    fi       
 	
 }
 
@@ -27,5 +36,10 @@ function symAssets()
     if [ -f bin/console ]; then
 		php -d memory_limit=-1 bin/console assetic:dump --env=prod
 		php -d memory_limit=-1 bin/console assets:install --env=prod
-    fi        
+    fi     
+    
+    if [ -f app/console ]; then
+		php -d memory_limit=-1 php/console assetic:dump --env=prod
+		php -d memory_limit=-1 php/console assets:install --env=prod
+    fi          
 }
