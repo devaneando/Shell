@@ -39,8 +39,8 @@ function symAssets()
     fi     
     
     if [ -f app/console ]; then
-		php -d memory_limit=-1 php/console assetic:dump --env=prod
-		php -d memory_limit=-1 php/console assets:install --env=prod
+		php -d memory_limit=-1 app/console assetic:dump --env=prod
+		php -d memory_limit=-1 app/console assets:install --env=prod
     fi          
 }
 
