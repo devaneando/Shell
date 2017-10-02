@@ -11,6 +11,7 @@ alias echo='env echo -e'
 alias egrep='env egrep --ignore-case --color=always'
 alias eyeD3='env eyeD3 --force-update --verbose'
 alias free='env free --mega --human --total'
+alias gitTime="env git commit -m \"$(date +'%Y-%m-%d %H:%M')\""
 alias google-chrome='env google-chrome --process-per-site'
 alias grep='env grep --extended-regexp --ignore-case --color=always --exclude-dir=.git'
 alias latexmk='env latexmk -f -g -halt-on-error -aux-directory=/tmp -output-directory=/tmp'
@@ -26,4 +27,4 @@ alias sort='env sort --ignore-leading-blanks --ignore-case --unique --ignore-non
 alias syndaemon='env syndaemon -d -K -i 2'
 alias toilet='env toilet --metal --width 1100 --font=future'
 alias tree='env tree -d --noreport'
-alias gitTime="env git commit -m \"$(date +'%Y-%m-%d %H:%M')\""
+alias vivaldi='env vivaldi --process-per-site'
