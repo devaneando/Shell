@@ -3,6 +3,8 @@
 
 function symClear()
 {
+	reset
+	
     if [ ! -d app/config ]; then
 		return 0
     fi
@@ -33,6 +35,8 @@ function symClear()
 
 function symAssets()
 {
+	reset
+	
     if [ ! -d app/config ]; then
 		return 0
     fi
@@ -50,6 +54,8 @@ function symAssets()
 
 function symServerStart()
 {
+	reset
+	
     if [ -f app/console ]; then
 		app/console server:start 0.0.0.0:8080
     fi
@@ -72,6 +78,8 @@ function symServerStop()
 
 function symServerRestart()
 {
+	reset
+	
     if [ -f app/console ]; then
 		app/console server:stop 0.0.0.0:8080
 		app/console server:start 0.0.0.0:8080
@@ -85,6 +93,8 @@ function symServerRestart()
 
 function symDoctrineRecreate()
 {
+	reset
+	
     if [ ! -d app/config ]; then
 		return 0
     fi
@@ -106,6 +116,8 @@ function symDoctrineRecreate()
 
 function symDoctrineUpdate()
 {
+	reset
+	
     if [ ! -d app/config ]; then
 		return 0
     fi
