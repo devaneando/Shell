@@ -149,3 +149,10 @@ function sshKey()
 
     /usr/bin/env ssh-keygen -t rsa -b 4096 -C "${1}" -f "${myKey}"
 }
+
+# Sorts and removes the duplicates from your history file
+function cleanHistory()
+{
+	env sort --ignore-leading-blanks --ignore-case --ignore-nonprinting --unique ${HOME}/.bash_history > /tmp/.bash_history && cat /tmp/.bash_history > ${HOME}/.bash_history
+
+}

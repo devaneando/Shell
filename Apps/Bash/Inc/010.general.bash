@@ -12,17 +12,17 @@ export EDITOR=vim
 export VISUAL=vim
 export SVN_EDITOR="$VISUAL"
 
-# Store 5000 commands in history buffer
+# Store 100000 commands in history buffer
 export HISTSIZE=100000
 
-# Store 5000 commands in history FILE 
+# Store 100000 commands in history FILE 
 export HISTFILESIZE=100000      
 
 # Ignores duplicates and spaces in history
 export HISTCONTROL=ignoredups:erasedups:ignorespace
 
 # Avoid duplicates in history and other useless things
-export HISTIGNORE='&:[ ]*:car*:CD*:clear*:exit*:pwd*:reset*:..*'
+export HISTIGNORE='&:[ ]*:car*:CD*:cd*:clear*:exit*:pwd*:reset*:..*:whoami:whereis*:man*:history*:exit'
 
 # If set, Bash attempts spelling correction on directory names during word completion if the directory name initially supplied does not exist.
 shopt -q -s dirspell
@@ -47,13 +47,6 @@ shopt -q -s no_empty_cmd_completion
 
 # Append rather than overwrite history on exit
 shopt -q -s histappend
-
-# If set, and Readline is being used, a user is given the opportunity to re-edit a failed history substitution.
-shopt -q -s histreedit
-
-# the results of history substitution are not immediately passed to the shell parser. Instead, the resulting line
-# is loaded into the Readline editing buffer, allowing further modification.
-shopt -q -s histverify
 
 # Make multi-line commandsline in history
 shopt -q -s cmdhist 
