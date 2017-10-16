@@ -21,3 +21,9 @@ alias tarExtract='env tar --warning=none --extract --gunzip --file'
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
 alias go='cd ~ && env reset && env ssh -q'
 alias networkFix='sudo env systemctl restart network-manager.service'
+
+function googleDNSEnable
+{
+	# env sudo vi /etc/dhcp/dhclient.conf
+	env sed -i.bak s/^#[\ ]*supersed.*8\.8\.4\.4;[\ ]*$/supersede domain-name-servers 8\.8\.8\.8,8\.8\.4\.4;/g ${HOME}/dhclient.conf
+}
