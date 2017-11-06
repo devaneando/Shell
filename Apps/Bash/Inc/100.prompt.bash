@@ -154,7 +154,7 @@ ansi() {
     declare -a mycodes=("${!1}")
 
     debug "ansi: ${!1} all: $* aka ${mycodes[@]}"
-    
+
     seq=""
     for ((i = 0; i < ${#mycodes[@]}; i++)); do
 	if [[ -n $seq ]]; then
@@ -257,7 +257,7 @@ ansi_r() {
     declare -a mycodes2=("${!1}")
 
     debug "ansi: ${!1} all: $* aka ${mycodes2[@]}"
-    
+
     seq=""
     for ((i = 0; i < ${#mycodes2[@]}; i++)); do
 	if [[ -n $seq ]]; then
@@ -289,34 +289,34 @@ prompt_right_segment() {
     #    fi
     if [[ -n $1 ]]; then
 	bg=$(bg_color $1)
-	codes=("${codes[@]}" $bg)
-	debug "Added $bg as background to codes"
-    fi
-    if [[ -n $2 ]]; then
-	fg=$(fg_color $2)
-	codes=("${codes[@]}" $fg)
-	debug "Added $fg as foreground to codes"
-    fi
+codes=("${codes[@]}" $bg)
+debug "Added $bg as background to codes"
+fi
+if [[ -n $2 ]]; then
+fg=$(fg_color $2)
+codes=("${codes[@]}" $fg)
+debug "Added $fg as foreground to codes"
+fi
 
-    debug "Right Codes: "
+debug "Right Codes: "
 #    declare -p codes
 
-    # right always has a separator
+# right always has a separator
 #    if [[ $CURRENT_RBG != NONE && $1 != $CURRENT_RBG ]]; then
 #	$CURRENT_RBG=
 #    fi
-    declare -a intermediate2=($(fg_color $1) $(bg_color $CURRENT_RBG) )
+declare -a intermediate2=($(fg_color $1) $(bg_color $CURRENT_RBG) )
 #    PRIGHT="$PRIGHT---"
-    debug "pre prompt " $(ansi_r intermediate2[@])
-    PRIGHT="$PRIGHT$(ansi_r intermediate2[@])$RIGHT_SEPARATOR"
-    debug "post prompt " $(ansi_r codes[@])
-    PRIGHT="$PRIGHT$(ansi_r codes[@]) "
- #   else
+debug "pre prompt " $(ansi_r intermediate2[@])
+PRIGHT="$PRIGHT$(ansi_r intermediate2[@])$RIGHT_SEPARATOR"
+debug "post prompt " $(ansi_r codes[@])
+PRIGHT="$PRIGHT$(ansi_r codes[@]) "
+#   else
 #	debug "no current BG, codes is $codes[@]"
 #	PRIGHT="$PRIGHT$(ansi codes[@]) "
 #    fi
-    CURRENT_RBG=$1
-    [[ -n $3 ]] && PRIGHT="$PRIGHT$3"
+CURRENT_RBG=$1
+[[ -n $3 ]] && PRIGHT="$PRIGHT$3"
 }
 
 
@@ -325,7 +325,7 @@ prompt_right_segment() {
 
 # Context: user@hostname (who am I and where am I)
 prompt_time() {
-    prompt_segment magenta white "\t"
+prompt_segment magenta white "\t"
 }
 
 # Context: user@hostname (who am I and where am I)
@@ -333,7 +333,7 @@ prompt_context() {
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     prompt_segment cyan_light blue "\h@ssh"
 else
-    prompt_segment blue white "\h@ssh"
+    prompt_segment blue white "\h"
 fi
 }
 
@@ -392,10 +392,10 @@ build_prompt() {
     prompt_dir
     prompt_status
     prompt_end
-   
+
 }
 
-# from orig... 
+# from orig...
 # export PS1='$(ansi_single $(text_effect reset)) $(build_prompt) '
 # this doesn't work... new model: create a prompt via a PR variable and
 # use that.

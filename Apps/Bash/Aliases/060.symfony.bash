@@ -103,14 +103,18 @@ function symDoctrineRecreate()
 		php -d memory_limit=-1 bin/console doctrine:database:drop --force
 		php -d memory_limit=-1 bin/console doctrine:database:create
 		php -d memory_limit=-1 bin/console doctrine:schema:create
-		php -d memory_limit=-1 bin/console doctrine:fixtures:load --no-interaction
+		if [ ! -z "$1" ]; then
+			php -d memory_limit=-1 bin/console doctrine:fixtures:load --no-interaction
+		fi
     fi
 
     if [ -f app/console ]; then
 		php -d memory_limit=-1 app/console doctrine:database:drop --force
 		php -d memory_limit=-1 app/console doctrine:database:create
 		php -d memory_limit=-1 app/console doctrine:schema:create
-		php -d memory_limit=-1 app/console doctrine:fixtures:load --no-interaction
+		if [ ! -z "$1" ]; then
+			php -d memory_limit=-1 app/console doctrine:fixtures:load --no-interaction
+		fi
     fi
 }
 
