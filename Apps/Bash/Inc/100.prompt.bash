@@ -346,7 +346,7 @@ prompt_dir() {
 # Git: branch/detached head, dirty status
 git_status_dirty() {
     dirty=$(git status -s 2> /dev/null | tail -n 1)
-    [[ -n $dirty ]] && echo " ●"
+    [[ -n $dirty ]] && echo ""
 }
 
 prompt_git() {
@@ -360,7 +360,7 @@ prompt_git() {
 	else
 	    prompt_segment green black
 	fi
-	PR="$PR${ref/refs\/heads\// }$dirty "
+	PR="$PR${ref/refs\/heads\// }"
     fi
 }
 
@@ -376,8 +376,6 @@ prompt_status() {
     else
         symbols+="$(ansi_single $(fg_color green))✓"
     fi
-    [[ $UID -eq 0 ]] && symbols+="$(ansi_single $(fg_color yellow))⚡"
-    [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="$(ansi_single $(fg_color cyan))⚙"
 
     [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
@@ -387,12 +385,10 @@ prompt_status() {
 
 build_prompt() {
     prompt_time
-    prompt_context
     prompt_git
     prompt_dir
     prompt_status
     prompt_end
-
 }
 
 # from orig...
