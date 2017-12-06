@@ -331,10 +331,10 @@ prompt_segment magenta white "\t"
 # Dir: current working directory
 prompt_dir() {
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    prompt_segment cyan_light blue "\h@ssh"
-else
     prompt_segment blue_light black '\W'
-fi	
+else
+	prompt_segment cyan black "\W@ssh"  
+fi
 }
 
 
