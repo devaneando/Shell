@@ -154,5 +154,4 @@ function sshKey()
 function cleanHistory()
 {
 	env sort --ignore-leading-blanks --ignore-case --ignore-nonprinting --unique ${HOME}/.bash_history > /tmp/.bash_history && cat /tmp/.bash_history > ${HOME}/.bash_history
-
 }

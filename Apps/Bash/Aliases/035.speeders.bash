@@ -22,6 +22,7 @@ alias tarExtract='env tar --warning=none --extract --gunzip --file'
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
 alias go='cd ~ && env reset && env ssh -q'
 alias networkFix='sudo env systemctl restart network-manager.service'
+alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-format mp3 -o '%(title)s.%(id)s.%(ext)s'"
 
 function googleDNSEnable
 {
