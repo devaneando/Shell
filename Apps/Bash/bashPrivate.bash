@@ -26,23 +26,11 @@ export SQL_PASSWORD='yourPassword'
 
 # ●▬▬▬▬▬๑۩  Path ۩๑▬▬▬▬▬●
 
-export PATH=$PATH:.:\
-~/bin:\
-/bin:\
-/sbin:\
-/usr/bin:\
-/usr/games:\
-/usr/local/bin:\
-/usr/local/games:\
-/usr/local/sbin:\
-/usr/sbin:
+export PATH=$PATH:.:~/bin:/bin:/sbin:/usr/bin:/usr/games:/usr/local/bin:/usr/local/games:/usr/local/sbin:/usr/sbin:
 
 # ●▬▬▬▬▬๑۩  CDPATH: Allows you to add other directories to cd builtin ۩๑▬▬▬▬▬●
 
-export CDPATH=.:\
-~:\
-~/Desktop:\
-~/Documents:
+export CDPATH=.:~:~/Desktop:~/Documents:
 
 # ●▬▬▬▬▬๑۩  Other variables ۩๑▬▬▬▬▬●
 
