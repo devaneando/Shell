@@ -1,25 +1,21 @@
 # ●▬▬▬▬▬๑۩ Localhost ۩๑▬▬▬▬▬●
 
-127.0.0.1		localhost
-127.0.1.1		devaneando-hp
-127.0.0.1       notas
-127.0.0.1       dev-05
-127.0.0.1       dev-06
-127.0.0.1       dev-07
+127.0.0.1		    localhost
+127.0.1.1		    devaneando-hp
+127.0.1.1		    devaneando-cleverti
 
 # ●▬▬▬▬▬๑۩ Pesudo localhost ۩๑▬▬▬▬▬●
 
 192.168.2.70		devaneando-hp.local
-127.0.0.1	     	notas.local
-192.168.56.10       dev-05.local
-192.168.56.12       dev-06.local
-192.168.56.11       dev-07.local
+192.168.2.70		devaneando-cleverti
 
 # ●▬▬▬▬▬๑۩ Other sites ۩๑▬▬▬▬▬●
 
 54.77.213.27		1.support.ez.no
 192.168.2.202		cleverti git.cleverti intra.cleverti
-192.168.2.71        ezp_53x.go-dev.local
+
+# ●▬▬▬▬▬๑۩ Cleverti VMs ۩๑▬▬▬▬▬●
+
 192.168.2.140		cti-srv7-acs-vm
 
 # ●▬▬▬▬▬๑۩ Spindots ۩๑▬▬▬▬▬●
@@ -34,20 +30,10 @@
 176.111.107.62		002.web.spindots.com
 176.111.107.157		003.web.spindots.com
 
+# ●▬▬▬▬▬๑۩ Localhost sites ۩๑▬▬▬▬▬●
+
+127.0.0.1	     	notas.local
+
 # ●▬▬▬▬▬๑۩ Virtual machines ۩๑▬▬▬▬▬●
 
-
-192.168.56.11       ezp_19x.dev-07.local
-192.168.56.11       ezp_18x.dev-07.local
-192.168.56.11       ezp_17x.dev-07.local
-192.168.56.11       ezp_16x.dev-07.local
-192.168.56.11       ezp_54x.dev-07.local
-
-192.168.56.10       ezp_54x.dev-05.local
-192.168.56.10       dev_54x.dev-05.local
-192.168.2.93        ezp_53x.dev-05.local
-
-192.168.56.11       ezp_master.dev-07.local
-192.168.56.10       www.eshorizonte2020.es
-192.168.56.10       cidob.pt www.cidob.pt
-192.168.2.71        juba.org www.juba.org
+192.168.56.10       php-56
