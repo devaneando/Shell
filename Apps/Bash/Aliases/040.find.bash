@@ -9,8 +9,7 @@ alias find='sudo env find'
 
 ##### find files in the current directory
 ##### $1: search pattern
-function findHere()
-{
+function findHere() {
     if [ -z "$1" ]; then
         printError "No search pattern provided"
         return 255
@@ -22,8 +21,7 @@ function findHere()
 ##### find files in the current directory and move to anothe location
 ##### $1: search pattern
 ##### $2: destination folder
-function findMove()
-{
+function findMove() {
     if [ -z "$1" ]; then
         printError "No search pattern provided"
         return 255
@@ -45,8 +43,7 @@ function findMove()
 
 ##### find files in the current directory and delete them all
 ##### $1: search pattern
-function findDelete()
-{
+function findDelete() {
     if [ -z "$1" ]; then
         printError "No search pattern provided"
         return 255
@@ -71,8 +68,7 @@ function findDelete()
 }
 
 ##### find Empty folders in the current directory and delete them all
-function deleteEmptyFolders()
-{
+function deleteEmptyFolders() {
     find . -empty -type d
 
     echo -e "\e[31m"
@@ -86,7 +82,6 @@ function deleteEmptyFolders()
 }
 
 ##### Adds a .gitkeep file to all folders
-function gitKeepIt()
-{
-    find . -type d -name ".git" -prune -o -type d  -exec touch {}/.gitkeep \;
+function gitKeepIt() {
+    find . -type d -name ".git" -prune -o -type d -exec touch {}/.gitkeep \;
 }

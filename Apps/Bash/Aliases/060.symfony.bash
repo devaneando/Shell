@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 # vi:syntax=bash
 
-function symClear()
-{
-	reset
-	
+function symClear() {
+    reset
+
     if [ ! -d app/config ]; then
-		return 0
+        return 0
     fi
 
     if [ -d var/cache ]; then
@@ -14,126 +13,118 @@ function symClear()
     fi
 
     if [ -d app/cache ]; then
-        echo "removed " `rm -Rfv app/cache/* | wc -l` " cache files."
+        echo "removed " $(rm -Rfv app/cache/* | wc -l) " cache files."
     fi
 
     if [ -d app/logs ]; then
-		echo "removed " `rm -Rfv app/logs/*.log | wc -l` " log files."
+        echo "removed " $(rm -Rfv app/logs/*.log | wc -l) " log files."
     fi
 
     if [ -f bin/console ]; then
-		php -d memory_limit=-1 bin/console cache:clear --no-warmup --env=prod
-		php -d memory_limit=-1 bin/console cache:warmup --env=prod
+        php -d memory_limit=-1 bin/console cache:clear --no-warmup --env=prod
+        php -d memory_limit=-1 bin/console cache:warmup --env=prod
     fi
 
     if [ -f app/console ]; then
-		php -d memory_limit=-1 app/console cache:clear --no-warmup --env=prod
-		php -d memory_limit=-1 app/console cache:warmup --env=prod
+        php -d memory_limit=-1 app/console cache:clear --no-warmup --env=prod
+        php -d memory_limit=-1 app/console cache:warmup --env=prod
     fi
-
 }
 
-function symAssets()
-{
-	reset
-	
+function symAssets() {
+    reset
+
     if [ ! -d app/config ]; then
-		return 0
+        return 0
     fi
 
     if [ -f bin/console ]; then
-		php -d memory_limit=-1 bin/console assetic:dump --env=prod
-		php -d memory_limit=-1 bin/console assets:install --env=prod
+        php -d memory_limit=-1 bin/console assetic:dump --env=prod
+        php -d memory_limit=-1 bin/console assets:install --env=prod
     fi
 
     if [ -f app/console ]; then
-		php -d memory_limit=-1 app/console assetic:dump --env=prod
-		php -d memory_limit=-1 app/console assets:install --env=prod
+        php -d memory_limit=-1 app/console assetic:dump --env=prod
+        php -d memory_limit=-1 app/console assets:install --env=prod
     fi
 }
 
-function symServerStart()
-{
-	reset
-	
+function symServerStart() {
+    reset
+
     if [ -f app/console ]; then
-		app/console server:start 0.0.0.0:8080
+        app/console server:start 0.0.0.0:8080
     fi
-    
+
     if [ -f bin/console ]; then
-		bin/console server:start 0.0.0.0:8080
-    fi	
-}
-
-function symServerStop()
-{
-    if [ -f app/console ]; then
-		app/console server:stop 0.0.0.0:8080
+        bin/console server:start 0.0.0.0:8080
     fi
-    
-    if [ -f bin/console ]; then
-		bin/console server:stop 0.0.0.0:8080
-    fi	
 }
 
-function symServerRestart()
-{
-	reset
-	
+function symServerStop() {
     if [ -f app/console ]; then
-		app/console server:stop 0.0.0.0:8080
-		app/console server:start 0.0.0.0:8080
+        app/console server:stop 0.0.0.0:8080
     fi
-    
+
     if [ -f bin/console ]; then
-		bin/console server:stop 0.0.0.0:8080
-		bin/console server:start 0.0.0.0:8080
-    fi	
+        bin/console server:stop 0.0.0.0:8080
+    fi
 }
 
-function symDoctrineRecreate()
-{
-	reset
-	
+function symServerRestart() {
+    reset
+
+    if [ -f app/console ]; then
+        app/console server:stop 0.0.0.0:8080
+        app/console server:start 0.0.0.0:8080
+    fi
+
+    if [ -f bin/console ]; then
+        bin/console server:stop 0.0.0.0:8080
+        bin/console server:start 0.0.0.0:8080
+    fi
+}
+
+function symDoctrineRecreate() {
+    reset
+
     if [ ! -d app/config ]; then
-		return 0
+        return 0
     fi
 
     if [ -f bin/console ]; then
-		php -d memory_limit=-1 bin/console doctrine:database:drop --force
-		php -d memory_limit=-1 bin/console doctrine:database:create
-		php -d memory_limit=-1 bin/console doctrine:schema:create
-		if [ ! -z "$1" ]; then
-			php -d memory_limit=-1 bin/console doctrine:fixtures:load --no-interaction
-		fi
+        php -d memory_limit=-1 bin/console doctrine:database:drop --force
+        php -d memory_limit=-1 bin/console doctrine:database:create
+        php -d memory_limit=-1 bin/console doctrine:schema:create
+        if [ ! -z "$1" ]; then
+            php -d memory_limit=-1 bin/console doctrine:fixtures:load --no-interaction
+        fi
     fi
 
     if [ -f app/console ]; then
-		php -d memory_limit=-1 app/console doctrine:database:drop --force
-		php -d memory_limit=-1 app/console doctrine:database:create
-		php -d memory_limit=-1 app/console doctrine:schema:create
-		if [ ! -z "$1" ]; then
-			php -d memory_limit=-1 app/console doctrine:fixtures:load --no-interaction
-		fi
+        php -d memory_limit=-1 app/console doctrine:database:drop --force
+        php -d memory_limit=-1 app/console doctrine:database:create
+        php -d memory_limit=-1 app/console doctrine:schema:create
+        if [ ! -z "$1" ]; then
+            php -d memory_limit=-1 app/console doctrine:fixtures:load --no-interaction
+        fi
     fi
 }
 
-function symDoctrineUpdate()
-{
-	reset
-	
+function symDoctrineUpdate() {
+    reset
+
     if [ ! -d app/config ]; then
-		return 0
+        return 0
     fi
 
     if [ -f bin/console ]; then
-		php -d memory_limit=-1 bin/console doctrine:schema:update -f
-		php -d memory_limit=-1 bin/console doctrine:schema:validate
+        php -d memory_limit=-1 bin/console doctrine:schema:update -f
+        php -d memory_limit=-1 bin/console doctrine:schema:validate
     fi
 
     if [ -f app/console ]; then
-		php -d memory_limit=-1 app/console doctrine:schema:update -f
-		php -d memory_limit=-1 app/console doctrine:schema:validate
+        php -d memory_limit=-1 app/console doctrine:schema:update -f
+        php -d memory_limit=-1 app/console doctrine:schema:validate
     fi
 }
-
