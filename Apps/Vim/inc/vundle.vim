@@ -37,7 +37,6 @@ Plugin          'tpope/vim-fugitive'
 Plugin          'tpope/vim-commentary'
 
 """""""""" Syntax highlight
-Plugin          'evanmiller/nginx-vim-syntax'
 Plugin          'evidens/vim-twig'
 Plugin          'groenewege/vim-less'
 Plugin          'jelera/vim-javascript-syntax'
