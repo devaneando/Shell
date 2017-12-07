@@ -46,5 +46,4 @@ export CDPATH=.:\
 
 # ●▬▬▬▬▬๑۩  Other variables ۩๑▬▬▬▬▬●
 
-export COWPATH="${BASE}/Apps/Funnies/cowfiles"
-export SYMFONY_ENV="prod"
+export SYMFONY_ENV="dev"

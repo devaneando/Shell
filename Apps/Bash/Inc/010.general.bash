@@ -15,8 +15,8 @@ export SVN_EDITOR="$VISUAL"
 # Store 100000 commands in history buffer
 export HISTSIZE=100000
 
-# Store 100000 commands in history FILE 
-export HISTFILESIZE=100000      
+# Store 100000 commands in history FILE
+export HISTFILESIZE=100000
 
 # Ignores duplicates and spaces in history
 export HISTCONTROL=ignoredups:erasedups:ignorespace
@@ -34,12 +34,12 @@ shopt -q -s cdspell
 shopt -q -s direxpand
 
 # CD is assumed by default
-shopt -q -s autocd  
+shopt -q -s autocd
 
 # Make sure display get updated when terminal window get resized
 shopt -q -s checkwinsize
 
-# Turn on the extended pattern matching features 
+# Turn on the extended pattern matching features
 shopt -q -s extglob
 
 # If set, and Readline is being used, Bash will not attempt to search the PATH for possible completions when completion is attempted on an empty line.
@@ -49,13 +49,13 @@ shopt -q -s no_empty_cmd_completion
 shopt -q -s histappend
 
 # Make multi-line commandsline in history
-shopt -q -s cmdhist 
+shopt -q -s cmdhist
 
 # Get immediate notification of background job termination
-set -o notify 
+set -o notify
 
 # Disable [CTRL-D] which is used to exit the shell
 set -o ignoreeof
 
 # Disable core files
-ulimit -S -c 0 > /dev/null 2>&1
+ulimit -S -c 0 >/dev/null 2>&1

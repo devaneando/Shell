@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # vi:syntax=bash
-# 
+#
 # bash/zsh completion support for core Git.
 #
 # Copyright (C) 2006,2007 Shawn O. Pearce <spearce@spearce.org>
