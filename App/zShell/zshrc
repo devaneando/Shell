@@ -2,10 +2,13 @@
 export PATH=$PATH:.:~/bin:/bin:/sbin:/usr/bin:/usr/games:/usr/local/bin:/usr/local/games:/usr/local/sbin:/usr/sbin:
 
 # Finds what is the base path of the Shell config files
-if [[ -L "${HOME}/.zshrc" ]]; then
-    export BASE=$(env readlink --canonicalize-missing ${HOME}/.zshrc | /bin/grep --color=never -P "^.*(?=\/App)" -o)
-    export ZSH="${BASE}/App/zShell/oh-my-zsh"
+if [[ -f "${HOME}/.zsh_base" ]]; then
+    source "${HOME}/.zsh_base"
+else
+    export BASE="$(env readlink --canonicalize-missing ${HOME})/.Shell"
 fi
+
+export ZSH="${BASE}/App/zShell/oh-my-zsh"
 
 # Path to your oh-my-zsh installation.
 
@@ -58,7 +61,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM="${HOME}/Shell/App/zShell"
+ZSH_CUSTOM="${BASE}/App/zShell"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -81,15 +84,14 @@ plugins=(
   git-extras,
   history,
   history-substring-search,
-  sudo  
+  sudo
 )
 
-source $ZSH/oh-my-zsh.sh
+source "${ZSH}/oh-my-zsh.sh"
 
 # Options
 # http://zsh.sourceforge.net/Doc/Release/Options.html
 setopt autocd
-setopt CDABLE_VARS
 setopt PUSHD_IGNORE_DUPS
 setopt ALWAYS_TO_END
 setopt APPEND_HISTORY

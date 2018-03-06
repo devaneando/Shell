@@ -3,11 +3,20 @@
 # ●▬▬▬▬▬๑۩  Configure bash ۩๑▬▬▬▬▬●
 
 printInfo "Configuring zShell..."
-if [[ -f ${HOME}/App/zShell/.zshrc ]]; then
-rm -Rf ${HOME}/App/zShell/.zshrc
+if [[ -f ${HOME}/.zshrc ]]; then
+rm -Rf ${HOME}/.zshrc
 fi
-copyFile ${BASE}/App/zShell/.zshrc ${HOME}/.zsrrc
+linkFile ${BASE}/App/zShell/zshrc ${HOME}/.zshrc
 printInfo "zShell configured."
+
+# ●▬▬▬▬▬๑۩  Tilda ۩๑▬▬▬▬▬●
+
+printInfo "Configuring tilda..."
+if [[ -d ${HOME}/.config/tilda ]]; then
+rm -Rfv ${HOME}/.config/tilda
+fi
+linkFile ${BASE}/App/Tilda ${HOME}/.config/tilda
+printInfo "tilda configured."
 
 # ●▬▬▬▬▬๑۩  Fonts ۩๑▬▬▬▬▬●
 
