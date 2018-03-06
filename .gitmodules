@@ -1,0 +1,6 @@
+[submodule "App/zShell/oh-my-zsh"]
+    path = App/zShell/oh-my-zsh
+    url = https://github.com/robbyrussell/oh-my-zsh.git
+    branch = master
+    ignore = dirty
+
