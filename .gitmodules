@@ -9,3 +9,9 @@
     url = https://github.com/VundleVim/Vundle.vim.git
     branch = master
     ignore = dirty
+    
+[submodule "App/Vim/bundle/vim-colors-solarized"]
+    path = App/Vim/bundle/vim-colors-solarized
+    url = git://github.com/altercation/vim-colors-solarized.git
+    branch = master
+    ignore = dirty
