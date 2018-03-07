@@ -16,7 +16,7 @@ Plugin          'bling/vim-airline'
 Plugin          'vim-airline/vim-airline-themes'
 
 " Allows you to create an after/colors/ script for customizing any colorscheme.
-Plugin          'vim-scripts/AfterColors.vim'
+"Plugin          'vim-scripts/AfterColors.vim'
 
 " This plugin causes all trailing whitespace characters (see Supported Whitespace Characters below) to be highlighted.
 Plugin          'ntpeters/vim-better-whitespace'
