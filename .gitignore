@@ -1,0 +1,7 @@
+App/oh-my-zsh/
+!App/Vim/bundle/Vundle/
+App/Vim/bundle/*
+!App/Vim/bundle/.gitkeep
+App/Vim/session/*
+!App/Vim/session/.gitkeep
+
