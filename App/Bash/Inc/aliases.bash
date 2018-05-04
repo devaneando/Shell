@@ -97,6 +97,7 @@ alias networkFix='sudo env systemctl restart network-manager.service'
 alias phpStan='reset && phpstan analyse --configuration=./phpstan.neon --level=4 --memory-limit=2048M'
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
 alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-format mp3 -o '%(title)s.%(id)s.%(ext)s'"
+alias symfonySecret="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1"
 
 ##### Functions
 ########## Functions to add new functionalities
