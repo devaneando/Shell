@@ -3,10 +3,6 @@ source          ${HOME}/.vim/inc/better-whitespace.vim
 source          ${HOME}/.vim/inc/colors.vim
 source          ${HOME}/.vim/inc/settings.vim
 
-
-
-
-
 " === phpqa
 let g:phpqa_messdetector_autorun = 0
 let g:phpqa_codesniffer_args = "--standard=psr2"

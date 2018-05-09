@@ -10,9 +10,11 @@ alias .......='cd ../../../../../..'
 ##### Sudo aliases
 ########## Add sudo to normally sudoed commands
 
+alias a2enconf='sudo env a2enconf'
 alias a2enmod='sudo env a2enmod'
 alias a2ensite='sudo env a2ensite'
 alias add-apt-repository='sudo env add-apt-repository'
+alias apachectl='sudo env apachectl'
 alias apt-get='sudo env apt-get'
 alias apt-key='sudo env apt-key'
 alias apt='sudo env apt'
@@ -94,10 +96,11 @@ alias la='env ls --color --quote-name --almost-all --file-type --si --time-style
 alias monitorLeft="env xrandr --output eDP-1 --rotate left"
 alias monitorNormal="env xrandr --output eDP-1 --rotate normal"
 alias networkFix='sudo env systemctl restart network-manager.service'
-alias phpStan='reset && phpstan analyse --configuration=./phpstan.neon --level=4 --memory-limit=2048M'
+alias phpStan='reset && /usr/bin/php7.2 /usr/local/bin/phpstan analyse --configuration=./phpstan.neon --level=4 --memory-limit=2048M'
+alias symfonyCacheClear="reset && sudo rm -f var/logs/*.log && bin/console cache:clear --env=dev && bin/console cache:clear --env=prod"
+alias symfonySecret="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1"
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
 alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-format mp3 -o '%(title)s.%(id)s.%(ext)s'"
-alias symfonySecret="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1"
 
 ##### Functions
 ########## Functions to add new functionalities

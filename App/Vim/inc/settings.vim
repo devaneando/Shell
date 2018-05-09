@@ -5,7 +5,7 @@ set             history=700
 set             lazyredraw
 
 " Handle paste without formating"
-set             paste
+set             nopaste
 set             pastetoggle=<F12>
 
 " No annoying sound on errors"
