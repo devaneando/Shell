@@ -105,6 +105,35 @@ alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-form
 ##### Functions
 ########## Functions to add new functionalities
 
+
+function ezClear()
+{
+	if [ -d "ezpublish/cache/dev" ]; then
+		rm -Rf ezpublish/cache/dev/*
+	fi
+	
+	if [ -d "ezpublish/cache/prod" ]; then
+		rm -Rf ezpublish/cache/prod/*
+	fi
+	
+	if [ -d "ezpublish/logs" ]; then
+		sudo rm -Rf ezpublish/logs/*.log
+	fi
+	
+	reset
+	ezpublish/console cache:clear --quiet --no-warmup --no-optional-warmers --no-debug
+	ezpublish/console cache:clear --env=prod --quiet --no-warmup --no-optional-warmers --no-debug
+}
+
+function ezAssets()
+{
+	reset
+	ezpublish/console assetic:dump --quiet
+	ezpublish/console assetic:dump --env=prod --quiet
+	ezpublish/console assets:install --quiet
+	ezpublish/console assets:install --env=prod --quiet
+}
+
 # Generate a SSH key
 function sshKeyGenerate()
 {
