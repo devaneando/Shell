@@ -54,6 +54,11 @@ alias chromium-browser='env chromium-browser --process-per-site'
 alias chromium='env chromium-browser --process-per-site'
 alias cp='env cp --verbose --interactive --recursive'
 alias df='env df --block-size=1K --human-readable'
+alias dockerBuild='reset && docker-compose build'
+alias dockerPs='reset && docker ps'
+alias dockerStart='reset && docker-compose start'
+alias dockerStop='reset && docker-compose stop'
+alias dockerUp='reset && docker-compose up'
 alias du='env du --total --human-readable --summarize'
 alias echo='env echo -e'
 alias egrep='env egrep --ignore-case -I --color=always'
@@ -96,7 +101,7 @@ alias la='env ls --color --quote-name --almost-all --file-type --si --time-style
 alias monitorLeft="env xrandr --output eDP-1 --rotate left"
 alias monitorNormal="env xrandr --output eDP-1 --rotate normal"
 alias networkFix='sudo env systemctl restart network-manager.service'
-alias phpStan='reset && /usr/bin/php7.2 /usr/local/bin/phpstan analyse --configuration=./phpstan.neon --level=4 --memory-limit=2048M'
+alias phpStan='reset && /usr/bin/php7.2 /usr/local/bin/phpstan analyse --configuration=./phpstan.neon --level=4 --memory-limit=4096M'
 alias symfonyCacheClear="reset && sudo rm -f var/logs/*.log && bin/console cache:clear --env=dev && bin/console cache:clear --env=prod"
 alias symfonySecret="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1"
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
@@ -111,15 +116,15 @@ function ezClear()
 	if [ -d "ezpublish/cache/dev" ]; then
 		rm -Rf ezpublish/cache/dev/*
 	fi
-	
+
 	if [ -d "ezpublish/cache/prod" ]; then
 		rm -Rf ezpublish/cache/prod/*
 	fi
-	
+
 	if [ -d "ezpublish/logs" ]; then
 		sudo rm -Rf ezpublish/logs/*.log
 	fi
-	
+
 	reset
 	ezpublish/console cache:clear --quiet --no-warmup --no-optional-warmers --no-debug
 	ezpublish/console cache:clear --env=prod --quiet --no-warmup --no-optional-warmers --no-debug
@@ -160,6 +165,20 @@ function sshKeyGenerate()
         -C "${COMMENT}" \
         -N "${PASSPHRASE}" \
         -f "${FILENAME}"
+}
+
+function dockerBash() {
+	if [ -z "$1" ]; then
+		echo "$fg[red]Can't connect to a docker container, without its ID.${reset_color}"
+		return 255
+	fi
+	docker exec -i -t ${1} /bin/bash
+}
+
+# Docker bash
+function dockerBash()
+{
+   sudo docker exec -i -t "$1" /bin/bash
 }
 
 # Allows vi to automatically edit protected files
