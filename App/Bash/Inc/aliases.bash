@@ -54,11 +54,6 @@ alias chromium-browser='env chromium-browser --process-per-site'
 alias chromium='env chromium-browser --process-per-site'
 alias cp='env cp --verbose --interactive --recursive'
 alias df='env df --block-size=1K --human-readable'
-alias dockerBuild='reset && docker-compose build'
-alias dockerPs='reset && docker ps'
-alias dockerStart='reset && docker-compose start'
-alias dockerStop='reset && docker-compose stop'
-alias dockerUp='reset && docker-compose up'
 alias du='env du --total --human-readable --summarize'
 alias echo='env echo -e'
 alias egrep='env egrep --ignore-case -I --color=always'
@@ -106,6 +101,17 @@ alias symfonyCacheClear="reset && sudo rm -f var/logs/*.log && bin/console cache
 alias symfonySecret="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1"
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
 alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-format mp3 -o '%(title)s.%(id)s.%(ext)s'"
+
+##### Dockers
+
+alias dockerBuild='reset && docker-compose build --force-rm'
+alias dockerComposerStart='reset && docker-compose start'
+alias dockerComposerStop='reset && docker-compose stop'
+alias dockerComposerUp='reset && docker-compose up'
+alias dockerExec='reset && docker container exec -i -t'
+alias dockerPs='reset && docker ps'
+alias dockerRun='reset && docker container run --rm'
+
 
 ##### Functions
 ########## Functions to add new functionalities
@@ -167,19 +173,82 @@ function sshKeyGenerate()
         -f "${FILENAME}"
 }
 
+# Docker bash
 function dockerBash() {
 	if [ -z "$1" ]; then
 		echo "$fg[red]Can't connect to a docker container, without its ID.${reset_color}"
 		return 255
 	fi
-	docker exec -i -t ${1} /bin/bash
+	sudo docker container exec -i -t ${1} /bin/bash
 }
 
-# Docker bash
-function dockerBash()
-{
-   sudo docker exec -i -t "$1" /bin/bash
+# Docker delete all containers
+function dockerDeleteAllContainers() {
+	reset
+
+	read -p "Are you sure you want to delete all containers? " -n 1 -r
+	echo
+
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+
+		containers=$(sudo docker ps -q)
+		if [[ ! -z ${containers} ]]; then
+			sudo docker kill ${containers}
+		fi
+
+		containers=$(sudo docker ps -a -q)
+		if [[ -z ${containers} ]]; then
+			echo "There's no container to delete".
+			return 1
+		fi
+
+		sudo docker rm ${containers}
+	fi
 }
+
+# Docker delete all images
+function dockerDeleteAllImages() {
+	reset
+
+	read -p "Are you sure you want to delete all images? " -n 1 -r
+	echo
+
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+
+		containers=$(sudo docker ps -q)
+		if [[ ! -z ${containers} ]]; then
+			sudo docker kill ${containers}
+		fi
+
+		images=$(sudo docker images -q)
+		if [[ -z ${images} ]]; then
+			echo "There's no image to delete".
+			return 1
+		fi
+
+		sudo docker rmi ${images} -f
+	fi	
+}
+
+# Docker stop all containers
+function dockerStopAllContainers {
+	reset
+
+	read -p "Are you sure you want to stop all containers? " -n 1 -r
+	echo
+
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+
+		containers=$(sudo docker ps -q)
+		if [[ -z ${containers} ]]; then
+			echo "There's no container to stop".
+			return 1
+		fi
+
+		sudo docker kill ${containers}
+	fi
+}
+
 
 # Allows vi to automatically edit protected files
 function __vi() {
