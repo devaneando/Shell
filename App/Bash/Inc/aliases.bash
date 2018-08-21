@@ -21,8 +21,6 @@ alias apt='sudo env apt'
 alias blkid='sudo env blkid'
 alias chmod='sudo env chmod'
 alias chown='sudo env chown'
-alias docker-compose='sudo env docker-compose'
-alias docker='sudo env docker'
 alias dpkg-reconfigure='sudo env dpkg-reconfigure'
 alias dpkg='sudo env dpkg'
 alias fdisk='sudo env fdisk'
@@ -61,7 +59,6 @@ alias eject='eject /dev/sr0'
 alias eyeD3='env eyeD3 --force-update --verbose'
 alias figlet-toilet='env figlet-toilet --gay --width 1100'
 alias free='env free --mega --human --total'
-alias gitTime="env git commit -m \"$(date +'%Y-%m-%d %H:%M')\""
 alias google-chrome='env google-chrome --process-per-site'
 alias grep='env grep --extended-regexp -I --ignore-case --color=always --exclude-dir=.git'
 alias killall='sudo env killall --verbose --ignore-case --regexp'
@@ -105,13 +102,14 @@ alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-form
 ##### Dockers
 
 alias dockerBuild='reset && docker-compose build --force-rm'
+alias docker-compose='reset && sudo env docker-compose'
 alias dockerComposerStart='reset && docker-compose start'
 alias dockerComposerStop='reset && docker-compose stop'
 alias dockerComposerUp='reset && docker-compose up'
 alias dockerExec='reset && docker container exec -i -t'
 alias dockerPs='reset && docker ps'
+alias docker='reset && sudo env docker'
 alias dockerRun='reset && docker container run --rm'
-
 
 ##### Functions
 ########## Functions to add new functionalities
@@ -119,30 +117,30 @@ alias dockerRun='reset && docker container run --rm'
 
 function ezClear()
 {
-	if [ -d "ezpublish/cache/dev" ]; then
-		rm -Rf ezpublish/cache/dev/*
-	fi
+    if [ -d "ezpublish/cache/dev" ]; then
+        rm -Rf ezpublish/cache/dev/*
+    fi
 
-	if [ -d "ezpublish/cache/prod" ]; then
-		rm -Rf ezpublish/cache/prod/*
-	fi
+    if [ -d "ezpublish/cache/prod" ]; then
+        rm -Rf ezpublish/cache/prod/*
+    fi
 
-	if [ -d "ezpublish/logs" ]; then
-		sudo rm -Rf ezpublish/logs/*.log
-	fi
+    if [ -d "ezpublish/logs" ]; then
+        sudo rm -Rf ezpublish/logs/*.log
+    fi
 
-	reset
-	ezpublish/console cache:clear --quiet --no-warmup --no-optional-warmers --no-debug
-	ezpublish/console cache:clear --env=prod --quiet --no-warmup --no-optional-warmers --no-debug
+    reset
+    ezpublish/console cache:clear --quiet --no-warmup --no-optional-warmers --no-debug
+    ezpublish/console cache:clear --env=prod --quiet --no-warmup --no-optional-warmers --no-debug
 }
 
 function ezAssets()
 {
-	reset
-	ezpublish/console assetic:dump --quiet
-	ezpublish/console assetic:dump --env=prod --quiet
-	ezpublish/console assets:install --quiet
-	ezpublish/console assets:install --env=prod --quiet
+    reset
+    ezpublish/console assetic:dump --quiet
+    ezpublish/console assetic:dump --env=prod --quiet
+    ezpublish/console assets:install --quiet
+    ezpublish/console assets:install --env=prod --quiet
 }
 
 # Generate a SSH key
@@ -175,78 +173,88 @@ function sshKeyGenerate()
 
 # Docker bash
 function dockerBash() {
-	if [ -z "$1" ]; then
-		echo "$fg[red]Can't connect to a docker container, without its ID.${reset_color}"
-		return 255
-	fi
-	sudo docker container exec -i -t ${1} /bin/bash
+    if [ -z "$1" ]; then
+        echo "$fg[red]Can't connect to a docker container, without its ID.${reset_color}"
+        return 255
+    fi
+    sudo docker container exec -i -t ${1} /bin/bash
 }
 
 # Docker delete all containers
 function dockerDeleteAllContainers() {
-	reset
+    reset
 
-	read -p "Are you sure you want to delete all containers? " -n 1 -r
-	echo
+    read -p "Are you sure you want to delete all containers? " -n 1 -r
+    echo
 
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
 
-		containers=$(sudo docker ps -q)
-		if [[ ! -z ${containers} ]]; then
-			sudo docker kill ${containers}
-		fi
+        containers=$(sudo docker ps -q)
+        if [[ ! -z ${containers} ]]; then
+            sudo docker kill ${containers}
+        fi
 
-		containers=$(sudo docker ps -a -q)
-		if [[ -z ${containers} ]]; then
-			echo "There's no container to delete".
-			return 1
-		fi
+        containers=$(sudo docker ps -a -q)
+        if [[ -z ${containers} ]]; then
+            echo "There's no container to delete".
+            return 1
+        fi
 
-		sudo docker rm ${containers}
-	fi
+        sudo docker rm ${containers}
+    fi
 }
 
 # Docker delete all images
 function dockerDeleteAllImages() {
-	reset
+    reset
 
-	read -p "Are you sure you want to delete all images? " -n 1 -r
-	echo
+    read -p "Are you sure you want to delete all images? " -n 1 -r
+    echo
 
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
 
-		containers=$(sudo docker ps -q)
-		if [[ ! -z ${containers} ]]; then
-			sudo docker kill ${containers}
-		fi
+        containers=$(sudo docker ps -q)
+        if [[ ! -z ${containers} ]]; then
+            sudo docker kill ${containers}
+        fi
 
-		images=$(sudo docker images -q)
-		if [[ -z ${images} ]]; then
-			echo "There's no image to delete".
-			return 1
-		fi
+        images=$(sudo docker images -q)
+        if [[ -z ${images} ]]; then
+            echo "There's no image to delete".
+            return 1
+        fi
 
-		sudo docker rmi ${images} -f
-	fi	
+        sudo docker rmi ${images} -f
+    fi
 }
 
 # Docker stop all containers
 function dockerStopAllContainers {
-	reset
+    reset
 
-	read -p "Are you sure you want to stop all containers? " -n 1 -r
-	echo
+    read -p "Are you sure you want to stop all containers? " -n 1 -r
+    echo
 
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
 
-		containers=$(sudo docker ps -q)
-		if [[ -z ${containers} ]]; then
-			echo "There's no container to stop".
-			return 1
-		fi
+        containers=$(sudo docker ps -q)
+        if [[ -z ${containers} ]]; then
+            echo "There's no container to stop".
+            return 1
+        fi
 
-		sudo docker kill ${containers}
-	fi
+        sudo docker kill ${containers}
+    fi
+}
+
+# Adds all changes and commit
+function gitTime()
+{
+    commit_date="$(date +'%Y-%m-%d %H:%M')"
+    commit_branch="$(git branch --no-color | sed -r 's/^\* (.*)$/\1/g')"
+    git add --all .
+    git commit -m "${commit_date}"
+    git push origin ${commit_branch}
 }
 
 
