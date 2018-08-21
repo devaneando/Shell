@@ -102,14 +102,14 @@ alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-form
 ##### Dockers
 
 alias dockerBuild='reset && docker-compose build --force-rm'
-alias docker-compose='reset && sudo env docker-compose'
-alias dockerComposerStart='reset && docker-compose start'
-alias dockerComposerStop='reset && docker-compose stop'
+alias docker-compose='sudo env docker-compose'
+alias dockerComposerStart='docker-compose start'
+alias dockerComposerStop='docker-compose stop'
 alias dockerComposerUp='reset && docker-compose up'
-alias dockerExec='reset && docker container exec -i -t'
+alias dockerExec='docker container exec -i -t'
 alias dockerPs='reset && docker ps'
-alias docker='reset && sudo env docker'
-alias dockerRun='reset && docker container run --rm'
+alias docker='sudo docker'
+alias dockerRun='rdocker container run --rm'
 
 ##### Functions
 ########## Functions to add new functionalities
