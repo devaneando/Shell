@@ -5,3 +5,4 @@ App/Vim/bundle/*
 App/Vim/session/*
 !App/Vim/session/.gitkeep
 
+App/Geany/geany_socket_*

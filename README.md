@@ -13,6 +13,15 @@ cd
 ./Shell/install.bash
 ```
 
+## Link Configuration
+
+```bash
+rm -Rf ~/.bashrc
+ln -s ~/Shell/App/Bash/bashrc.bash .bashrc
+rm -Rf ~/.config/geany
+ln -s ~/Shell/App/Geany/ ~/.config/geany
+```
+
 ## Add google DNS
 
 Add Google DNS to your machine

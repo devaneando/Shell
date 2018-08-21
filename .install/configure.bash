@@ -38,3 +38,11 @@ printInfo "Configuring Git..."
 linkFile ${BASE}/App/Git/gitignore.conf ${HOME}/.gitignore
 copyFile ${BASE}/App/Git/gitconfig.ini ${HOME}/.gitconfig
 printInfo "Git configured."
+
+# ●▬▬▬▬▬๑۩  Geany ۩๑▬▬▬▬▬●
+rm -Rf ~/.config/geany
+ln -s ~/Shell/App/Geany/ ~/.config/geany
+
+# ●▬▬▬▬▬๑۩  Bash ۩๑▬▬▬▬▬●
+rm -Rf ~/.bashrc
+cp ~/Shell/App/Bash/bashrc.bash ~/.bashrc

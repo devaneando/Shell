@@ -80,22 +80,24 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
     sudo apt-get install --assume-yes --quiet \
         clementine \
+        ddgr \
         easytag \
         exfalso \
         flac \
+        geany \
+        geany-plugins \
+        ghostwriter \
+        gpodder \
         id3 \
         id3v2 \
         lame \
+        numix-gtk-theme \
+        numix-icon-theme-circle \
+        numix-icon-theme-square \
         ripit \
         tilda \
         vlc \
-        numix-icon-theme-circle \
-        numix-icon-theme-square \
-        numix-gtk-theme \
-        ghostwriter \
-        gpodder \
-        youtube-dl \
-        ddgr
+        youtube-dl
 fi
 
 # ●▬▬▬▬▬๑۩  Latex packages ۩๑▬▬▬▬▬●
