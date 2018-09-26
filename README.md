@@ -5,11 +5,8 @@ My Bash settings.
 ## Install
 
 ```bash
-git clone https://github.com/devaneando/Shell.git ~/Shell
-cp Shell/App/Bash/bashrc.bash ~/.
-mv ~/.bashrc ~/.bashrc.ori
-mv ~/bashrc.bash ~/.bashrc
 cd
+git clone --recursive https://github.com/devaneando/Shell.git ~/Shell
 ./Shell/install.bash
 ```
 

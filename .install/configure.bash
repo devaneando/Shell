@@ -1,15 +1,5 @@
 #! /usr/bin/env bash
 
-
-# ●▬▬▬▬▬๑۩  Tilda ۩๑▬▬▬▬▬●
-
-printInfo "Configuring tilda..."
-if [[ -d ${HOME}/.config/tilda ]]; then
-rm -Rfv ${HOME}/.config/tilda
-fi
-linkFile ${BASE}/App/Tilda ${HOME}/.config/tilda
-printInfo "tilda configured."
-
 # ●▬▬▬▬▬๑۩  Fonts ۩๑▬▬▬▬▬●
 
 printInfo "Configuring fonts..."

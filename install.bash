@@ -8,3 +8,4 @@ BASE=$(env readlink --canonicalize-missing $0 | env grep --color=never -P "^.*(?
 source "${BASE}/.install/functions.bash"
 source "${BASE}/.install/packages.bash"
 source "${BASE}/.install/configure.bash"
+source "${BASE}/.install/composer.bash"

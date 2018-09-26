@@ -1,0 +1,1 @@
+eval "$(symfony-autocomplete)"

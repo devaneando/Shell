@@ -95,7 +95,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         numix-icon-theme-circle \
         numix-icon-theme-square \
         ripit \
-        tilda \
         vlc \
         youtube-dl
 fi

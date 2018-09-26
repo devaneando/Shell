@@ -257,6 +257,16 @@ function gitTime()
     git push origin ${commit_branch}
 }
 
+function loremIpsum()
+{
+    if [[ ! -z ${1} ]]; then
+        curl https://loripsum.net/api/${1}/short/headers/plaintext
+    else
+        curl https://loripsum.net/api/3/short/headers/plaintext
+    fi
+
+}
+
 
 # Allows vi to automatically edit protected files
 function __vi() {
