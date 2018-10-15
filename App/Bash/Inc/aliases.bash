@@ -54,7 +54,7 @@ alias cp='env cp --verbose --interactive --recursive'
 alias df='env df --block-size=1K --human-readable'
 alias du='env du --total --human-readable --summarize'
 alias echo='env echo -e'
-alias egrep='env egrep --ignore-case -I --color=always'
+alias egrep='env egrep --ignore-case -I'
 alias eject='eject /dev/sr0'
 alias eyeD3='env eyeD3 --force-update --verbose'
 alias figlet-toilet='env figlet-toilet --gay --width 1100'
@@ -87,15 +87,13 @@ alias vivaldi='env vivaldi --process-per-site'
 ########## Create aliases to add new functionalities
 
 alias dhclient='env sudo vi /etc/dhcp/dhclient.conf'
-alias format='env echo "/data/FS/Media/01.Music/%g/%z/%y - %b/CD %d/%t [%z] %n@%b"'
+alias format='env echo "${HOME}/Music/%g/%z/%y - %b/CD %d/%t [%z] %n@%b"'
 alias imageSize='env exiftool -ImageSize -FileName -S -t'
 alias la='env ls --color --quote-name --almost-all --file-type --si --time-style=long-iso --human-readable --numeric-uid-gid -go'
 alias monitorLeft="env xrandr --output eDP-1 --rotate left"
 alias monitorNormal="env xrandr --output eDP-1 --rotate normal"
 alias networkFix='sudo env systemctl restart network-manager.service'
 alias phpStan='reset && /usr/bin/php7.2 /usr/local/bin/phpstan analyse --configuration=./phpstan.neon --level=4 --memory-limit=4096M'
-alias symfonyCacheClear="reset && sudo rm -f var/logs/*.log && bin/console cache:clear --env=dev && bin/console cache:clear --env=prod"
-alias symfonySecret="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1"
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
 alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-format mp3 -o '%(title)s.%(id)s.%(ext)s'"
 
@@ -110,6 +108,37 @@ alias dockerExec='docker container exec -i -t'
 alias dockerPs='reset && docker ps'
 alias docker='sudo docker'
 alias dockerRun='rdocker container run --rm'
+
+##### Symfony
+
+function symfonyCacheClear()
+{
+    if [ -f "bin/console" ]; then
+        console="bin/console"
+    elif [ -f "app/console" ]; then
+        console="app/console"
+    fi
+
+    reset
+    sudo rm -f var/logs/*.log
+    $console cache:clear --env=dev
+    $console cache:clear --env=prod
+}
+
+function symfonyAssets()
+{
+    if [ -f "bin/console" ]; then
+        console="bin/console"
+    elif [ -f "app/console" ]; then
+        console="app/console"
+    fi
+
+    reset
+    $console assetic:dump
+    $console assets:install --symlink
+}
+
+alias symfonySecret="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1"
 
 ##### Functions
 ########## Functions to add new functionalities

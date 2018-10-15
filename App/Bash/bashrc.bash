@@ -30,6 +30,10 @@ if [[ -f "${BASE}/App/Bash/Inc/fortunes.bash" ]]; then
     source "${BASE}/App/Bash/Inc/fortunes.bash"
 fi
 
+if [[ -f "${BASE}/App/Bash/Completion/git.bash" ]]; then
+    source "${BASE}/App/Bash/Completion/git.bash"
+fi
+
 export PATH="$PATH:.:/bin:/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/${HOME}/.composer/vendor/bin"
 
 export CDPATH=~Projects
