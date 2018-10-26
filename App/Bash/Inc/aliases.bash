@@ -87,7 +87,7 @@ alias vivaldi='env vivaldi --process-per-site'
 ########## Create aliases to add new functionalities
 
 alias dhclient='env sudo vi /etc/dhcp/dhclient.conf'
-alias format='env echo "${HOME}/Music/%g/%z/%y - %b/CD %d/%t [%z] %n@%b"'
+alias format='env echo "${HOME}/Music/%g/%z/%y - %b/%t [%z] %d-%n@%b"'
 alias imageSize='env exiftool -ImageSize -FileName -S -t'
 alias la='env ls --color --quote-name --almost-all --file-type --si --time-style=long-iso --human-readable --numeric-uid-gid -go'
 alias monitorLeft="env xrandr --output eDP-1 --rotate left"
@@ -121,8 +121,8 @@ function symfonyCacheClear()
 
     reset
     sudo rm -f var/logs/*.log
-    $console cache:clear --env=dev
-    $console cache:clear --env=prod
+    $console cache:clear --no-warmup --env=dev
+    $console cache:clear --no-warmup --env=prod
 }
 
 function symfonyAssets()
