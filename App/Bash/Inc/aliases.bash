@@ -121,8 +121,9 @@ function symfonyCacheClear()
 
     reset
     sudo rm -f var/logs/*.log
-    $console cache:clear --no-warmup --env=dev
-    $console cache:clear --no-warmup --env=prod
+    $console cache:clear --env=dev
+    $console cache:clear --env=prod
+    play "${HOME}/Shell/.sounds/success.wav"
 }
 
 function symfonyAssets()
@@ -136,41 +137,13 @@ function symfonyAssets()
     reset
     $console assetic:dump
     $console assets:install --symlink
+    play "${HOME}/Shell/.sounds/success.wav"
 }
 
 alias symfonySecret="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1"
 
 ##### Functions
 ########## Functions to add new functionalities
-
-
-function ezClear()
-{
-    if [ -d "ezpublish/cache/dev" ]; then
-        rm -Rf ezpublish/cache/dev/*
-    fi
-
-    if [ -d "ezpublish/cache/prod" ]; then
-        rm -Rf ezpublish/cache/prod/*
-    fi
-
-    if [ -d "ezpublish/logs" ]; then
-        sudo rm -Rf ezpublish/logs/*.log
-    fi
-
-    reset
-    ezpublish/console cache:clear --quiet --no-warmup --no-optional-warmers --no-debug
-    ezpublish/console cache:clear --env=prod --quiet --no-warmup --no-optional-warmers --no-debug
-}
-
-function ezAssets()
-{
-    reset
-    ezpublish/console assetic:dump --quiet
-    ezpublish/console assetic:dump --env=prod --quiet
-    ezpublish/console assets:install --quiet
-    ezpublish/console assets:install --env=prod --quiet
-}
 
 # Generate a SSH key
 function sshKeyGenerate()
