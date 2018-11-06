@@ -123,7 +123,7 @@ function symfonyCacheClear()
     sudo rm -f var/logs/*.log
     $console cache:clear --env=dev
     $console cache:clear --env=prod
-    play "${HOME}/Shell/.sounds/success.wav"
+    play --no-show-progress --volume 0.1 "${HOME}/Shell/.sounds/success.wav" > /dev/null 2>&1
 }
 
 function symfonyAssets()
@@ -137,7 +137,7 @@ function symfonyAssets()
     reset
     $console assetic:dump
     $console assets:install --symlink
-    play "${HOME}/Shell/.sounds/success.wav"
+    play --no-show-progress --volume 0.1 "${HOME}/Shell/.sounds/success.wav" > /dev/null 2>&1
 }
 
 alias symfonySecret="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1"
