@@ -121,8 +121,10 @@ function symfonyCacheClear()
 
     reset
     sudo rm -f var/logs/*.log
-    $console cache:clear --env=dev
-    $console cache:clear --env=prod
+    rm -Rf var/cache/*
+    $console cache:clear --env=dev --no-debug
+    $console cache:clear --env=prod --no-debug
+
     play --no-show-progress --volume 0.1 "${HOME}/Shell/.sounds/success.wav" > /dev/null 2>&1
 }
 
