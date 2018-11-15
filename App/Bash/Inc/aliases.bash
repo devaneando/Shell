@@ -251,16 +251,6 @@ function dockerStopAllContainers {
     fi
 }
 
-# Adds all changes and commit
-function gitTime()
-{
-    commit_date="$(date +'%Y-%m-%d %H:%M')"
-    commit_branch="$(git branch --no-color | sed -r 's/^\* (.*)$/\1/g')"
-    git add --all .
-    git commit -m "${commit_date}"
-    git push origin ${commit_branch}
-}
-
 function loremIpsum()
 {
     if [[ ! -z ${1} ]]; then
