@@ -82,6 +82,7 @@ alias toilet='env toilet --gay --width 1100 --font=mono9'
 alias tree='env tree -d --noreport'
 alias unattended-upgrade='sudo env unattended-upgrade --verbose'
 alias vivaldi='env vivaldi --process-per-site'
+alias gti='git'
 
 ##### Speeders
 ########## Create aliases to add new functionalities
@@ -120,10 +121,16 @@ function symfonyCacheClear()
     fi
 
     reset
-    sudo rm -f var/logs/*.log
-    rm -Rf var/cache/*
-    $console cache:clear --env=dev --no-debug
-    $console cache:clear --env=prod --no-debug
+    sudo rm -fv var/logs/*.log
+    rm -Rfv var/cache/*
+
+    if [ "${1}" = "dev" ]; then
+        $console cache:clear --env=dev --no-warmup  --no-optional-warmers --no-debug
+        $console cache:warmup --env=dev --no-interaction --no-optional-warmers --no-debug
+    elif [ "${1}" = "prod" ]; then
+        $console cache:clear --env=prod --no-warmup --no-optional-warmers --no-debug
+        $console cache:warmup --env=prod --no-interaction --no-optional-warmers --no-debug
+    fi
 
     play --no-show-progress --volume 0.1 "${HOME}/Shell/.sounds/success.wav" > /dev/null 2>&1
 }
