@@ -94,7 +94,7 @@ alias la='env ls --color --quote-name --almost-all --file-type --si --time-style
 alias monitorLeft="env xrandr --output eDP-1 --rotate left"
 alias monitorNormal="env xrandr --output eDP-1 --rotate normal"
 alias networkFix='sudo env systemctl restart network-manager.service'
-alias phpStan='reset && /usr/bin/php7.2 /usr/local/bin/phpstan analyse --configuration=./phpstan.neon --level=4 --memory-limit=4096M'
+alias phpStan='reset && /usr/bin/php7.2 -d memory_limit=4G /usr/local/bin/phpstan analyse --configuration=./phpstan.neon --level=4 --memory-limit=4096'
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
 alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-format mp3 -o '%(title)s.%(id)s.%(ext)s'"
 
