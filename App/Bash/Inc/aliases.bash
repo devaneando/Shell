@@ -94,7 +94,7 @@ alias la='env ls --color --quote-name --almost-all --file-type --si --time-style
 alias monitorLeft="env xrandr --output eDP-1 --rotate left"
 alias monitorNormal="env xrandr --output eDP-1 --rotate normal"
 alias networkFix='sudo env systemctl restart network-manager.service'
-alias phpStan='reset && /usr/bin/php7.2 -d memory_limit=4G /usr/local/bin/phpstan analyse --configuration=./phpstan.neon --level=4 --memory-limit=4096'
+alias phpStan='/usr/local/bin/phpstan analyse --configuration=./phpstan.neon --level=4'
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
 alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-format mp3 -o '%(title)s.%(id)s.%(ext)s'"
 
@@ -120,19 +120,25 @@ function symfonyCacheClear()
         console="app/console"
     fi
 
+    if [ -z "$1" ]; then
+        ENV="dev"
+    else
+        ENV="${1}"
+    fi
+
     reset
+    figlet-toilet --gay --width 1100 "Remove: $(date +'%H:%M:%S')"
     sudo rm -fv var/logs/*.log
     rm -Rfv var/cache/*
 
-    if [ "${1}" = "dev" ]; then
-        $console cache:clear --env=dev --no-warmup  --no-optional-warmers --no-debug
-        $console cache:warmup --env=dev --no-interaction --no-optional-warmers --no-debug
-    elif [ "${1}" = "prod" ]; then
-        $console cache:clear --env=prod --no-warmup --no-optional-warmers --no-debug
-        $console cache:warmup --env=prod --no-interaction --no-optional-warmers --no-debug
-    fi
+    figlet-toilet --gay --width 1100 "Clear: $(date +'%H:%M:%S')"
+    $console cache:clear --env=${ENV} --no-warmup  --no-optional-warmers --no-debug
 
-    play --no-show-progress --volume 0.1 "${HOME}/Shell/.sounds/success.wav" > /dev/null 2>&1
+    figlet-toilet --gay --width 1100 "Warmup: $(date +'%H:%M:%S')"
+    $console cache:warmup --env=${ENV} --no-interaction --no-debug
+
+    figlet-toilet --gay --width 1100 "Assets: $(date +'%H:%M:%S')"
+    $console assets:install --env=${ENV} --symlink
 }
 
 function symfonyAssets()
@@ -146,7 +152,45 @@ function symfonyAssets()
     reset
     $console assetic:dump
     $console assets:install --symlink
-    play --no-show-progress --volume 0.1 "${HOME}/Shell/.sounds/success.wav" > /dev/null 2>&1
+}
+
+function symfonyFixtures()
+{
+    if [ -f "bin/console" ]; then
+        console="bin/console"
+    elif [ -f "app/console" ]; then
+        console="app/console"
+    fi
+
+    if [ -z "$1" ]; then
+        ENV="dev"
+    else
+        ENV="${1}"
+    fi
+
+    reset
+    $console cache:warmup --env=${ENV} --no-optional-warmers
+    $console doctrine:fixtures:load --env=${ENV} --no-interaction
+}
+
+function symfonyDatabase()
+{
+    if [ -f "bin/console" ]; then
+        console="bin/console"
+    elif [ -f "app/console" ]; then
+        console="app/console"
+    fi
+
+    if [ -z "$1" ]; then
+        ENV="dev"
+    else
+        ENV="${1}"
+    fi
+
+    reset
+    ${console} doc:data:drop --env="${ENV}" --force
+    ${console} doc:data:create --env="${ENV}"
+    ${console} doctrine:migrations:migrate --env="${ENV}" --no-interaction
 }
 
 alias symfonySecret="cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 40 | head -n 1"
