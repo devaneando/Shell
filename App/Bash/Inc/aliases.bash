@@ -97,6 +97,9 @@ alias networkFix='sudo env systemctl restart network-manager.service'
 alias phpStan='/usr/local/bin/phpstan analyse --configuration=./phpstan.neon --level=4'
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
 alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-format mp3 -o '%(title)s.%(id)s.%(ext)s'"
+alias apacheStart="sudo server apache2 start"
+alias apacheStop="sudo server apache2 stop"
+alias apacheRestart="sudo server apache2 stop && sudo server apache2 start"
 
 ##### Dockers
 
@@ -131,13 +134,13 @@ function symfonyCacheClear()
     sudo rm -fv var/logs/*.log
     rm -Rfv var/cache/*
 
-    figlet-toilet --gay --width 1100 "Clear: $(date +'%H:%M:%S')"
+    echo -e "\e[3m\e[36mClear: $(date +'%H:%M:%S')\e[0m"
     $console cache:clear --env=${ENV} --no-warmup  --no-optional-warmers --no-debug
 
-    figlet-toilet --gay --width 1100 "Warmup: $(date +'%H:%M:%S')"
+    echo -e "\e[3m\e[36mWarmup: $(date +'%H:%M:%S')\e[0m"
     $console cache:warmup --env=${ENV} --no-interaction --no-debug
 
-    figlet-toilet --gay --width 1100 "Assets: $(date +'%H:%M:%S')"
+    echo -e "\e[3m\e[36mAsset: $(date +'%H:%M:%S')\e[0m"
     $console assets:install --env=${ENV} --symlink
 }
 
