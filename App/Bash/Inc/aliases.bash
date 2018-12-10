@@ -97,9 +97,9 @@ alias networkFix='sudo env systemctl restart network-manager.service'
 alias phpStan='/usr/local/bin/phpstan analyse --configuration=./phpstan.neon --level=4'
 alias toMe='sudo env chown --recursive `whoami`:`whoami`'
 alias youtubeToMp3="youtube-dl --extract-audio --audio-quality 320K --audio-format mp3 -o '%(title)s.%(id)s.%(ext)s'"
-alias apacheStart="sudo server apache2 start"
-alias apacheStop="sudo server apache2 stop"
-alias apacheRestart="sudo server apache2 stop && sudo server apache2 start"
+alias apacheStart="sudo service apache2 start"
+alias apacheStop="sudo service apache2 stop"
+alias apacheRestart="sudo service apache2 stop && sudo service apache2 start"
 
 ##### Dockers
 
