@@ -36,4 +36,7 @@ fi
 
 export PATH="$PATH:.:/bin:/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/${HOME}/.composer/vendor/bin"
 
+export SYMFONY_ENV=dev
+export APP_ENV=dev
+
 export CDPATH=~Projects
