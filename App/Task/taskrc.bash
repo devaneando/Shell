@@ -12,6 +12,7 @@
 
 # Files
 data.location=~/Things/Dropbox/Devaneando/Data/Todo
+affected=off
 
 # Color theme (uncomment one to use)
 #include /usr/share/taskwarrior/light-16.theme
