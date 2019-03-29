@@ -10,9 +10,12 @@
 
 # Use the command 'task show' to see all defaults and overrides
 
-# Files
-data.location=~/Things/Dropbox/Devaneando/Data/Todo
-affected=off
+data.location                 =~/Things/Dropbox/Devaneando/Data/Todo
+report.devaneando.columns     = id,description,tags
+report.devaneando.description = My main list
+report.devaneando.filter      = status:pending or status:waiting
+report.devaneando.labels      = ID,Description, Tags
+report.devaneando.sort        = description+
 
 # Color theme (uncomment one to use)
 #include /usr/share/taskwarrior/light-16.theme
