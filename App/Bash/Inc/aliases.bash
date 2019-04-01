@@ -130,12 +130,12 @@ function symfonyCacheClear()
     fi
 
     reset
-    figlet-toilet --gay --width 1100 "Remove: $(date +'%H:%M:%S')"
+    echo -e "\e[3m\e[36mRemove: $(date +'%H:%M:%S')\e[0m"
     sudo rm -fv var/logs/*.log
     rm -Rfv var/cache/*
 
     echo -e "\e[3m\e[36mClear: $(date +'%H:%M:%S')\e[0m"
-    $console cache:clear --env=${ENV} --no-warmup  --no-optional-warmers --no-debug
+    $console cache:clear --env=${ENV} --no-warmup  --no-debug
 
     echo -e "\e[3m\e[36mWarmup: $(date +'%H:%M:%S')\e[0m"
     $console cache:warmup --env=${ENV} --no-interaction --no-debug
@@ -172,7 +172,7 @@ function symfonyFixtures()
     fi
 
     reset
-    $console cache:warmup --env=${ENV} --no-optional-warmers
+    # $console cache:warmup --env=${ENV} --no-optional-warmers
     $console doctrine:fixtures:load --env=${ENV} --no-interaction
 }
 
