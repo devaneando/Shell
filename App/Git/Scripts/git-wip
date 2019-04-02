@@ -1,0 +1,13 @@
+#!/bin/bash
+# Commit all added, changed, and removed files.
+# Push the commit to the remote repository.
+
+git add --all --no-ignore-removal
+DATE="$(date +'%Y-%m-%d %H:%M')"
+if [ -z "$1" ]; then
+    MESSAGE="WIP: $(date +'%Y-%m-%d %H:%M')"
+else
+    MESSAGE="${1}"
+fi
+git commit -m "${MESSAGE}"
+git push --progress origin $(git symbolic-ref --short HEAD)
