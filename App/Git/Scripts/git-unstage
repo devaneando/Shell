@@ -1,0 +1,4 @@
+#!/bin/bash
+# Unstage last commit and all its files
+
+git reset --hard HEAD

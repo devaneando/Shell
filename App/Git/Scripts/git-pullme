@@ -1,0 +1,4 @@
+#!/bin/bash
+# Pull the remote to the local branch
+
+git pull --ff-only --no-rebase --progress

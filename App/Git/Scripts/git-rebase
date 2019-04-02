@@ -1,0 +1,5 @@
+#!/bin/bash
+# Show a nicely formatted list fo all branches
+# Push the commit to the remote repository.
+
+git rebase --committer-date-is-author-date

@@ -1,0 +1,4 @@
+#!/bin/bash
+# List all git aliases
+
+git config --get-regexp alias

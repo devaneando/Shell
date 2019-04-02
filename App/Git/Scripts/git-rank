@@ -1,0 +1,4 @@
+#!/bin/bash
+# Count the number of commits each participant made
+
+git shortlog -sn --no-merges

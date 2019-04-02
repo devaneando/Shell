@@ -1,0 +1,4 @@
+#!/bin/bash
+# Used to relink the local branch with the remote upstream
+
+git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD) $(git symbolic-ref --short HEAD)

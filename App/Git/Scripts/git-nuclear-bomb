@@ -1,0 +1,10 @@
+#!/bin/bash
+# Completely replace the local with the remote branch
+
+read -p "Are sure you want to replace your local branch with its remote counterpart?" -n 1 -r
+echo
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    git reset --hard origin/$(git symbolic-ref --short HEAD)
+endif
+
