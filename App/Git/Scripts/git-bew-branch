@@ -1,0 +1,10 @@
+#!/bin/bash
+# Create a new branch
+
+git add --all --no-ignore-removal
+DATE="$(date +'%Y-%m-%d %H:%M')"
+if [ -z "$1" ]; then
+    echo "Can't proceed without a branch name"
+    exit
+fi
+git branch -b "$1"

@@ -1,0 +1,4 @@
+#!/bin/bash
+# Merge with fast foward only
+
+git merge --ff-only --progress

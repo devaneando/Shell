@@ -1,0 +1,4 @@
+#!/bin/bash
+# LIst all branches
+
+git branch --all
